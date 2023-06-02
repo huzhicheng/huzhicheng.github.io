@@ -706,7 +706,45 @@ blockquote{
   z-index: 1;
 }
 
-.popup-content {
-  /* 根据需要设置弹出层内容的样式 */
+.rectangle-container {
+  width: 400px;
+  height: 300px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  flex: 1;
+  min-width: 300px; /* 调整列的最小宽度 */
+  max-width: 360px;
+  margin: 10px; /* 调整列之间的间距 */
 }
+
+
+
+.image-wrapper {
+  width: 100%;
+  height: 60%;
+  overflow: hidden;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: auto;
+}
+
+.content-wrapper {
+  padding: 10px;
+}
+
+.content-wrapper span {
+  font-size: 16px; /* 主要内容的较大字体大小 */
+  font-weight: bold; /* 主要内容的粗体 */
+}
+
+.content-wrapper p {
+  font-size: 14px; /* 次要内容的较小字体大小 */
+  color: #888; /* 次要内容的辅助颜色 */
+}
+
+
 

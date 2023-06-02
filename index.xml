@@ -1,4 +1,325 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>古时的风筝</title><link>https://moonkite.cn/</link><description>Recent content on 古时的风筝</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 02 Jun 2023 08:56:23 +0800</lastBuildDate><atom:link href="https://moonkite.cn/index.xml" rel="self" type="application/rss+xml"/><item><title>VsCode ChatGPT 插件，一个代码助手</title><link>https://moonkite.cn/category/product/VsCode-ChatGPT-%E6%8F%92%E4%BB%B6%E4%B8%80%E4%B8%AA%E4%BB%A3%E7%A0%81%E5%8A%A9%E6%89%8B/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/product/VsCode-ChatGPT-%E6%8F%92%E4%BB%B6%E4%B8%80%E4%B8%AA%E4%BB%A3%E7%A0%81%E5%8A%A9%E6%89%8B/</guid><description>安装地址：mini ChatGPT 其实很早之前就想学学 VSCode 插件开发了，但是又不知道做什么，加上我这半吊子前端水平，迟迟没有动手。 最近 ChatGPT 火的一塌糊涂，我也一直</description><content:encoded><![CDATA[<p><strong>安装地址</strong>：<a href="https://marketplace.visualstudio.com/items?itemName=fengzheng.code-chatgpt-assistant"><strong>mini ChatGPT</strong></a></p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>古时的风筝</title><link>https://moonkite.cn/</link><description>Recent content on 古时的风筝</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 02 Jun 2023 08:56:23 +0800</lastBuildDate><atom:link href="https://moonkite.cn/index.xml" rel="self" type="application/rss+xml"/><item><title>Java 上进了，JDK21马上就要来了，感受一下它的魅力</title><link>https://moonkite.cn/category/java/VsCode-ChatGPT-%E6%8F%92%E4%BB%B6%E4%B8%80%E4%B8%AA%E4%BB%A3%E7%A0%81%E5%8A%A9%E6%89%8B/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/java/VsCode-ChatGPT-%E6%8F%92%E4%BB%B6%E4%B8%80%E4%B8%AA%E4%BB%A3%E7%A0%81%E5%8A%A9%E6%89%8B/</guid><description>目前 Java 的最新稳定版是 JDK 20，但这是个过渡版，JDK21就是 LTS 版的了，也快要发布了，在今年9月份（也就是2023年9月）就要正式发布了。 但是，</description><content:encoded><![CDATA[<p>目前 Java 的最新稳定版是 JDK 20，但这是个过渡版，JDK21就是 LTS 版的了，也快要发布了，在今年9月份（也就是2023年9月）就要正式发布了。</p>
+<p>但是，猜都不用猜，你肯定还在用 Java 8 吧！</p>
+<h2 id="更丝滑的并发编程模式">更丝滑的并发编程模式</h2>
+<p>如果说之前的 JDK17你还觉得没必要折腾，那 JDK21确实有必要关注一下了。因为 JDK21 引入了一种新型的并发编程模式。</p>
+<p>当前 Java 中的多线程并发编程绝对是另我们都非常头疼的一部分，感觉就是学起来难啃，用起来难用。但是转头看看使用其他语言的朋友们，根本就没有这个烦恼嘛，比如 GoLang，感觉人家用起来就很丝滑呢。</p>
+<p>JDK21 中就在这方面做了很大的改进，让Java并发编程变得更简单一点，更丝滑一点。确切的说，在 JDK19或JDK20中就有这些改进了。</p>
+<p>那具体是什么呢？让我们来具体来看一下。下面是JDK21的 Feature。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230531172947636.png" alt=""></p>
+<p>其中<code>Virtual Threads</code>、<code>Scoped Values</code>、<code>Structured Concurrency</code>就是针对多线程并发编程的几个功能。我们今天也主要来说一下他们。</p>
+<h3 id="虚拟线程virtual-threads">虚拟线程（Virtual Threads）</h3>
+<p>虚拟线程是基于协程的线程，它们与其他语言中的协程具有相似之处，但也存在一些不同之处。</p>
+<p>虚拟线程是依附于主线程的，如果主线程销毁了，那虚拟线程也不复存在。</p>
+<p>相同之处：</p>
+<ol>
+<li>虚拟线程和协程都是轻量级的线程，它们的创建和销毁的开销都比传统的操作系统线程要小。</li>
+<li>虚拟线程和协程都可以通过暂停和恢复来实现线程之间的切换，从而避免了线程上下文切换的开销。</li>
+<li>虚拟线程和协程都可以使用异步和非阻塞的方式来处理任务，提高应用程序的性能和响应速度。</li>
+</ol>
+<p>不同之处：</p>
+<ol>
+<li>虚拟线程是在 JVM 层面实现的，而协程则是在语言层面实现的。因此，虚拟线程的实现可以与任何支持 JVM 的语言一起使用，而协程的实现则需要特定的编程语言支持。</li>
+<li>虚拟线程是一种基于线程的协程实现，因此它们可以使用线程相关的 API，如 <code>ThreadLocal</code>、<code>Lock</code> 和 <code>Semaphore</code>。而协程则不依赖于线程，通常需要使用特定的异步编程框架和 API。</li>
+<li>虚拟线程的调度是由 JVM 管理的，而协程的调度是由编程语言或异步编程框架管理的。因此，虚拟线程可以更好地与其他线程进行协作，而协程则更适合处理异步任务。</li>
+</ol>
+<p>总的来说，虚拟线程是一种新的线程类型，它可以提高应用程序的性能和资源利用率，同时也可以使用传统线程相关的 API。虚拟线程与协程有很多相似之处，但也存在一些不同之处。</p>
+<p>虚拟线程确实可以让多线程编程变得更简单和更高效。相比于传统的操作系统线程，虚拟线程的创建和销毁的开销更小，线程上下文切换的开销也更小，因此可以大大减少多线程编程中的资源消耗和性能瓶颈。</p>
+<p>使用虚拟线程，开发者可以像编写传统的线程代码一样编写代码，而无需担心线程的数量和调度，因为 JVM 会自动管理虚拟线程的数量和调度。此外，虚拟线程还支持传统线程相关的 API，如 <code>ThreadLocal</code>、<code>Lock</code> 和 <code>Semaphore</code>，这使得开发者可以更轻松地迁移传统线程代码到虚拟线程。</p>
+<p>虚拟线程的引入，使得多线程编程变得更加高效、简单和安全，使得开发者能够更加专注于业务逻辑，而不必过多地关注底层的线程管理。</p>
+<h3 id="结构化并发structured-concurrency">结构化并发（Structured Concurrency）</h3>
+<p>结构化并发是一种编程范式，旨在通过提供结构化和易于遵循的方法来简化并发编程。使用结构化并发，开发人员可以创建更容易理解和调试的并发代码，并且不容易出现竞争条件和其他与并发有关的错误。在结构化并发中，所有并发代码都被结构化为称为任务的定义良好的工作单元。任务以结构化方式创建、执行和完成，任务的执行总是保证在其父任务完成之前完成。</p>
+<p>Structured Concurrency（结构化并发）可以让多线程编程更加简单和可靠。在传统的多线程编程中，线程的启动、执行和结束是由开发者手动管理的，因此容易出现线程泄露、死锁和异常处理不当等问题。</p>
+<p>使用结构化并发，开发者可以更加自然地组织并发任务，使得任务之间的依赖关系更加清晰，代码逻辑更加简洁。结构化并发还提供了一些异常处理机制，可以更好地管理并发任务中的异常，避免因为异常而导致程序崩溃或数据不一致的情况。</p>
+<p>除此之外，结构化并发还可以通过限制并发任务的数量和优先级，防止资源竞争和饥饿等问题的发生。这些特性使得开发者能够更加方便地实现高效、可靠的并发程序，而无需过多关注底层的线程管理。</p>
+<h3 id="作用域值scoped-values">作用域值（Scoped Values）</h3>
+<p>作用域值是JDK 20中的一项功能，允许开发人员创建作用域限定的值，这些值限定于特定的线程或任务。作用域值类似于线程本地变量，但是设计为与虚拟线程和结构化并发配合使用。它们允许开发人员以结构化的方式在任务和虚拟线程之间传递值，无需复杂的同步或锁定机制。作用域值可用于在应用程序的不同部分之间传递上下文信息，例如用户身份验证或请求特定数据。</p>
+<h2 id="试验一下">试验一下</h2>
+<p>进行下面的探索之前，你要下载至少 JDK19或者直接下载 JDK20，JDK 20 目前（截止到2023年9月份）是正式发布的最高版本，如果你用 JDK 19的话，没办法体验到Scoped Values的功能。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230428164027447.png" alt=""></p>
+<p>或者是直接下载 JDK 21 的 Early-Access Builds（早期访问版本）。在这个地址下载 「https://jdk.java.net/21/」，下载对应的版本。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230428165054158.png" alt=""></p>
+<p>如果你用的是 IDEA ，那你的IDEA 版本最起码是2022.3 这个版本或者之后的，否则不支持这么新的 JDK 版本。</p>
+<p>如果你用的是 JDK19或者 JDK20的话，要在你的项目设置中将 <code>language level</code>设置为19或20的 Preview 级别，否则编译的时候会提示你无法使用预览版的功能，虚拟线程就是预览版的功能。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230428165350127.png" alt=""></p>
+<p>如果你用的是 JDK21的话，将 <code>language level</code> 设置为 <code>X -Experimental Features</code>，另外，因为 JDK21不属于正式版本，所以需要到 IDEA 的设置中（注意是 IDEA 的设置，不是项目的设置了），将这个项目的 <code>Target bytecode version</code>手动修改为21，目前可选的最高就是20，也就是JDK20。设置为21之后，就可以使用 JDK21中的这些功能了。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230531214527330.png" alt=""></p>
+<h2 id="虚拟线程的例子">虚拟线程的例子</h2>
+<p>我们现在启动线程是怎么做的呢？</p>
+<p>先声明一个线程类，<code>implements</code> 自 <code>Runnable</code>，并实现 <code>run</code>方法。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SimpleThread</span> <span class="kd">implements</span> <span class="n">Runnable</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;当前线程名称：&#34;</span> <span class="o">+</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">1000</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>然后就可以使用这个线程类，然后启动线程了。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Thread</span> <span class="n">thread</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thread</span><span class="o">(</span><span class="k">new</span> <span class="n">SimpleThread</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="n">thread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+</span></span></code></pre></div><p>中规中矩，没毛病。</p>
+<p>有了虚拟线程之后呢，怎么实现呢？</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Thread</span><span class="o">.</span><span class="na">ofPlatform</span><span class="o">().</span><span class="na">name</span><span class="o">(</span><span class="s">&#34;thread-test&#34;</span><span class="o">).</span><span class="na">start</span><span class="o">(</span><span class="k">new</span> <span class="n">SimpleThread</span><span class="o">());</span>
+</span></span></code></pre></div><p>下面是几种使用虚拟线程的方式。</p>
+<p>1、直接启动一个虚拟线程</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Thread</span> <span class="n">thread</span> <span class="o">=</span> <span class="n">Thread</span><span class="o">.</span><span class="na">startVirtualThread</span><span class="o">(</span><span class="k">new</span> <span class="n">SimpleThread</span><span class="o">());</span>
+</span></span></code></pre></div><p>2、使用 ofVirtual()，builder 方式启动虚拟线程，可以设置线程名称、优先级、异常处理等配置</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Thread</span><span class="o">.</span><span class="na">ofVirtual</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">&#34;thread-test&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">start</span><span class="o">(</span><span class="k">new</span> <span class="n">SimpleThread</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//或者
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Thread</span> <span class="n">thread</span> <span class="o">=</span> <span class="n">Thread</span><span class="o">.</span><span class="na">ofVirtual</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">  <span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">&#34;thread-test&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="o">.</span><span class="na">uncaughtExceptionHandler</span><span class="o">((</span><span class="n">t</span><span class="o">,</span> <span class="n">e</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">t</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">  <span class="o">})</span>
+</span></span><span class="line"><span class="cl">  <span class="o">.</span><span class="na">unstarted</span><span class="o">(</span><span class="k">new</span> <span class="n">SimpleThread</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="n">thread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+</span></span></code></pre></div><p>3、使用 Factory 创建线程</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">ThreadFactory</span> <span class="n">factory</span> <span class="o">=</span> <span class="n">Thread</span><span class="o">.</span><span class="na">ofVirtual</span><span class="o">().</span><span class="na">factory</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">Thread</span> <span class="n">thread</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="na">newThread</span><span class="o">(</span><span class="k">new</span> <span class="n">SimpleThread</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="n">thread</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;thread-test&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">thread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+</span></span></code></pre></div><p>4、使用 Executors 方式</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">ExecutorService</span> <span class="n">executorService</span> <span class="o">=</span> <span class="n">Executors</span><span class="o">.</span><span class="na">newVirtualThreadPerTaskExecutor</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">Future</span><span class="o">&lt;?&gt;</span> <span class="n">submit</span> <span class="o">=</span> <span class="n">executorService</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="k">new</span> <span class="n">SimpleThread</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="n">Object</span> <span class="n">o</span> <span class="o">=</span> <span class="n">submit</span><span class="o">.</span><span class="na">get</span><span class="o">();</span>
+</span></span></code></pre></div><h2 id="结构化编程的例子">结构化编程的例子</h2>
+<p>想一下下面这个场景，假设你有三个任务要同时进行，只要任意一个任务执行完成并返回结果了，那就可以直接用这个结果了，其他的两个任务就可以停止了。比如说一个天气服务，通过三个渠道获取天气情况，只要有一个渠道返回就可以了。</p>
+<p>这种场景下， 在 Java 8 下应该怎么做呢，当然也可以了。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// 执行任务并返回 Future 对象列表
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">List</span><span class="o">&lt;</span><span class="n">Future</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">futures</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="na">invokeAll</span><span class="o">(</span><span class="n">tasks</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 等待任一任务完成并获取结果
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="na">invokeAny</span><span class="o">(</span><span class="n">tasks</span><span class="o">);</span>
+</span></span></code></pre></div><p>使用 <code>ExecutorService</code>的<code>invokeAll</code>和<code>invokeAny</code>实现，但是会有一些额外的工作，在拿到第一个结果后，要手动关闭另外的线程。</p>
+<p>而 JDK21中呢，可以用结构化编程实现。</p>
+<p><code>ShutdownOnSuccess</code>捕获第一个结果并关闭任务范围以中断未完成的线程并唤醒调用线程。
+适用于任意子任务的结果都可以直接使用，并且无需等待其他未完成任务的结果的情况。
+它定义了获取第一个结果或在所有子任务失败时抛出异常的方法</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">try</span> <span class="o">(</span><span class="n">var</span> <span class="n">scope</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StructuredTaskScope</span><span class="o">.</span><span class="na">ShutdownOnSuccess</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Future</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">res1</span> <span class="o">=</span> <span class="n">scope</span><span class="o">.</span><span class="na">fork</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="n">runTask</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Future</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">res2</span> <span class="o">=</span> <span class="n">scope</span><span class="o">.</span><span class="na">fork</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="n">runTask</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Future</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">res3</span> <span class="o">=</span> <span class="n">scope</span><span class="o">.</span><span class="na">fork</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="n">runTask</span><span class="o">(</span><span class="mi">3</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">scope</span><span class="o">.</span><span class="na">join</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;scope:&#34;</span> <span class="o">+</span> <span class="n">scope</span><span class="o">.</span><span class="na">result</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ExecutionException</span> <span class="o">|</span> <span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">runTask</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">InterruptedException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">1000</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">long</span> <span class="n">l</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Random</span><span class="o">().</span><span class="na">nextLong</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">l</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;第&#34;</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="s">&#34;个任务：&#34;</span> <span class="o">+</span> <span class="n">s</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">s</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p><strong>ShutdownOnFailure</strong></p>
+<p>执行多个任务，只要有一个失败（出现异常或其他主动抛出异常情况），就停止其他未执行完的任务，使用scope.throwIfFailed捕捉并抛出异常。
+如果所有任务均正常，则使用 Feture.get() 或*Feture.resultNow() 获取结果</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">try</span> <span class="o">(</span><span class="n">var</span> <span class="n">scope</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StructuredTaskScope</span><span class="o">.</span><span class="na">ShutdownOnFailure</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Future</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">res1</span> <span class="o">=</span> <span class="n">scope</span><span class="o">.</span><span class="na">fork</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="n">runTaskWithException</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Future</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">res2</span> <span class="o">=</span> <span class="n">scope</span><span class="o">.</span><span class="na">fork</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="n">runTaskWithException</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Future</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">res3</span> <span class="o">=</span> <span class="n">scope</span><span class="o">.</span><span class="na">fork</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="n">runTaskWithException</span><span class="o">(</span><span class="mi">3</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">scope</span><span class="o">.</span><span class="na">join</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">scope</span><span class="o">.</span><span class="na">throwIfFailed</span><span class="o">(</span><span class="n">Exception</span><span class="o">::</span><span class="k">new</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">res1</span><span class="o">.</span><span class="na">resultNow</span><span class="o">();</span> <span class="c1">//或 res1.get()
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="n">Stream</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">res1</span><span class="o">,</span> <span class="n">res2</span><span class="o">,</span><span class="n">res3</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">      <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">Future</span><span class="o">::</span><span class="n">resultNow</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">      <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">joining</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;直接结果:&#34;</span> <span class="o">+</span> <span class="n">result</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//throw new RuntimeException(e);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 有一定几率发生异常
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">runTaskWithException</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">InterruptedException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">1000</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">long</span> <span class="n">l</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Random</span><span class="o">().</span><span class="na">nextLong</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="o">(</span><span class="n">l</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">throw</span> <span class="k">new</span> <span class="n">InterruptedException</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">l</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;第&#34;</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="s">&#34;个任务：&#34;</span> <span class="o">+</span> <span class="n">s</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">s</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h2 id="scoped-values-的例子">Scoped Values 的例子</h2>
+<p>我们肯定都用过 <code>ThreadLocal</code>，它是线程本地变量，只要这个线程没销毁，可以随时获取 ThredLocal 中的变量值。Scoped Values 也可以在线程内部随时获取变量，只不过它有个作用域的概念，超出作用域就会销毁。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ScopedValueExample</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">final</span> <span class="kd">static</span> <span class="n">ScopedValue</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">LoginUser</span> <span class="o">=</span> <span class="n">ScopedValue</span><span class="o">.</span><span class="na">newInstance</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">InterruptedException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ScopedValue</span><span class="o">.</span><span class="na">where</span><span class="o">(</span><span class="n">LoginUser</span><span class="o">,</span> <span class="s">&#34;张三&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">run</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">new</span> <span class="n">Service</span><span class="o">().</span><span class="na">login</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">                <span class="o">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">2000</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Service</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">void</span> <span class="nf">login</span><span class="o">(){</span>
+</span></span><span class="line"><span class="cl">            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;当前登录用户是：&#34;</span> <span class="o">+</span> <span class="n">LoginUser</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>上面的例子模拟一个用户登录的过程，使用 <code>ScopedValue.newInstance()</code>声明了一个 <code>ScopedValue</code>，用 <code>ScopedValue.where</code>给 <code>ScopedValue</code>设置值，并且使用 run 方法执行接下来要做的事儿，这样一来，<code>ScopedValue</code>就在 run() 的内部随时可获取了，在run方法中，模拟调用了一个service 的login方法，不用传递LoginUser这个参数，就可以直接通过<code>LoginUser.get</code>方法获取当前登录用户的值了。</p>
+]]></content:encoded></item><item><title>VsCode ChatGPT 插件，一个代码助手</title><link>https://moonkite.cn/category/product/VsCode-ChatGPT-%E6%8F%92%E4%BB%B6%E4%B8%80%E4%B8%AA%E4%BB%A3%E7%A0%81%E5%8A%A9%E6%89%8B-copy-2/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/product/VsCode-ChatGPT-%E6%8F%92%E4%BB%B6%E4%B8%80%E4%B8%AA%E4%BB%A3%E7%A0%81%E5%8A%A9%E6%89%8B-copy-2/</guid><description>一个 VsCode 插件版的代码助手，通过接入 ChatGPT，直接在 VsCode 中向 ChatGPT 提问</description><content:encoded><![CDATA[<p><strong>安装地址</strong>：<a href="https://marketplace.visualstudio.com/items?itemName=fengzheng.code-chatgpt-assistant"><strong>mini ChatGPT</strong></a></p>
+<p>其实很早之前就想学学 VSCode 插件开发了，但是又不知道做什么，加上我这半吊子前端水平，迟迟没有动手。</p>
+<p>最近 ChatGPT 火的一塌糊涂，我也一直在用，真的非常好用，有些问题之前需要 Google 搜索，现在用 ChatGPT 基本上都能直接解决，效率提升了不少。</p>
+<p>但是吧，浏览器和 IDE 来回切换又很麻烦，所以我灵机一动，那就开发个 ChatGPT 插件吧，即可以学习学习 VSCode 插件开发，又可以做一个方便的效率工具，岂不是一举两得，美哉美哉。</p>
+<p>于是我就动手写了下面这个插件，叫做 <code>mini ChatGPT</code>，现在已经发布到 VSCode 插件市场了。</p>
+<p>有条件的同学可以安装一下，试试效果如何。</p>
+<p><strong>插件功能特点</strong></p>
+<ul>
+<li>界面简洁，没有多余的干扰；</li>
+<li>像 ChatGPT 官网输出效果一致，打字效果实时输出；</li>
+<li>支持两轮上下文（太多了浪费 tokens），大致等于支持上下文；</li>
+<li>代码美化+格式化，并且可以一键复制，直接粘贴到 vscode 中；</li>
+</ul>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230509181750193.png" alt=""></p>
+<h2 id="插件安装">插件安装</h2>
+<p><strong>当然了，这是需要科学上网的。</strong></p>
+<p>你可以直接在 VSCode 的商店直接搜索 <code>mini ChatGPT</code>安装。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230509183628014.png" alt=""></p>
+<p>也可以到应用市场上安装。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230509183750997.png" alt=""></p>
+<p>插件地址：https://marketplace.visualstudio.com/items?itemName=fengzheng.code-chatgpt-assistant</p>
+<h2 id="插件使用">插件使用</h2>
+<ol>
+<li>点击查看-&gt;命令面板，或者使用快捷键（MacOS: Shift + Command + P，Windows:Shift + Control + P</li>
+<li>输入 <code>Chat</code> 并回车。
+<img src="https://hexo.moonkite.cn/blog/20230509111926.png" alt=""></li>
+<li>如果是首次使用，会弹出提示输入框，在此输入 ChatGPT 的 API。使用的就是原滋原味的 ChatGPT API 接口，官网上都写的很清楚，所以需要使用插件的小伙伴提供自己账号的 API key。下面有介绍如何获取ChatGPT API key。
+<img src="https://hexo.moonkite.cn/blog/20230509112123.png" alt=""></li>
+<li>之后就可以使用啦
+<img src="https://hexo.moonkite.cn/blog/20230509112311.png" alt=""></li>
+<li>如果之后想更换 ChatGPT 的 API key，在命令面板中输入 <code>ChatGPT API</code> 即可。</li>
+</ol>
+<p><strong>使用建议</strong></p>
+<p>此插件只有一个 webview 实现，打开之后独占一个 tab，可以设置向左或向右拆分，然后在左侧使用此插件向 ChatGPT 提问，右侧是代码文件，这样就不用来回切换了，而且可以将代码片段一键复制，然后直接运行。</p>
+<p><img src="https://hexo.moonkite.cn/blog/chatgpt.gif" alt=""></p>
+<p><strong>获取 ChatGPT API key</strong></p>
+<ol>
+<li>
+<p>先准备好科学上网，不要用亚洲节点。</p>
+</li>
+<li>
+<p>之后到 <a href="https://platform.openai.com/">OpenAI 官网</a>注册账号。</p>
+</li>
+<li>
+<p>到<a href="https://platform.openai.com/account/api-keys">个人中心</a> 创建一个 API key。</p>
+</li>
+</ol>
+<p><img src="https://hexo.moonkite.cn/blog/20230509133206.png" alt=""></p>
+<h2 id="开发历程">开发历程</h2>
+<p>作为一个后端开发，我的前端水平是非常一般的，所以代码中有瑕疵的地方还请见谅。对了，代码已经放到 GitHub  上了。</p>
+<p>仓库地址：https://github.com/huzhicheng/vscode-ChatGPT</p>
+<p>VSCode 插件开发，官方建议是用 TypeScript 开发，所以项目完全采用了 TS 开发。由于功能比较简单，没有那么多复杂的设置，由于边学边做，太复杂的也没考虑。整个插件的核心其实就是一个 <code>webview</code>，在webview中实现界面布局和样式，难点就在于webview与插件本身来回的数据传递，但也都是常规用法。</p>
+<p>整个写代码的过程其实也就几个小时，当然过程中的遇到的一些问题我都是跟 ChatGPT 提问的，包括样式都是直接描述需求，ChatGPT 给我一个大致的框架，我再微调一下就可以了。</p>
+<p>所以这样看下来，其实是我和 ChatGPT 合作开发的。</p>
+<p>后来发布到应用商店，写 readme 介绍和使用说明花了一些时间。</p>
+<h2 id="问题和建议">问题和建议</h2>
+<p>目前的版本功能比较简单，没有 ChatGPT 官方的聊天记录列表功能，如果真的有人用的话，后期考虑加上。</p>
+<p>由于ChatGPT 官方并未提供上下文的 API 支持，所以只能采用其他方式模仿上下文能力，目前的做法是记录前两轮提问和回答，然后在下次提问的时候，将前两轮的提问和回答告诉 ChatGPT ，并且明确告诉 ChatGPT，例如下面这样。</p>
+<p>第一轮问题：你好。</p>
+<p>第一轮回答：你好，请问有什么要帮忙的吗？</p>
+<p>第二论问题：请帮我写一段 Python 爬虫抓取知乎回答的 demo。</p>
+<p>第二轮回答：好的，下面是一段抓取知乎回答的 Python 示例。&hellip;.省略多行代码。</p>
+<p>第三轮问题：帮我改成 Java 的。</p>
+<p>这时候，我会将实际的 prompt 改成下面这样的。</p>
+<blockquote>
+<p>下面中括号部分是前两轮的问题和回答，只用作参考。[my question is:&ldquo;你好&rdquo;,your anwser is:&ldquo;你好，请问有什么要帮忙的吗？&quot;.my question is:&ldquo;请帮我写一段 Python 爬虫抓取知乎回答的 demo。&quot;,your anwser is:&ldquo;好的，下面是一段抓取知乎回答的 Python 示例。&hellip;.省略多行代码。&rdquo;.]</p>
+<p>下面引号包含的这部分是真正的问题：&ldquo;帮我改成 Java 的。&rdquo;</p>
+</blockquote>
+<p>采用这种方式，几乎可以模拟上下文的操作，但是偶尔会出现错乱，这块儿还有优化空间，还会继续优化。</p>
+<p>如果各位小伙伴使用过程中发现什么问题，或者有什么更好的建议，都可以加我好友直接跟我说。</p>
+<p>欢迎捧场，赶紧用一用吧，觉得好用的话，可以推荐给身边的小伙伴也用一下。</p>
+<p><img src="https://hexo.moonkite.cn/blog/877shots_so%20(1).png" alt=""></p>
+]]></content:encoded></item><item><title>VsCode ChatGPT 插件，一个代码助手</title><link>https://moonkite.cn/category/product/VsCode-ChatGPT-%E6%8F%92%E4%BB%B6%E4%B8%80%E4%B8%AA%E4%BB%A3%E7%A0%81%E5%8A%A9%E6%89%8B-copy/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/product/VsCode-ChatGPT-%E6%8F%92%E4%BB%B6%E4%B8%80%E4%B8%AA%E4%BB%A3%E7%A0%81%E5%8A%A9%E6%89%8B-copy/</guid><description>一个 VsCode 插件版的代码助手，通过接入 ChatGPT，直接在 VsCode 中向 ChatGPT 提问</description><content:encoded><![CDATA[<p><strong>安装地址</strong>：<a href="https://marketplace.visualstudio.com/items?itemName=fengzheng.code-chatgpt-assistant"><strong>mini ChatGPT</strong></a></p>
+<p>其实很早之前就想学学 VSCode 插件开发了，但是又不知道做什么，加上我这半吊子前端水平，迟迟没有动手。</p>
+<p>最近 ChatGPT 火的一塌糊涂，我也一直在用，真的非常好用，有些问题之前需要 Google 搜索，现在用 ChatGPT 基本上都能直接解决，效率提升了不少。</p>
+<p>但是吧，浏览器和 IDE 来回切换又很麻烦，所以我灵机一动，那就开发个 ChatGPT 插件吧，即可以学习学习 VSCode 插件开发，又可以做一个方便的效率工具，岂不是一举两得，美哉美哉。</p>
+<p>于是我就动手写了下面这个插件，叫做 <code>mini ChatGPT</code>，现在已经发布到 VSCode 插件市场了。</p>
+<p>有条件的同学可以安装一下，试试效果如何。</p>
+<p><strong>插件功能特点</strong></p>
+<ul>
+<li>界面简洁，没有多余的干扰；</li>
+<li>像 ChatGPT 官网输出效果一致，打字效果实时输出；</li>
+<li>支持两轮上下文（太多了浪费 tokens），大致等于支持上下文；</li>
+<li>代码美化+格式化，并且可以一键复制，直接粘贴到 vscode 中；</li>
+</ul>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230509181750193.png" alt=""></p>
+<h2 id="插件安装">插件安装</h2>
+<p><strong>当然了，这是需要科学上网的。</strong></p>
+<p>你可以直接在 VSCode 的商店直接搜索 <code>mini ChatGPT</code>安装。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230509183628014.png" alt=""></p>
+<p>也可以到应用市场上安装。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230509183750997.png" alt=""></p>
+<p>插件地址：https://marketplace.visualstudio.com/items?itemName=fengzheng.code-chatgpt-assistant</p>
+<h2 id="插件使用">插件使用</h2>
+<ol>
+<li>点击查看-&gt;命令面板，或者使用快捷键（MacOS: Shift + Command + P，Windows:Shift + Control + P</li>
+<li>输入 <code>Chat</code> 并回车。
+<img src="https://hexo.moonkite.cn/blog/20230509111926.png" alt=""></li>
+<li>如果是首次使用，会弹出提示输入框，在此输入 ChatGPT 的 API。使用的就是原滋原味的 ChatGPT API 接口，官网上都写的很清楚，所以需要使用插件的小伙伴提供自己账号的 API key。下面有介绍如何获取ChatGPT API key。
+<img src="https://hexo.moonkite.cn/blog/20230509112123.png" alt=""></li>
+<li>之后就可以使用啦
+<img src="https://hexo.moonkite.cn/blog/20230509112311.png" alt=""></li>
+<li>如果之后想更换 ChatGPT 的 API key，在命令面板中输入 <code>ChatGPT API</code> 即可。</li>
+</ol>
+<p><strong>使用建议</strong></p>
+<p>此插件只有一个 webview 实现，打开之后独占一个 tab，可以设置向左或向右拆分，然后在左侧使用此插件向 ChatGPT 提问，右侧是代码文件，这样就不用来回切换了，而且可以将代码片段一键复制，然后直接运行。</p>
+<p><img src="https://hexo.moonkite.cn/blog/chatgpt.gif" alt=""></p>
+<p><strong>获取 ChatGPT API key</strong></p>
+<ol>
+<li>
+<p>先准备好科学上网，不要用亚洲节点。</p>
+</li>
+<li>
+<p>之后到 <a href="https://platform.openai.com/">OpenAI 官网</a>注册账号。</p>
+</li>
+<li>
+<p>到<a href="https://platform.openai.com/account/api-keys">个人中心</a> 创建一个 API key。</p>
+</li>
+</ol>
+<p><img src="https://hexo.moonkite.cn/blog/20230509133206.png" alt=""></p>
+<h2 id="开发历程">开发历程</h2>
+<p>作为一个后端开发，我的前端水平是非常一般的，所以代码中有瑕疵的地方还请见谅。对了，代码已经放到 GitHub  上了。</p>
+<p>仓库地址：https://github.com/huzhicheng/vscode-ChatGPT</p>
+<p>VSCode 插件开发，官方建议是用 TypeScript 开发，所以项目完全采用了 TS 开发。由于功能比较简单，没有那么多复杂的设置，由于边学边做，太复杂的也没考虑。整个插件的核心其实就是一个 <code>webview</code>，在webview中实现界面布局和样式，难点就在于webview与插件本身来回的数据传递，但也都是常规用法。</p>
+<p>整个写代码的过程其实也就几个小时，当然过程中的遇到的一些问题我都是跟 ChatGPT 提问的，包括样式都是直接描述需求，ChatGPT 给我一个大致的框架，我再微调一下就可以了。</p>
+<p>所以这样看下来，其实是我和 ChatGPT 合作开发的。</p>
+<p>后来发布到应用商店，写 readme 介绍和使用说明花了一些时间。</p>
+<h2 id="问题和建议">问题和建议</h2>
+<p>目前的版本功能比较简单，没有 ChatGPT 官方的聊天记录列表功能，如果真的有人用的话，后期考虑加上。</p>
+<p>由于ChatGPT 官方并未提供上下文的 API 支持，所以只能采用其他方式模仿上下文能力，目前的做法是记录前两轮提问和回答，然后在下次提问的时候，将前两轮的提问和回答告诉 ChatGPT ，并且明确告诉 ChatGPT，例如下面这样。</p>
+<p>第一轮问题：你好。</p>
+<p>第一轮回答：你好，请问有什么要帮忙的吗？</p>
+<p>第二论问题：请帮我写一段 Python 爬虫抓取知乎回答的 demo。</p>
+<p>第二轮回答：好的，下面是一段抓取知乎回答的 Python 示例。&hellip;.省略多行代码。</p>
+<p>第三轮问题：帮我改成 Java 的。</p>
+<p>这时候，我会将实际的 prompt 改成下面这样的。</p>
+<blockquote>
+<p>下面中括号部分是前两轮的问题和回答，只用作参考。[my question is:&ldquo;你好&rdquo;,your anwser is:&ldquo;你好，请问有什么要帮忙的吗？&quot;.my question is:&ldquo;请帮我写一段 Python 爬虫抓取知乎回答的 demo。&quot;,your anwser is:&ldquo;好的，下面是一段抓取知乎回答的 Python 示例。&hellip;.省略多行代码。&rdquo;.]</p>
+<p>下面引号包含的这部分是真正的问题：&ldquo;帮我改成 Java 的。&rdquo;</p>
+</blockquote>
+<p>采用这种方式，几乎可以模拟上下文的操作，但是偶尔会出现错乱，这块儿还有优化空间，还会继续优化。</p>
+<p>如果各位小伙伴使用过程中发现什么问题，或者有什么更好的建议，都可以加我好友直接跟我说。</p>
+<p>欢迎捧场，赶紧用一用吧，觉得好用的话，可以推荐给身边的小伙伴也用一下。</p>
+<p><img src="https://hexo.moonkite.cn/blog/877shots_so%20(1).png" alt=""></p>
+]]></content:encoded></item><item><title>VsCode ChatGPT 插件，一个代码助手</title><link>https://moonkite.cn/category/product/VsCode-ChatGPT-%E6%8F%92%E4%BB%B6%E4%B8%80%E4%B8%AA%E4%BB%A3%E7%A0%81%E5%8A%A9%E6%89%8B/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/product/VsCode-ChatGPT-%E6%8F%92%E4%BB%B6%E4%B8%80%E4%B8%AA%E4%BB%A3%E7%A0%81%E5%8A%A9%E6%89%8B/</guid><description>一个 VsCode 插件版的代码助手，通过接入 ChatGPT，直接在 VsCode 中向 ChatGPT 提问</description><content:encoded><![CDATA[<p><strong>安装地址</strong>：<a href="https://marketplace.visualstudio.com/items?itemName=fengzheng.code-chatgpt-assistant"><strong>mini ChatGPT</strong></a></p>
 <p>其实很早之前就想学学 VSCode 插件开发了，但是又不知道做什么，加上我这半吊子前端水平，迟迟没有动手。</p>
 <p>最近 ChatGPT 火的一塌糊涂，我也一直在用，真的非常好用，有些问题之前需要 Google 搜索，现在用 ChatGPT 基本上都能直接解决，效率提升了不少。</p>
 <p>但是吧，浏览器和 IDE 来回切换又很麻烦，所以我灵机一动，那就开发个 ChatGPT 插件吧，即可以学习学习 VSCode 插件开发，又可以做一个方便的效率工具，岂不是一举两得，美哉美哉。</p>
