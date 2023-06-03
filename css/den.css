@@ -715,10 +715,11 @@ blockquote{
   overflow: hidden;
   flex: 1;
   min-width: 300px; /* 调整列的最小宽度 */
-  max-width: 360px;
   margin: 10px; /* 调整列之间的间距 */
 }
-
+.rectangle-container a:hover {
+  text-decoration: none;
+}
 
 
 .image-wrapper {
@@ -727,9 +728,11 @@ blockquote{
   overflow: hidden;
 }
 
-.image-wrapper img {
+
+.image-wrapper .product-image {
+  background-size: cover;
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 
 .content-wrapper {
