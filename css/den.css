@@ -619,7 +619,7 @@ blockquote{
   z-index: 999; /* 提高层级 */
   margin-left: 32px;
   background-color: rgba(40, 49, 59, 0.6); /* 使用rgba()函数设置透明度 */
-  width: 140px;
+  width: 200px;
 }
 
 .nav-item:hover .sub-dropdown-menu {

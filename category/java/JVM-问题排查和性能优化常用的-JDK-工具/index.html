@@ -1,0 +1,191 @@
+<!doctype html><html lang=zh-cn itemscope itemtype=http://schema.org/WebPage><head><meta name=generator content="Hugo 0.113.0"><meta charset=utf-8><title>JVM 问题排查和性能优化常用的 JDK 工具 · 古时的风筝</title><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=description content="JDK 提供了一系列用于监控、诊断 Java 进程的工具，它们在 JDK 安装目录的 bin 目录下，有 jps、jcmd、jstack、jinfo、jmap 等。其中jmc、"><meta name=keywords content="Hugo,theme,编程,java,ChatGPT,程序员,开发"><link rel=canonical href=https://moonkite.cn/category/java/JVM-%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E5%92%8C%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%B8%B8%E7%94%A8%E7%9A%84-JDK-%E5%B7%A5%E5%85%B7/><link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css integrity=sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO crossorigin=anonymous><link rel=stylesheet href=https://moonkite.cn/css/den.css><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script><meta name=referrer content="no-referrer-when-downgrade"><meta property="og:title" content="JVM 问题排查和性能优化常用的 JDK 工具"><meta property="og:description" content="JDK 提供了一系列用于监控、诊断 Java 进程的工具，它们在 JDK 安装目录的 bin 目录下，有 jps、jcmd、jstack、jinfo、jmap 等。其中jmc、"><meta property="og:type" content="article"><meta property="og:url" content="https://moonkite.cn/category/java/JVM-%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E5%92%8C%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%B8%B8%E7%94%A8%E7%9A%84-JDK-%E5%B7%A5%E5%85%B7/"><meta property="article:section" content="category"><meta property="article:published_time" content="2019-11-26T08:56:23+08:00"><meta property="article:modified_time" content="2019-11-26T08:56:23+08:00"><meta itemprop=name content="JVM 问题排查和性能优化常用的 JDK 工具"><meta itemprop=description content="JDK 提供了一系列用于监控、诊断 Java 进程的工具，它们在 JDK 安装目录的 bin 目录下，有 jps、jcmd、jstack、jinfo、jmap 等。其中jmc、"><meta itemprop=datePublished content="2019-11-26T08:56:23+08:00"><meta itemprop=dateModified content="2019-11-26T08:56:23+08:00"><meta itemprop=wordCount content="2702"><meta itemprop=keywords content="Java,JDK,JVM,jvm性能调优,"><meta name=twitter:card content="summary"><meta name=twitter:title content="JVM 问题排查和性能优化常用的 JDK 工具"><meta name=twitter:description content="JDK 提供了一系列用于监控、诊断 Java 进程的工具，它们在 JDK 安装目录的 bin 目录下，有 jps、jcmd、jstack、jinfo、jmap 等。其中jmc、"></head><body><div class=header-container style=background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url(https://moonkite.cn/images/background.png);background-position:top;background-size:cover><div class=container><nav class="header-nav navbar navbar-expand-md navbar-dark light-dark"><div class="header-logo navbar-brand"><a class=float-left href=https://moonkite.cn/></a></div><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarNav aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span></button><div class="nav-menu collapse navbar-collapse" id=navbarNav><ul class=navbar-nav><li class=nav-item><a href=https://moonkite.cn/ class=nav-link><i class="fas fad fa-h-square"></i>主页</a></li><li class=nav-item><a href=https://moonkite.cn/category/notes/ class=nav-link><i class='fas fa-yin-yang'></i>生活随笔</a></li><li class=nav-item><a href=javascript:void(0) class=nav-link><i class='fas fa-laptop-code'></i>技术文章</a><div class=sub-dropdown-menu><a class=sub-nav-link href=https://moonkite.cn/category/java><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48"><path fill="#f44336" d="M23.65 24.898c-.998-1.609-1.722-2.943-2.725-5.455C19.229 15.2 31.24 11.366 26.37 3.999c2.111 5.089-7.577 8.235-8.477 12.473-.823 3.898 5.752 8.426 5.757 8.426z"/><path fill="#f44336" d="M23.878 17.27c-.192 2.516 2.229 3.857 2.299 5.695.056 1.496-1.447 2.743-1.447 2.743s2.728-.536 3.579-2.818c.945-2.534-1.834-4.269-1.548-6.298.267-1.938 6.031-5.543 6.031-5.543S24.311 11.611 23.878 17.27z"/><g><path fill="#1565c0" d="M32.084 25.055c1.754-.394 3.233.723 3.233 2.01.0 2.901-4.021 5.643-4.021 5.643s6.225-.742 6.225-5.505c0-3.15-3.057-3.937-5.437-2.148zm-2.955 2.34s1.941-1.383 2.458-1.902c-4.763 1.011-15.638 1.147-15.638.269.0-.809 3.507-1.638 3.507-1.638s-7.773-.112-7.773 2.181C11.683 28.695 21.858 28.866 29.129 27.395z"/><path fill="#1565c0" d="M27.935 29.571c-4.509 1.499-12.814 1.02-10.354-.993-1.198.0-2.974.963-2.974 1.889.0 1.857 8.982 3.291 15.63.572l-2.302-1.468z"/><path fill="#1565c0" d="M18.686 32.739c-1.636.0-2.695 1.054-2.695 1.822.0 2.391 9.76 2.632 13.627.205l-2.458-1.632C24.271 34.404 17.014 34.579 18.686 32.739z"/><path fill="#1565c0" d="M36.281 36.632c0-.936-1.055-1.377-1.433-1.588 2.228 5.373-22.317 4.956-22.317 1.784.0-.721 1.807-1.427 3.477-1.093l-1.42-.839C11.26 34.374 9 35.837 9 37.017 9 42.52 36.281 42.255 36.281 36.632z"/><path fill="#1565c0" d="M39 38.604c-4.146 4.095-14.659 5.587-25.231 3.057C24.341 46.164 38.95 43.628 39 38.604z"/></g></svg>&nbsp;可爱的 Java</a>
+<a class=sub-nav-link href=https://moonkite.cn/category/SpringCloud><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><path fill="#8bc34a" d="M43.982 23.635c.069-4.261-.891-9.328-2.891-15.273L39.523 3.7l-2.13 4.433c-.114.237-.244.469-.38.698C33.514 5.827 28.974 4 24 4 12.954 4 4 12.954 4 24s8.954 20 20 20 20-8.954 20-20C44 23.877 43.984 23.758 43.982 23.635z"/><path fill="#fff" d="M39.385 32.558C36.262 36.86 30.734 37.091 25.531 37H18.75h-1.938c4.428-1.593 7.063-1.972 9.754-3.4 5.068-2.665 10.078-8.496 11.121-14.562-1.93 5.836-7.779 10.85-13.109 12.889-3.652 1.393-10.248 2.745-10.248 2.745l-.267-.145C9.573 32.268 9.437 22.214 17.6 18.968c3.574-1.423 6.993-.641 10.854-1.593 4.122-1.012 8.89-4.208 10.83-8.375C41.456 15.667 44.07 26.106 39.385 32.558zM15.668 38.445C15.386 38.795 14.955 39 14.505 39c-.823.0-1.495-.677-1.495-1.5s.677-1.5 1.495-1.5c.341.0.677.118.941.336C16.086 36.855 16.186 37.805 15.668 38.445z"/></svg>&nbsp; Spring Cloud 系列</a></div></li><li class=nav-item><a href=https://moonkite.cn/category/network class=nav-link><i class="fas fa-network-wired"></i>轻解计算机网络</a></li><li class=nav-item><a href=https://moonkite.cn/category/product class=nav-link><i class="fas fab fa-medapps"></i>我的产品</a></li></ul></div></nav></div><div class="container header-wrapper"><div class=row><div class=col-lg-12><div class=header-content><h1 class=header-title>JVM 问题排查和性能优化常用的 JDK 工具</h1><p class=header-date>作者：
+风筝 /
+2019-11-26<div class=header-underline></div><div class=header-date>&nbsp·&nbsp
+  <span id=busuanzi_container_page_pv>本文被阅读<span id=busuanzi_value_page_pv></span>次</span></div><div class=clearfix></div><p class="float-right header-tags"><i class="fas fa-tags" aria-hidden=true></i>
+<a href=https://moonkite.cn/tag/Java/>Java</a>,
+<a href=https://moonkite.cn/tag/JDK/>JDK</a>,
+<a href=https://moonkite.cn/tag/JVM/>JVM</a>,
+<a href=https://moonkite.cn/tag/jvm%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98/>jvm性能调优</a></p></div></div></div></div></div><main><div class="container content"><article><p>JDK 提供了一系列用于监控、诊断 Java 进程的工具，它们在 JDK 安装目录的 bin 目录下，有 jps、jcmd、jstack、jinfo、jmap 等。其中jmc、jconsole、jvisualvm 是 GUI 工具，其他大部分都是命令行工具。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nb>cd</span> <span class=nv>$JAVA_HOME</span>/bin
+</span></span><span class=line><span class=cl>ls
+</span></span></code></pre></div><p><img src=https://hexo.moonkite.cn/blog/273364-20191126084845921-73653409.png alt></p><p>本篇只是个入门介绍，不涉及深入分析。每一个工具都有它专门的作用，掌握使用方法只是很简单的入门阶段，更重要的是根据工具得到的信息去分析系统存在的问题以及性能瓶颈，每一个工具的使用和分析都可以单独成文。</p><p>###jps</p><p>如果你用过 Linux，那肯定熟悉 ps 命令，用来查看进程列表的。jps 就好比是 ps 命令的子集，它查询的是当前用户下已经启动的 Java 进程。这是进行线上问题排查的大门钥匙，有了它才能下手后面的动作。</p><p>下面是 jps 的帮助文档</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nt>usage</span><span class=p>:</span><span class=w> </span><span class=l>jps [-help]</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>       </span><span class=l>jps [-q] [-mlvV] [&lt;hostid&gt;]</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>Definitions</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>&lt;hostid&gt;</span><span class=p>:</span><span class=w>      </span><span class=l>&lt;hostname&gt;[:&lt;port&gt;]</span><span class=w>
+</span></span></span></code></pre></div><p>一般的用法是 <code>jps -l</code>，前面一列显示 pid，后面一列显示进程名称。
+<img src=https://hexo.moonkite.cn/blog/273364-20191126084900395-1970210514.png alt></p><p>还可以用下列参数查看更具体的 Java 进程信息，用法为 <code>jps -lv</code></p><p><img src=https://hexo.moonkite.cn/blog/273364-20191126084910924-894040405.png alt></p><p>###jstack</p><p>查看 Java 进程内当前时刻的线程快照，也就是每条线程正在执行的方法栈情况，用于定位线程停顿、死锁等长时间等待的问题。</p><p>以下是 jstack 的帮助文档。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nt>Usage</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=l>jstack [-l] &lt;pid&gt;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=l>(to connect to running process)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=l>jstack -F [-m] [-l] &lt;pid&gt;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=l>(to connect to a hung process)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=l>jstack [-m] [-l] &lt;executable&gt; &lt;core&gt;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=l>(to connect to a core file)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=l>jstack [-m] [-l] [server_id@]&lt;remote server IP or hostname&gt;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=l>(to connect to a remote debug server)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>Options</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>-<span class=l>F  to force a thread dump. Use when jstack &lt;pid&gt; does not respond (process is hung)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>-<span class=l>m  to print both java and native frames (mixed mode)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>-<span class=l>l  long listing. Prints additional information about locks</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>-<span class=l>h or -help to print this help message</span><span class=w>
+</span></span></span></code></pre></div><p>最常用的就是 <code>jstack -pid 或者 jstack -l pid</code>，打印线程状态、栈使用情况。
+<img src=https://hexo.moonkite.cn/blog/273364-20191126084925050-1161486106.png alt></p><p>如果是线上查看不方便的话，可以用命令 <code>jstack -l pid > stack.log</code>，输出到文件中下载到本地查看。</p><p><code>jstack -m pid</code>，打印 Java 和 Native 栈信息
+<img src=https://hexo.moonkite.cn/blog/273364-20191126084937809-1432673186.png alt></p><p>如果 -l 和 -m 都不起作用的时候，可以使用 <code>java -F pid</code> 强制 dump。</p><h3 id=jinfo>jinfo</h3><p>它的主要作用是查看 JVM 配置参数，还可以动态设置部分参数值。jinfo 使用时需要 attach 到目标 JVM 上。关于 attach jvm 可以点击查看 <a href=https://mp.weixin.qq.com/s/9xn9Ht4WO0Et_V7ZclsX_Q>「Java 调试工具、热部署、JVM 监控工具都用到了它」</a></p><p>使用 <code>jinfo -h</code>查看帮助文档</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nt>Usage</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=l>jinfo [option] &lt;pid&gt;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=l>(to connect to running process)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=l>jinfo [option] &lt;executable &lt;core&gt;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=l>(to connect to a core file)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=l>jinfo [option] [server_id@]&lt;remote server IP or hostname&gt;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=l>(to connect to remote debug server)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>where &lt;option&gt; is one of</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>-<span class=l>flag &lt;name&gt;         to print the value of the named VM flag</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>-<span class=l>flag [+|-]&lt;name&gt;    to enable or disable the named VM flag</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>-<span class=l>flag &lt;name&gt;=&lt;value&gt; to set the named VM flag to the given value</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>-<span class=l>flags               to print VM flags</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>-<span class=l>sysprops            to print Java system properties</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=l>&lt;no option&gt;          to print both of the above</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>-<span class=l>h | -help           to print this help message</span><span class=w>
+</span></span></span></code></pre></div><p><strong>jinfo -flags pid</strong></p><p>查看 JVM 参数，其中 Non-default VM flags 是虚拟机默认设置的参数，Command line 是用户指定的参数，比如命令行启动 jar 包的时候加上的参数。</p><p><strong>jinfo -flag 参数名 pid</strong></p><p>可以查看指定参数的值，比如查看堆的最大值(-XX:MaxHeapSize 也就是 -Xmx ):</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-properties data-lang=properties><span class=line><span class=cl><span class=na>jinfo</span> <span class=s>-flag MaxHeapSize 92041</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=na>-XX</span><span class=o>:</span><span class=s>MaxHeapSize=20971520</span>
+</span></span></code></pre></div><p><strong>jinfo -sysprops pid</strong></p><p>查看系统参数</p><p><strong>jinfo pid</strong></p><p>查看 jvm 参数和系统参数</p><p>以上信息，如果我们用过 visualVM 等监控工具，一定非常熟悉。另外，我之前做过一个 <a href=https://mp.weixin.qq.com/s/df1XroHcS6KYj4ftkzwKfQ>web 版的 JVM 监控器</a>，也实现了这个功能。
+<img src=https://hexo.moonkite.cn/blog/273364-20191126085007586-746833166.png alt></p><p>另外，还可以修改部分参数值。</p><p><strong>jinfo -flag [+|-] pid</strong></p><p><strong>jinfo -flag = pid</strong></p><p>可以修改部分 JVM 参数。</p><p>前者可以修改布尔值参数，比如开启简单 GC 日志</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>jinfo -flag +PrintGC <span class=m>92041</span>
+</span></span></code></pre></div><p>后者是设置非布尔值参数的，比如设置 HeapDumpPath</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>jinfo -flag <span class=nv>HeapDumpPath</span><span class=o>=</span>/users/fengzheng/jvmlog
+</span></span></code></pre></div><p>哪些参数是允许动态修改的呢，用下面这个命令可以查看</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1>#Linux 和 Mac </span>
+</span></span><span class=line><span class=cl>java -XX:+PrintFlagsInitial <span class=p>|</span> grep manageable
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>#windows</span>
+</span></span><span class=line><span class=cl>java -XX:+PrintFlagsInitial <span class=p>|</span> findstr manageable
+</span></span></code></pre></div><p><img src=https://hexo.moonkite.cn/blog/273364-20191126085022852-1794240339.png alt></p><p>###jmap</p><p>jmap 查看给定进程、核心文件、远程调试服务器的共享对象内存映射和堆内存细节的工具，可查看堆使用情况、堆内对象直方图、加载类、生成堆快照等。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nt>Usage</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=l>jmap [option] &lt;pid&gt;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=l>(to connect to running process)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=l>jmap [option] &lt;executable &lt;core&gt;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=l>(to connect to a core file)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=l>jmap [option] [server_id@]&lt;remote server IP or hostname&gt;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=l>(to connect to remote debug server)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>where &lt;option&gt; is one of</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=l>&lt;none&gt;               to print same info as Solaris pmap</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>-<span class=l>heap                to print java heap summary</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>-<span class=l>histo[:live]        to print histogram of java object heap; if the &#34;live&#34;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                         </span><span class=l>suboption is specified, only count live objects</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>-<span class=l>clstats             to print class loader statistics</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>-<span class=l>finalizerinfo       to print information on objects awaiting finalization</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>-<span class=l>dump:&lt;dump-options&gt; to dump java heap in hprof binary format</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                         </span><span class=nt>dump-options</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                           </span><span class=l>live         dump only live objects; if not specified,</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                                        </span><span class=l>all objects in the heap are dumped.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                           </span><span class=l>format=b     binary format</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                           </span><span class=l>file=&lt;file&gt;  dump heap to &lt;file&gt;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                         </span><span class=nt>Example</span><span class=p>:</span><span class=w> </span><span class=l>jmap -dump:live,format=b,file=heap.bin &lt;pid&gt;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>-<span class=l>F                   force. Use with -dump:&lt;dump-options&gt; &lt;pid&gt; or -histo</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                         </span><span class=l>to force a heap dump or histogram when &lt;pid&gt; does not</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                         </span><span class=l>respond. The &#34;live&#34; suboption is not supported</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                         </span><span class=l>in this mode.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>-<span class=l>h | -help           to print this help message</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>-<span class=l>J&lt;flag&gt;             to pass &lt;flag&gt; directly to the runtime system</span><span class=w>
+</span></span></span></code></pre></div><p><strong>jmap -heap pid</strong></p><p>打印 JVM 堆概要信息，包括堆配置、新生代、老生代信息
+<img src=https://hexo.moonkite.cn/blog/273364-20191126085037444-412484812.png alt></p><p><strong>jmap -histo pid</strong></p><p>打印类的直方图，也就是各个类实例的个数和空间占用情况。</p><p>如果加 :live，<code>jamp -histo:live pid</code> 则只打印活动类的信息。这个命令会出发 GC 动作，会导致 JVM 停顿，所以在线上环境要慎用。</p><p><strong>jmap -dump</strong></p><p>dump 当前 JVM 堆，一般用法如下：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1>#dump 所有对象在堆中的分布情况</span>
+</span></span><span class=line><span class=cl>jmap -dump:format<span class=o>=</span>b,file<span class=o>=</span>/Users/fengzheng/jvmlog/jamp_dump.hprof <span class=m>95463</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>#加:live 参数 dump 存活对象在队中的分布情况</span>
+</span></span><span class=line><span class=cl>jmap -dump:live,format<span class=o>=</span>b,file<span class=o>=</span>/Users/fengzheng/jvmlog/jamp_dump.hprof <span class=m>95463</span>
+</span></span></code></pre></div><p>之后再用堆分析工具，比如 visualVM、JProfile、MAT 等进行分析。和我们设置</p><p>-XX:+HeapDumpOnOutOfMemoryError 参数后，在发生 OOM 的时候 dump 的堆信息是一样的。</p><p>注意，dump 的过程会比较慢，在这个过程中会发生 JVM 停顿，而且在使用 :live 参数后，会触发 GC 操作。</p><p><strong>jmap -clstats pid</strong></p><p>Java 类加载器（ClassLoader）信息，包括加载器名称、已加载类个数、占用空间、父加载器、是否存活、类型信息。
+<img src=https://hexo.moonkite.cn/blog/273364-20191126085050374-1759239143.png alt></p><p><strong>jmap -finalizerinfo pid</strong></p><p>查看等待被回收的对象。
+<img src=https://hexo.moonkite.cn/blog/273364-20191126085103193-788482388.png alt></p><p>###jstat</p><p>jstat 主要用来通过垃圾回收相关信息来判断 JVM 性能问题，也可以查看类加载、编译的情况，主要的用法是通过持续的固定时间间隔的输出来观察。比如每 3 秒打印一次 GC 回收次数，连续打印 10 次，通过动态的变化来观察 GC 是否过于密集。</p><p>下面是 jstat 的帮助手册。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nt>Usage</span><span class=p>:</span><span class=w> </span><span class=l>jstat -help|-options</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>       </span><span class=l>jstat -&lt;option&gt; [-t] [-h&lt;lines&gt;] &lt;vmid&gt; [&lt;interval&gt; [&lt;count&gt;]]</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>Definitions</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=l>&lt;option&gt;      An option reported by the -options option</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>&lt;vmid&gt;        Virtual Machine Identifier. A vmid takes the following form</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                     </span><span class=l>&lt;lvmid&gt;[@&lt;hostname&gt;[:&lt;port&gt;]]</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                </span><span class=l>Where &lt;lvmid&gt; is the local vm identifier for the target</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                </span><span class=l>Java virtual machine, typically a process id; &lt;hostname&gt; is</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                </span><span class=l>the name of the host running the target Java virtual machine;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                </span><span class=l>and &lt;port&gt; is the port number for the rmiregistry on the</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                </span><span class=l>target host. See the jvmstat documentation for a more complete</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                </span><span class=l>description of the Virtual Machine Identifier.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=l>&lt;lines&gt;       Number of samples between header lines.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>&lt;interval&gt;    Sampling interval. The following forms are allowed</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                    </span><span class=l>&lt;n&gt;[&#34;ms&#34;|&#34;s&#34;]</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                </span><span class=l>Where &lt;n&gt; is an integer and the suffix specifies the units as </span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                </span><span class=l>milliseconds(&#34;ms&#34;) or seconds(&#34;s&#34;). The default units are &#34;ms&#34;.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=l>&lt;count&gt;       Number of samples to take before terminating.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span>-<span class=l>J&lt;flag&gt;      Pass &lt;flag&gt; directly to the runtime system.</span><span class=w>
+</span></span></span></code></pre></div><p>通过 <code>jstat -options</code> 可以看到 jstat 支持查看哪些信息。</p><pre tabindex=0><code>$ jstat -options
+-class  #类加载情况 加载个数和空间使用
+-compiler #即时编译器信息
+-gc  # GC情况 包括 young gc、full gc 次数、时间等
+-gccapacity #年轻代、老年代的使用情况
+-gccause #GC 统计信息和回收原因
+-gcmetacapacity #显示有关metaspace大小的统计信息
+-gcnew #新生代 GC 统计
+-gcnewcapacity #新生代内存统计
+-gcold #老年代 GC 统计
+-gcoldcapacity #老年代内存使用情况
+-gcutil #GC 汇总信息
+-printcompilation #编译方法统计
+</code></pre><p>上述这些大多数可以对应到 visualVM 的这一部分显示</p><p><img src=https://hexo.moonkite.cn/blog/273364-20191126085117887-406693190.png alt></p><p>示例用法，如下是打印 5301 进程下的垃圾回收情况，-h 3 表示每 3 行输出一次标题信息，3s 5 表示每 3s 输出一次，一共输出 5 次</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>jstat -gcutil -h <span class=m>3</span> <span class=m>5301</span> 3s <span class=m>5</span>
+</span></span></code></pre></div><p>最后输出的内容如下:</p><pre tabindex=0><code>jstat -gcutil -h 3 5301 3s 5
+  S0     S1     E      O      M     CCS    YGC     YGCT    FGC    FGCT     GCT   
+ 99.92   0.00  11.90  35.29  94.96  94.08     34   12.675     3    1.946   14.621
+ 99.92   0.00  11.90  35.29  94.96  94.08     34   12.675     3    1.946   14.621
+ 99.92   0.00  11.90  35.29  94.96  94.08     34   12.675     3    1.946   14.621
+  S0     S1     E      O      M     CCS    YGC     YGCT    FGC    FGCT     GCT   
+ 99.92   0.00  11.94  35.29  94.96  94.08     34   12.675     3    1.946   14.621
+ 99.92   0.00  11.94  35.29  94.96  94.08     34   12.675     3    1.946   14.621
+</code></pre><h3 id=jcmd>jcmd</h3><p>jcmd 会将命令发送给 JVM。这些命令包括用于控制 Java Flight Recording（飞行记录）、诊断命令等。 必须运行在 JVM 本地，不能远程使用，并且必须用 JVM 启动用户执行。</p><p>通过 jps 命令找到一个 JVM 进程，然后使用下面的代码可以看到 jcmd 支持的命令</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1>#进程 5173 </span>
+</span></span><span class=line><span class=cl>jcmd <span class=m>5173</span> <span class=nb>help</span> 
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>5173:
+</span></span><span class=line><span class=cl>The following commands are available:
+</span></span><span class=line><span class=cl>JFR.stop
+</span></span><span class=line><span class=cl>JFR.start
+</span></span><span class=line><span class=cl>JFR.dump
+</span></span><span class=line><span class=cl>JFR.check
+</span></span><span class=line><span class=cl>VM.native_memory
+</span></span><span class=line><span class=cl>VM.check_commercial_features
+</span></span><span class=line><span class=cl>VM.unlock_commercial_features
+</span></span><span class=line><span class=cl>ManagementAgent.stop
+</span></span><span class=line><span class=cl>ManagementAgent.start_local
+</span></span><span class=line><span class=cl>ManagementAgent.start
+</span></span><span class=line><span class=cl>GC.rotate_log
+</span></span><span class=line><span class=cl>Thread.print
+</span></span><span class=line><span class=cl>GC.class_stats
+</span></span><span class=line><span class=cl>GC.class_histogram
+</span></span><span class=line><span class=cl>GC.heap_dump
+</span></span><span class=line><span class=cl>GC.run_finalization
+</span></span><span class=line><span class=cl>GC.run
+</span></span><span class=line><span class=cl>VM.uptime
+</span></span><span class=line><span class=cl>VM.flags
+</span></span><span class=line><span class=cl>VM.system_properties
+</span></span><span class=line><span class=cl>VM.command_line
+</span></span><span class=line><span class=cl>VM.version
+</span></span><span class=line><span class=cl><span class=nb>help</span>
+</span></span></code></pre></div><p>基本包含了问题排查的常用命令，并且和上面介绍的几个工具有部分重合。</p><p>通过命令 <code>jcmd 5173 help GC.heap_dump</code> 可以查询到 GC.heap_dump 命令的使用方法，其他命令都可以通过这个方法找到使用说明</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>jcmd <span class=m>5173</span> <span class=nb>help</span> GC.heap_dump
+</span></span><span class=line><span class=cl>5173:
+</span></span><span class=line><span class=cl>GC.heap_dump
+</span></span><span class=line><span class=cl>Generate a HPROF format dump of the Java heap.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Impact: High: Depends on Java heap size and content. Request a full GC unless the <span class=s1>&#39;-all&#39;</span> option is specified.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Permission: java.lang.management.ManagementPermission<span class=o>(</span>monitor<span class=o>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Syntax : GC.heap_dump <span class=o>[</span>options<span class=o>]</span> &lt;filename&gt;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Arguments:
+</span></span><span class=line><span class=cl>	filename :  Name of the dump file <span class=o>(</span>STRING, no default value<span class=o>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Options: <span class=o>(</span>options must be specified using the &lt;key&gt; or &lt;key&gt;<span class=o>=</span>&lt;value&gt; syntax<span class=o>)</span>
+</span></span><span class=line><span class=cl>	-all : <span class=o>[</span>optional<span class=o>]</span> Dump all objects, including unreachable objects <span class=o>(</span>BOOLEAN, <span class=nb>false</span><span class=o>)</span>
+</span></span></code></pre></div><p>然后通过如下代码就可以 dump 堆信息下来了，和 jmap -dump 的作用一样</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>jcmd <span class=m>5173</span> GC.heap_dump /Users/fengzheng/jvmlog/jcmd_heap_dump.hprof
+</span></span></code></pre></div><p>抛砖引玉就到此了，之后会对 jinfo、jmap、jstack、jstat、jcmd 做详细说明，记得关注啊。</p></article><div class=author-card><div class=underline></div><div class=author-box><div class=author-image><a href=https://www.moonkite.cn><img src=/images/photo.png alt=风筝></a></div><div class=author-content><p class=author-title>作者</p><p class=author-name>风筝</p><p class=author-desc>古时的风筝，一个平庸的程序员，主语言 Java，第二语言 Python，其实学 Python 的时间比 Java 还要早。喜欢写博客，写博客的过程能加深自己对一个知识点的理解，同时还可以分享给他人。喜欢做一些小东西，所以也会一些前端的东西，React、JavaScript、CSS 都会一些，做一些小工具还够用。</p></div></div></div><script src=https://utteranc.es/client.js repo=huzhicheng/blog-comment issue-term=pathname theme=github-light crossorigin=anonymous async></script></div></main><div class="footer gradient-2"><div class="container footer-container"><div class=row><div class="col-xs-4 col-sm-3 col-md-3 col-lg-3"><div class=footer-title>网站地图</div><ul class=list-unstyled><li><a href=https://moonkite.cn/tags/>标签</a></li><li><a href=https://moonkite.cn/categories/>分类</a></li><li><a rel=alternate type=application/rss+xml href=https://moonkite.cn/index.xml><i class="fas fa-rss-square"></i> RSS订阅</a></li></ul></div><div class="col-xs-4 col-sm-3 col-md-3 col-lg-3"><div class=footer-title>社群</div><ul class=list-unstyled><li><a href=https://github.com/huzhicheng rel=noopener target=_blank>GitHub</a></li></ul></div><div class="col-xs-4 col-sm-3 col-md-3 col-lg-3"><div class=footer-title>友链</div><ul class=list-unstyled><li><a href=https://github.com/huzhicheng rel=noopener target=_blank>关于我</a></li></ul></div><div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"><p class="pull-right text-right"><small><em>Proudly powered by <a href=https://gohugo.io/ rel=noopener target=_blank>Hugo</a></em></small><br><small><em>Theme - <a href=https://github.com/shaform/hugo-theme-den rel=noopener target=_blank>Den</a></em></small><br><small>&copy;
+风筝
+2023</small></p></div></div><div class=busuanzi-footer><span id=busuanzi_container_site_pv>本站总访问量<span id=busuanzi_value_site_pv></span>次</span>
+<span id=busuanzi_container_site_uv>本站访客数<span id=busuanzi_value_site_uv></span>人次</span></div></div></div><script src=https://code.jquery.com/jquery-3.3.1.slim.min.js integrity=sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js integrity=sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49 crossorigin=anonymous></script>
+<script src=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js integrity=sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy crossorigin=anonymous></script>
+<script>$(document).ready(function(){$("#load_disqus").length&&$(window).scroll(function(){if($("#load_disqus").length){var e=$("#load_disqus").offset().top,t=$(window).scrollTop(),n=t+$(window).height();t<e&&e<n&&load_disqus()}})})</script></body></html>
