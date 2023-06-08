@@ -758,4 +758,15 @@ blockquote{
   float: left;
 }
 
+.header-tags {
+  display: none !important;
+}
+
+.busuanzi-footer {
+  display: none !important;
+}
+#busuanzi_container_page_pv{
+  display: none !important;
+}
+
 
