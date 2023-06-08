@@ -750,4 +750,12 @@ blockquote{
 }
 
 
+.qr-author-image img {
+  border-radius: 1px !important;
+  width: 50% !important;
+  display: block;
+  margin: 0 20px !important;
+  float: left;
+}
+
 
