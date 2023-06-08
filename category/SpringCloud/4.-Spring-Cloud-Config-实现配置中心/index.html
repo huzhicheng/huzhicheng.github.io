@@ -1,0 +1,428 @@
+<!doctype html><html lang=zh-cn itemscope itemtype=http://schema.org/WebPage><head><meta name=generator content="Hugo 0.113.0"><meta charset=utf-8><title>4. Spring Cloud Config 实现配置中心，看这一篇就够了 · 古时的风筝</title><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=description content="Spring Cloud Config 是 Spring Cloud 家族中最早的配置中心，虽然后来又发布了 Consul 可以代替配置中心功能，但是 Config 依然适用于 Spring Cloud 项目，通过简单的配置即可实现功能。 配置文件是我"><meta name=keywords content="Hugo,theme,编程,java,ChatGPT,程序员,开发"><link rel=canonical href=https://moonkite.cn/category/SpringCloud/4.-Spring-Cloud-Config-%E5%AE%9E%E7%8E%B0%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/><link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css integrity=sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO crossorigin=anonymous><link rel=stylesheet href=https://moonkite.cn/css/den.css><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script><meta name=referrer content="no-referrer-when-downgrade"><meta property="og:title" content="4. Spring Cloud Config 实现配置中心，看这一篇就够了"><meta property="og:description" content="Spring Cloud Config 是 Spring Cloud 家族中最早的配置中心，虽然后来又发布了 Consul 可以代替配置中心功能，但是 Config 依然适用于 Spring Cloud 项目，通过简单的配置即可实现功能。 配置文件是我"><meta property="og:type" content="article"><meta property="og:url" content="https://moonkite.cn/category/SpringCloud/4.-Spring-Cloud-Config-%E5%AE%9E%E7%8E%B0%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/"><meta property="article:section" content="category"><meta property="article:published_time" content="2023-06-02T08:56:23+08:00"><meta property="article:modified_time" content="2023-06-02T08:56:23+08:00"><meta itemprop=name content="4. Spring Cloud Config 实现配置中心，看这一篇就够了"><meta itemprop=description content="Spring Cloud Config 是 Spring Cloud 家族中最早的配置中心，虽然后来又发布了 Consul 可以代替配置中心功能，但是 Config 依然适用于 Spring Cloud 项目，通过简单的配置即可实现功能。 配置文件是我"><meta itemprop=datePublished content="2023-06-02T08:56:23+08:00"><meta itemprop=dateModified content="2023-06-02T08:56:23+08:00"><meta itemprop=wordCount content="4831"><meta itemprop=keywords content="Java,JDK,Spring Cloud,Spring Cloud Config,配置中心,"><meta name=twitter:card content="summary"><meta name=twitter:title content="4. Spring Cloud Config 实现配置中心，看这一篇就够了"><meta name=twitter:description content="Spring Cloud Config 是 Spring Cloud 家族中最早的配置中心，虽然后来又发布了 Consul 可以代替配置中心功能，但是 Config 依然适用于 Spring Cloud 项目，通过简单的配置即可实现功能。 配置文件是我"></head><body><div class=header-container style=background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url(https://moonkite.cn/images/background.png);background-position:top;background-size:cover><div class=container><nav class="header-nav navbar navbar-expand-md navbar-dark light-dark"><div class="header-logo navbar-brand"><a class=float-left href=https://moonkite.cn/></a></div><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarNav aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span></button><div class="nav-menu collapse navbar-collapse" id=navbarNav><ul class=navbar-nav><li class=nav-item><a href=https://moonkite.cn/ class=nav-link><i class="fas fad fa-h-square"></i>主页</a></li><li class=nav-item><a href=https://moonkite.cn/category/notes/ class=nav-link><i class='fas fa-yin-yang'></i>生活随笔</a></li><li class=nav-item><a href=javascript:void(0) class=nav-link><i class='fas fa-laptop-code'></i>技术文章</a><div class=sub-dropdown-menu><a class=sub-nav-link href=https://moonkite.cn/category/java><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48"><path fill="#f44336" d="M23.65 24.898c-.998-1.609-1.722-2.943-2.725-5.455C19.229 15.2 31.24 11.366 26.37 3.999c2.111 5.089-7.577 8.235-8.477 12.473-.823 3.898 5.752 8.426 5.757 8.426z"/><path fill="#f44336" d="M23.878 17.27c-.192 2.516 2.229 3.857 2.299 5.695.056 1.496-1.447 2.743-1.447 2.743s2.728-.536 3.579-2.818c.945-2.534-1.834-4.269-1.548-6.298.267-1.938 6.031-5.543 6.031-5.543S24.311 11.611 23.878 17.27z"/><g><path fill="#1565c0" d="M32.084 25.055c1.754-.394 3.233.723 3.233 2.01.0 2.901-4.021 5.643-4.021 5.643s6.225-.742 6.225-5.505c0-3.15-3.057-3.937-5.437-2.148zm-2.955 2.34s1.941-1.383 2.458-1.902c-4.763 1.011-15.638 1.147-15.638.269.0-.809 3.507-1.638 3.507-1.638s-7.773-.112-7.773 2.181C11.683 28.695 21.858 28.866 29.129 27.395z"/><path fill="#1565c0" d="M27.935 29.571c-4.509 1.499-12.814 1.02-10.354-.993-1.198.0-2.974.963-2.974 1.889.0 1.857 8.982 3.291 15.63.572l-2.302-1.468z"/><path fill="#1565c0" d="M18.686 32.739c-1.636.0-2.695 1.054-2.695 1.822.0 2.391 9.76 2.632 13.627.205l-2.458-1.632C24.271 34.404 17.014 34.579 18.686 32.739z"/><path fill="#1565c0" d="M36.281 36.632c0-.936-1.055-1.377-1.433-1.588 2.228 5.373-22.317 4.956-22.317 1.784.0-.721 1.807-1.427 3.477-1.093l-1.42-.839C11.26 34.374 9 35.837 9 37.017 9 42.52 36.281 42.255 36.281 36.632z"/><path fill="#1565c0" d="M39 38.604c-4.146 4.095-14.659 5.587-25.231 3.057C24.341 46.164 38.95 43.628 39 38.604z"/></g></svg>&nbsp;可爱的 Java</a>
+<a class=sub-nav-link href=https://moonkite.cn/category/SpringCloud><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><path fill="#8bc34a" d="M43.982 23.635c.069-4.261-.891-9.328-2.891-15.273L39.523 3.7l-2.13 4.433c-.114.237-.244.469-.38.698C33.514 5.827 28.974 4 24 4 12.954 4 4 12.954 4 24s8.954 20 20 20 20-8.954 20-20C44 23.877 43.984 23.758 43.982 23.635z"/><path fill="#fff" d="M39.385 32.558C36.262 36.86 30.734 37.091 25.531 37H18.75h-1.938c4.428-1.593 7.063-1.972 9.754-3.4 5.068-2.665 10.078-8.496 11.121-14.562-1.93 5.836-7.779 10.85-13.109 12.889-3.652 1.393-10.248 2.745-10.248 2.745l-.267-.145C9.573 32.268 9.437 22.214 17.6 18.968c3.574-1.423 6.993-.641 10.854-1.593 4.122-1.012 8.89-4.208 10.83-8.375C41.456 15.667 44.07 26.106 39.385 32.558zM15.668 38.445C15.386 38.795 14.955 39 14.505 39c-.823.0-1.495-.677-1.495-1.5s.677-1.5 1.495-1.5c.341.0.677.118.941.336C16.086 36.855 16.186 37.805 15.668 38.445z"/></svg>&nbsp; Spring Cloud 系列</a></div></li><li class=nav-item><a href=https://moonkite.cn/category/network class=nav-link><i class="fas fa-network-wired"></i>轻解计算机网络</a></li><li class=nav-item><a href=https://moonkite.cn/category/product class=nav-link><i class="fas fab fa-medapps"></i>我的产品</a></li></ul></div></nav></div><div class="container header-wrapper"><div class=row><div class=col-lg-12><div class=header-content><h1 class=header-title>4. Spring Cloud Config 实现配置中心，看这一篇就够了</h1><p class=header-date>作者：
+风筝 /
+2023-06-02<div class=header-underline></div><div class=header-date>&nbsp·&nbsp
+  <span id=busuanzi_container_page_pv>本文被阅读<span id=busuanzi_value_page_pv></span>次</span></div><div class=clearfix></div><p class="float-right header-tags"><i class="fas fa-tags" aria-hidden=true></i>
+<a href=https://moonkite.cn/tag/Java/>Java</a>,
+<a href=https://moonkite.cn/tag/JDK/>JDK</a>,
+<a href=https://moonkite.cn/tag/Spring-Cloud/>Spring Cloud</a>,
+<a href=https://moonkite.cn/tag/Spring-Cloud-Config/>Spring Cloud Config</a>,
+<a href=https://moonkite.cn/tag/%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/>配置中心</a></p></div></div></div></div></div><main><div class="container content"><article><blockquote><p>Spring Cloud Config 是 Spring Cloud 家族中最早的配置中心，虽然后来又发布了 Consul 可以代替配置中心功能，但是 Config 依然适用于 Spring Cloud 项目，通过简单的配置即可实现功能。</p></blockquote><p>配置文件是我们再熟悉不过的了，尤其是 Spring Boot 项目，除了引入相应的 maven 包之外，剩下的工作就是完善配置文件了，例如 mysql、redis 、security 相关的配置。除了项目运行的基础配置之外，还有一些配置是与我们业务有关系的，比如说七牛存储、短信相关、邮件相关，或者一些业务上的开关。</p><p>对于一些简单的项目来说，我们一般都是直接把相关配置放在单独的配置文件中，以 properties 或者 yml 的格式出现，更省事儿的方式是直接放到 application.properties 或 application.yml 中。但是这样的方式有个明显的问题，那就是，当修改了配置之后，必须重启服务，否则配置无法生效。</p><p>目前有一些用的比较多的开源的配置中心，比如携程的 Apollo、蚂蚁金服的 disconf 等，对比 Spring Cloud Config，这些配置中心功能更加强大。有兴趣的可以拿来试一试。</p><p><strong>接下来</strong>，我们开始在 Spring Boot 项目中集成 Spring Cloud Config，并以 github 作为配置存储。除了 git 外，还可以用数据库、svn、本地文件等作为存储。主要从以下三块来说一下 Config 的使用。</p><p>*1.*基础版的配置中心（不集成 Eureka）;</p><p>*2.*结合 Eureka 版的配置中心;</p><p>*3.*实现配置的自动刷新；</p><h2 id=实现最简单的配置中心>实现最简单的配置中心</h2><p>最简单的配置中心，就是启动一个服务作为服务方，之后各个需要获取配置的服务作为客户端来这个服务方获取配置。</p><p><em>先在 github 中建立配置文件</em></p><p>我创建的仓库地址为：<a href=https://github.com/huzhicheng/config-only-a-demo/tree/master>配置中心仓库</a></p><p>目录结构如下：</p><p><img src=https://hexo.moonkite.cn/blog/273364-20190725084302799-353615966.png alt></p><p>配置文件的内容大致如下，用于区分，略有不同。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nt>data</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>env</span><span class=p>:</span><span class=w> </span><span class=l>config-eureka-dev</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>user</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>username</span><span class=p>:</span><span class=w> </span><span class=l>eureka-client-user</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>password</span><span class=p>:</span><span class=w> </span><span class=m>1291029102</span><span class=w>
+</span></span></span></code></pre></div><p>注意文件的名称不是乱起的，例如上面的 config-single-client-dev.yml 和 config-single-client-prod.yml 这两个是同一个项目的不同版本，项目名称为 config-single-client， 一个对应开发版，一个对应正式版。config-eureka-client-dev.yml 和 config-eureka-client-prod.yml 则是另外一个项目的，项目的名称就是 config-eureka-client 。</p><p><em>创建配置中心服务端</em></p><p>1、新建 Spring Boot 项目，引入 config-server 和 starter-web</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=line><span class=cl><span class=nt>&lt;dependency&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;groupId&gt;</span>org.springframework.boot<span class=nt>&lt;/groupId&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;artifactId&gt;</span>spring-boot-starter-web<span class=nt>&lt;/artifactId&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/dependency&gt;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c>&lt;!-- spring cloud config 服务端包 --&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;dependency&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;groupId&gt;</span>org.springframework.cloud<span class=nt>&lt;/groupId&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;artifactId&gt;</span>spring-cloud-config-server<span class=nt>&lt;/artifactId&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/dependency&gt;</span>
+</span></span></code></pre></div><p>2、配置 config 相关的配置项</p><p>bootstrap.yml 文件</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nt>spring</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>application</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>config-single-server </span><span class=w> </span><span class=c># 应用名称</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>cloud</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>     </span><span class=nt>config</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>server</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>git</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>            </span><span class=nt>uri</span><span class=p>:</span><span class=w> </span><span class=l>https://github.com/huzhicheng/config-only-a-demo</span><span class=w> </span><span class=c>#配置文件所在仓库</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>            </span><span class=nt>username</span><span class=p>:</span><span class=w> </span><span class=l>github 登录账号</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>            </span><span class=nt>password</span><span class=p>:</span><span class=w> </span><span class=l>github 登录密码</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>            </span><span class=nt>default-label</span><span class=p>:</span><span class=w> </span><span class=l>master</span><span class=w> </span><span class=c>#配置文件分支</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>            </span><span class=nt>search-paths</span><span class=p>:</span><span class=w> </span><span class=l>config </span><span class=w> </span><span class=c>#配置文件所在根目录</span><span class=w>
+</span></span></span></code></pre></div><p>application.yml</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nt>server</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>port</span><span class=p>:</span><span class=w> </span><span class=m>3301</span><span class=w>
+</span></span></span></code></pre></div><p>3、在 Application 启动类上增加相关注解 <code>@EnableConfigServer</code></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=nd>@SpringBootApplication</span>
+</span></span><span class=line><span class=cl><span class=nd>@EnableConfigServer</span>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=kd>class</span> <span class=nc>Application</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kd>static</span> <span class=kt>void</span> <span class=nf>main</span><span class=o>(</span><span class=n>String</span><span class=o>[]</span> <span class=n>args</span><span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>SpringApplication</span><span class=o>.</span><span class=na>run</span><span class=o>(</span><span class=n>Application</span><span class=o>.</span><span class=na>class</span><span class=o>,</span> <span class=n>args</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span></code></pre></div><p>启动服务，接下来测试一下。</p><p>Spring Cloud Config 有它的一套访问规则，我们通过这套规则在浏览器上直接访问就可以。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=l>/{application}/{profile}[/{label}]</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=l>/{application}-{profile}.yml</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=l>/{label}/{application}-{profile}.yml</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=l>/{application}-{profile}.properties</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=l>/{label}/{application}-{profile}.properties</span><span class=w>
+</span></span></span></code></pre></div><p>{application} 就是应用名称，对应到配置文件上来，就是配置文件的名称部分，例如我上面创建的配置文件。</p><p>{profile} 就是配置文件的版本，我们的项目有开发版本、测试环境版本、生产环境版本，对应到配置文件上来就是以 application-{profile}.yml 加以区分，例如application-dev.yml、application-sit.yml、application-prod.yml。</p><p>{label} 表示 git 分支，默认是 master 分支，如果项目是以分支做区分也是可以的，那就可以通过不同的 label 来控制访问不同的配置文件了。</p><p>上面的 5 条规则中，我们只看前三条，因为我这里的配置文件都是 yml 格式的。根据这三条规则，我们可以通过以下地址查看配置文件内容:</p><p>http://localhost:3301/config-single-client/dev/master</p><p>http://localhost:3301/config-single-client/prod</p><p>http://localhost:3301/config-single-client-dev.yml</p><p>http://localhost:3301/config-single-client-prod.yml</p><p>http://localhost:3301/master/config-single-client-prod.yml</p><p>通过访问以上地址，如果可以正常返回数据，则说明配置中心服务端一切正常。</p><p><em>创建配置中心客户端，使用配置</em></p><p>配置中心服务端好了，配置数据准备好了，接下来，就要在我们的项目中使用它了。</p><p>1、引用相关的 maven 包。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=line><span class=cl><span class=nt>&lt;dependency&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;groupId&gt;</span>org.springframework.boot<span class=nt>&lt;/groupId&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;artifactId&gt;</span>spring-boot-starter-web<span class=nt>&lt;/artifactId&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/dependency&gt;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c>&lt;!-- spring cloud config 客户端包 --&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;dependency&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;groupId&gt;</span>org.springframework.cloud<span class=nt>&lt;/groupId&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;artifactId&gt;</span>spring-cloud-starter-config<span class=nt>&lt;/artifactId&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/dependency&gt;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nt>&lt;dependency&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;groupId&gt;</span>org.springframework.boot<span class=nt>&lt;/groupId&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;artifactId&gt;</span>spring-boot-starter-actuator<span class=nt>&lt;/artifactId&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/dependency&gt;</span>
+</span></span></code></pre></div><p>2、初始化配置文件</p><p>bootstrap.yml</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nt>spring</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>profiles</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>active</span><span class=p>:</span><span class=w> </span><span class=l>dev</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nn>---</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>spring</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>profiles</span><span class=p>:</span><span class=w> </span><span class=l>prod</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>application</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>config-single-client</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>cloud</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>     </span><span class=nt>config</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>       </span><span class=nt>uri</span><span class=p>:</span><span class=w> </span><span class=l>http://localhost:3301</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>       </span><span class=nt>label</span><span class=p>:</span><span class=w> </span><span class=l>master</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>       </span><span class=nt>profile</span><span class=p>:</span><span class=w> </span><span class=l>prod</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nn>---</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>spring</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>profiles</span><span class=p>:</span><span class=w> </span><span class=l>dev</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>application</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>config-single-client</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>cloud</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>     </span><span class=nt>config</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>       </span><span class=nt>uri</span><span class=p>:</span><span class=w> </span><span class=l>http://localhost:3301</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>       </span><span class=nt>label</span><span class=p>:</span><span class=w> </span><span class=l>master</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>       </span><span class=nt>profile</span><span class=p>:</span><span class=w> </span><span class=l>dev</span><span class=w>
+</span></span></span></code></pre></div><p>配置了两个版本的配置，并通过 spring.profiles.active 设置当前使用的版本，例如本例中使用的 dev 版本。</p><p>application.yml</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nt>server</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>port</span><span class=p>:</span><span class=w> </span><span class=m>3302</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>management</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>endpoint</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>shutdown</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>enabled</span><span class=p>:</span><span class=w> </span><span class=kc>false</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>endpoints</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>web</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>exposure</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>include</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;*&#34;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>data</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>env</span><span class=p>:</span><span class=w> </span><span class=l>NaN</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>user</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>username</span><span class=p>:</span><span class=w> </span><span class=l>NaN</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>password</span><span class=p>:</span><span class=w> </span><span class=l>NaN</span><span class=w>
+</span></span></span></code></pre></div><p>其中 management 是关于 actuator 相关的，接下来自动刷新配置的时候需要使用。</p><p>data 部分是当无法读取配置中心的配置时，使用此配置，以免项目无法启动。</p><p>3、要读取配置中心的内容，需要增加相关的配置类，Spring Cloud Config 读取配置中心内容的方式和读取本地配置文件中的配置是一模一样的。可以通过 @Value 或 @ConfigurationProperties 来获取。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=nd>@SpringBootApplication</span>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=kd>class</span> <span class=nc>Application</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kd>static</span> <span class=kt>void</span> <span class=nf>main</span><span class=o>(</span><span class=n>String</span><span class=o>[]</span> <span class=n>args</span><span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>SpringApplication</span><span class=o>.</span><span class=na>run</span><span class=o>(</span><span class=n>Application</span><span class=o>.</span><span class=na>class</span><span class=o>,</span> <span class=n>args</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span></code></pre></div><p>4、要读取配置中心的内容，需要增加相关的配置类，Spring Cloud Config 读取配置中心内容的方式和读取本地配置文件中的配置是一模一样的。可以通过 @Value 或 @ConfigurationProperties 来获取。</p><p>使用 @Value 的方式：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=nd>@Data</span>
+</span></span><span class=line><span class=cl><span class=nd>@Component</span>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=kd>class</span> <span class=nc>GitConfig</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@Value</span><span class=o>(</span><span class=s>&#34;${data.env}&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>    <span class=kd>private</span> <span class=n>String</span> <span class=n>env</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@Value</span><span class=o>(</span><span class=s>&#34;${data.user.username}&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>    <span class=kd>private</span> <span class=n>String</span> <span class=n>username</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@Value</span><span class=o>(</span><span class=s>&#34;${data.user.password}&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>    <span class=kd>private</span> <span class=n>String</span> <span class=n>password</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span></code></pre></div><p>使用 @ConfigurationProperties 的方式：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=nd>@Component</span>
+</span></span><span class=line><span class=cl><span class=nd>@Data</span>
+</span></span><span class=line><span class=cl><span class=nd>@ConfigurationProperties</span><span class=o>(</span><span class=n>prefix</span> <span class=o>=</span> <span class=s>&#34;data&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=kd>class</span> <span class=nc>GitAutoRefreshConfig</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kd>static</span> <span class=kd>class</span> <span class=nc>UserInfo</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=kd>private</span> <span class=n>String</span> <span class=n>username</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=kd>private</span> <span class=n>String</span> <span class=n>password</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=kd>public</span> <span class=n>String</span> <span class=nf>getUsername</span><span class=o>()</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=n>username</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>        <span class=o>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=kd>public</span> <span class=kt>void</span> <span class=nf>setUsername</span><span class=o>(</span><span class=n>String</span> <span class=n>username</span><span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>this</span><span class=o>.</span><span class=na>username</span> <span class=o>=</span> <span class=n>username</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>        <span class=o>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=kd>public</span> <span class=n>String</span> <span class=nf>getPassword</span><span class=o>()</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=n>password</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>        <span class=o>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=kd>public</span> <span class=kt>void</span> <span class=nf>setPassword</span><span class=o>(</span><span class=n>String</span> <span class=n>password</span><span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>this</span><span class=o>.</span><span class=na>password</span> <span class=o>=</span> <span class=n>password</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>        <span class=o>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=nd>@Override</span>
+</span></span><span class=line><span class=cl>        <span class=kd>public</span> <span class=n>String</span> <span class=nf>toString</span><span class=o>()</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=s>&#34;UserInfo{&#34;</span> <span class=o>+</span>
+</span></span><span class=line><span class=cl>                    <span class=s>&#34;username=&#39;&#34;</span> <span class=o>+</span> <span class=n>username</span> <span class=o>+</span> <span class=sc>&#39;\&#39;&#39;</span> <span class=o>+</span>
+</span></span><span class=line><span class=cl>                    <span class=s>&#34;, password=&#39;&#34;</span> <span class=o>+</span> <span class=n>password</span> <span class=o>+</span> <span class=sc>&#39;\&#39;&#39;</span> <span class=o>+</span>
+</span></span><span class=line><span class=cl>                    <span class=sc>&#39;}&#39;</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>        <span class=o>}</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kd>private</span> <span class=n>String</span> <span class=n>env</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kd>private</span> <span class=n>UserInfo</span> <span class=n>user</span><span class=o>;</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span></code></pre></div><p>4、增加一个 RESTController 来测试使用配置</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=nd>@RestController</span>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=kd>class</span> <span class=nc>GitController</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@Autowired</span>
+</span></span><span class=line><span class=cl>    <span class=kd>private</span> <span class=n>GitConfig</span> <span class=n>gitConfig</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@Autowired</span>
+</span></span><span class=line><span class=cl>    <span class=kd>private</span> <span class=n>GitAutoRefreshConfig</span> <span class=n>gitAutoRefreshConfig</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@GetMapping</span><span class=o>(</span><span class=n>value</span> <span class=o>=</span> <span class=s>&#34;show&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=n>Object</span> <span class=nf>show</span><span class=o>(){</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>gitConfig</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@GetMapping</span><span class=o>(</span><span class=n>value</span> <span class=o>=</span> <span class=s>&#34;autoShow&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=n>Object</span> <span class=nf>autoShow</span><span class=o>(){</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>gitAutoRefreshConfig</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span></code></pre></div><p>5、项目启动类</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=nd>@SpringBootApplication</span>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=kd>class</span> <span class=nc>Application</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kd>static</span> <span class=kt>void</span> <span class=nf>main</span><span class=o>(</span><span class=n>String</span><span class=o>[]</span> <span class=n>args</span><span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>SpringApplication</span><span class=o>.</span><span class=na>run</span><span class=o>(</span><span class=n>Application</span><span class=o>.</span><span class=na>class</span><span class=o>,</span> <span class=n>args</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span></code></pre></div><p>启动项目，访问 RESTful 接口</p><p>http://localhost:3302/show，结果如下：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;env&#34;</span><span class=p>:</span> <span class=s2>&#34;localhost-dev-edit&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;username&#34;</span><span class=p>:</span> <span class=s2>&#34;fengzheng-dev&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;password&#34;</span><span class=p>:</span> <span class=s2>&#34;password-dev&#34;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p>http://localhost:3302/autoShow，结果如下：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;env&#34;</span><span class=p>:</span> <span class=s2>&#34;localhost-dev-edit&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;user&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;username&#34;</span><span class=p>:</span> <span class=s2>&#34;fengzheng-dev&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;password&#34;</span><span class=p>:</span> <span class=s2>&#34;password-dev&#34;</span>
+</span></span><span class=line><span class=cl>  	<span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><h2 id=实现自动刷新>实现自动刷新</h2><p>Spring Cloud Config 在项目启动时加载配置内容这一机制，导致了它存在一个缺陷，修改配置文件内容后，不会自动刷新。例如我们上面的项目，当服务已经启动的时候，去修改 github 上的配置文件内容，这时候，再次刷新页面，对不起，还是旧的配置内容，新内容不会主动刷新过来。
+但是，总不能每次修改了配置后重启服务吧。如果是那样的话，还是不要用它了为好，直接用本地配置文件岂不是更快。</p><p>它提供了一个刷新机制，但是需要我们主动触发。那就是 @RefreshScope 注解并结合 actuator ，注意要引入 spring-boot-starter-actuator 包。</p><p>1、在 config client 端配置中增加 actuator 配置，上面大家可能就注意到了。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nt>management</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>endpoint</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>shutdown</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>enabled</span><span class=p>:</span><span class=w> </span><span class=kc>false</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>endpoints</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>web</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>exposure</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>include</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;*&#34;</span><span class=w>
+</span></span></span></code></pre></div><p>其实这里主要用到的是 refresh 这个接口</p><p>2、在需要读取配置的类上增加 @RefreshScope 注解，我们是 controller 中使用配置，所以加在 controller 中。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=nd>@RestController</span>
+</span></span><span class=line><span class=cl><span class=nd>@RefreshScope</span>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=kd>class</span> <span class=nc>GitController</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@Autowired</span>
+</span></span><span class=line><span class=cl>    <span class=kd>private</span> <span class=n>GitConfig</span> <span class=n>gitConfig</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@Autowired</span>
+</span></span><span class=line><span class=cl>    <span class=kd>private</span> <span class=n>GitAutoRefreshConfig</span> <span class=n>gitAutoRefreshConfig</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@GetMapping</span><span class=o>(</span><span class=n>value</span> <span class=o>=</span> <span class=s>&#34;show&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=n>Object</span> <span class=nf>show</span><span class=o>(){</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>gitConfig</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@GetMapping</span><span class=o>(</span><span class=n>value</span> <span class=o>=</span> <span class=s>&#34;autoShow&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=n>Object</span> <span class=nf>autoShow</span><span class=o>(){</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>gitAutoRefreshConfig</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span></code></pre></div><p>注意，以上都是在 client 端做的修改。</p><p>之后，重启 client 端，重启后，我们修改 github 上的配置文件内容，并提交更改，再次刷新页面，没有反应。没有问题。</p><p>接下来，我们发送 POST 请求到 http://localhost:3302/actuator/refresh 这个接口，用 postman 之类的工具即可，此接口就是用来触发加载新配置的，返回内容如下:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>[</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;config.client.version&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;data.env&#34;</span>
+</span></span><span class=line><span class=cl><span class=p>]</span>
+</span></span></code></pre></div><p>之后，再次访问 RESTful 接口，http://localhost:3302/autoShow 这个接口获取的数据已经是最新的了，说明 refresh 机制起作用了。</p><p>而 http://localhost:3302/show 获取的还是旧数据，这与 @Value 注解的实现有关，所以，我们在项目中就不要使用这种方式加载配置了。</p><p><em>在 github 中配置 Webhook</em></p><p>这就结束了吗，并没有，总不能每次改了配置后，就用 postman 访问一下 refresh 接口吧，还是不够方便呀。 github 提供了一种 webhook 的方式，当有代码变更的时候，会调用我们设置的地址，来实现我们想达到的目的。</p><p>1、进入 github 仓库配置页面，选择 Webhooks ，并点击 add webhook；
+<img src=https://hexo.moonkite.cn/blog/273364-20190725090559970-931500557.png alt></p><p>2、之后填上回调的地址，也就是上面提到的 actuator/refresh 这个地址，但是必须保证这个地址是可以被 github 访问到的。如果是内网就没办法了。这也仅仅是个演示，一般公司内的项目都会有自己的代码管理工具，例如自建的 gitlab，gitlab 也有 webhook 的功能，这样就可以调用到内网的地址了。</p><p><img src=https://hexo.moonkite.cn/blog/273364-20190725090614229-390401707.png alt></p><p><em>使用 Spring Cloud Bus 来自动刷新多个端</em></p><blockquote><p>Spring Cloud Bus 将分布式系统的节点与轻量级消息代理链接。这可以用于广播状态更改（例如配置更改）或其他管理指令。一个关键的想法是，Bus 就像一个扩展的 Spring Boot 应用程序的分布式执行器，但也可以用作应用程序之间的通信渠道。</p><p>—— Spring Cloud Bus 官方解释</p></blockquote><p>如果只有一个 client 端的话，那我们用 webhook ，设置手动刷新都不算太费事，但是如果端比较多的话呢，一个一个去手动刷新未免有点复杂。这样的话，我们可以借助 Spring Cloud Bus 的广播功能，让 client 端都订阅配置更新事件，当配置更新时，触发其中一个端的更新事件，Spring Cloud Bus 就把此事件广播到其他订阅端，以此来达到批量更新。</p><p>1、Spring Cloud Bus 核心原理其实就是利用消息队列做广播，所以要先有个消息队列，目前官方支持 RabbitMQ 和 kafka。</p><p>这里用的是 RabbitMQ， 所以先要搭一套 RabbitMQ 环境。请自行准备环境，这里不再赘述。我是用 docker 直接创建的，然后安装了 rabbitmq-management 插件，这样就可以在浏览器访问 15672 查看 UI 管理界面了。</p><p>2、在 client 端增加相关的包，注意，只在 client 端引入就可以。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=line><span class=cl><span class=nt>&lt;dependency&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;groupId&gt;</span>org.springframework.cloud<span class=nt>&lt;/groupId&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;artifactId&gt;</span>spring-cloud-starter-bus-amqp<span class=nt>&lt;/artifactId&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/dependency&gt;</span>
+</span></span></code></pre></div><p>3、在配置文件中增加 RabbitMQ 相关配置，默认的端口应该是 5672 ，因为我是用 docker 创建的，所以有所不同。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nt>spring</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>rabbitmq</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>host</span><span class=p>:</span><span class=w> </span><span class=l>localhost</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>port</span><span class=p>:</span><span class=w> </span><span class=m>32775</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>username</span><span class=p>:</span><span class=w> </span><span class=l>guest</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>password</span><span class=p>:</span><span class=w> </span><span class=l>guest</span><span class=w>
+</span></span></span></code></pre></div><p>4、启动两个或多个 client 端，准备来做个测试</p><p>在启动的时候分别加上 vm option：-Dserver.port=3302 和 -Dserver.port=3303 ，然后分别启动就可以了。</p><p><img src=https://hexo.moonkite.cn/blog/273364-20190725090731099-791914304.png alt></p><p>5、分别打开 http://localhost:3302/autoShow 和 http://localhost:3303/autoShow，查看内容，然后修改 github 上配置文件的内容并提交。再次访问这两个地址，数据没有变化。</p><p>6、访问其中一个的 actuator/bus-refresh 地址，注意还是要用 POST 方式访问。之后查看控制台输出，会看到这两个端都有一条这样的日志输出</p><pre tabindex=0><code>o.s.cloud.bus.event.RefreshListener: Received remote refresh request. Keys refreshed
+</code></pre><p>7、再次访问第 5 步的两个地址，会看到内容都已经更新为修改后的数据了。</p><p>综上所述，当我们修改配置后，使用 webhook ，或者手动触发的方式 POST 请求一个 client 端的 actuator/bus-refresh 接口，就可以更新给所有端了。</p><h2 id=结合-eureka-使用-spring-cloud-config>结合 Eureka 使用 Spring Cloud Config</h2><p>以上讲了 Spring Cloud Config 最基础的用法，但是如果我们的系统中使用了 Eureka 作为服务注册发现中心，那么 Spring Cloud Config 也应该注册到 Eureka 之上，方便其他服务消费者使用，并且可以注册多个配置中心服务端，以实现高可用。</p><p>好的，接下来就来集成 Spring Cloud Config 到 Eureka 上。</p><p><em>在 github 仓库中增加配置文件</em></p><p><img src=https://hexo.moonkite.cn/blog/273364-20190725090637487-1608990683.png alt></p><p><em>启动 Eureka Server</em></p><p>首先启动一个 Eureka Server，之前的文章有讲过 Eureka ，可以回过头去看看。<a href=https://mp.weixin.qq.com/s/kGrWQP_n_RCYTTaHbWQ3xQ>Spring Cloud Eureka 实现服务注册发现</a>，为了清楚，这里还是把配置列出来</p><p>1、pom 中引入相关包</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=line><span class=cl><span class=nt>&lt;dependency&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;groupId&gt;</span>org.springframework.cloud<span class=nt>&lt;/groupId&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;artifactId&gt;</span>spring-cloud-starter-netflix-eureka-server<span class=nt>&lt;/artifactId&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/dependency&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;dependency&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;groupId&gt;</span>org.springframework.boot<span class=nt>&lt;/groupId&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;artifactId&gt;</span>spring-boot-starter-security<span class=nt>&lt;/artifactId&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/dependency&gt;</span>
+</span></span></code></pre></div><p>2、设置配置文件内容</p><p>bootstrap.yml</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yml data-lang=yml><span class=line><span class=cl><span class=nt>spring</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>application</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>kite-eureka-center</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>security</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>user</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>test </span><span class=w> </span><span class=c># 用户名</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>password</span><span class=p>:</span><span class=w> </span><span class=m>123456</span><span class=w>   </span><span class=c># 密码</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>cloud</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>inetutils</span><span class=p>:</span><span class=w> </span><span class=c>## 网卡设置</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>ignoredInterfaces</span><span class=p>:</span><span class=w>  </span><span class=c>## 忽略的网卡</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span>- <span class=l>docker0</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span>- <span class=l>veth.*</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span>- <span class=l>VM.*</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>preferredNetworks</span><span class=p>:</span><span class=w>  </span><span class=c>## 优先的网段</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span>- <span class=m>192.168</span><span class=w>
+</span></span></span></code></pre></div><p>application.yml</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nt>server</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>port</span><span class=p>:</span><span class=w> </span><span class=m>3000</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>eureka</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>instance</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>hostname</span><span class=p>:</span><span class=w> </span><span class=l>eureka-center</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>appname</span><span class=p>:</span><span class=w> </span><span class=l>注册中心</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>client</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>registerWithEureka</span><span class=p>:</span><span class=w> </span><span class=kc>false</span><span class=w> </span><span class=c># 单点的时候设置为 false 禁止注册自身</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>fetchRegistry</span><span class=p>:</span><span class=w> </span><span class=kc>false</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>serviceUrl</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>defaultZone</span><span class=p>:</span><span class=w> </span><span class=l>http://test:123456@localhost:3000/eureka</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>server</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>enableSelfPreservation</span><span class=p>:</span><span class=w> </span><span class=kc>false</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>evictionIntervalTimerInMs</span><span class=p>:</span><span class=w> </span><span class=m>4000</span><span class=w>
+</span></span></span></code></pre></div><p>3、Application 启动类</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=nd>@EnableEurekaServer</span>
+</span></span><span class=line><span class=cl><span class=nd>@SpringBootApplication</span>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=kd>class</span> <span class=nc>Application</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kd>static</span> <span class=kt>void</span> <span class=nf>main</span><span class=o>(</span><span class=n>String</span><span class=o>[]</span> <span class=n>args</span><span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>SpringApplication</span><span class=o>.</span><span class=na>run</span><span class=o>(</span><span class=n>Application</span><span class=o>.</span><span class=na>class</span><span class=o>,</span> <span class=n>args</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span></code></pre></div><p>4、启动服务，在浏览器访问 3000 端口，并输出用户名 test，密码 123456 即可进入 Eureka UI</p><p><em>配置 Spring Cloud Config 服务端</em></p><p>服务端和前面的相比也就是多了注册到 Eureka 的配置，其他地方都是一样的。</p><p>1、在 pom 中引入相关的包</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=line><span class=cl><span class=nt>&lt;dependency&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;groupId&gt;</span>org.springframework.boot<span class=nt>&lt;/groupId&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;artifactId&gt;</span>spring-boot-starter-web<span class=nt>&lt;/artifactId&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/dependency&gt;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c>&lt;!-- spring cloud config 服务端包 --&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;dependency&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;groupId&gt;</span>org.springframework.cloud<span class=nt>&lt;/groupId&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;artifactId&gt;</span>spring-cloud-config-server<span class=nt>&lt;/artifactId&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/dependency&gt;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c>&lt;!-- eureka client 端包 --&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;dependency&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;groupId&gt;</span>org.springframework.cloud<span class=nt>&lt;/groupId&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;artifactId&gt;</span>spring-cloud-starter-netflix-eureka-client<span class=nt>&lt;/artifactId&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/dependency&gt;</span>
+</span></span></code></pre></div><p>2、配置文件做配置</p><p>application.yml</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nt>server</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>port</span><span class=p>:</span><span class=w> </span><span class=m>3012</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>eureka</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>client</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>serviceUrl</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>register-with-eureka</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>fetch-registry</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>defaultZone</span><span class=p>:</span><span class=w> </span><span class=l>http://test:123456@localhost:3000/eureka/</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>instance</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>preferIpAddress</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>spring</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>application</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>config-eureka-server</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>cloud</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>     </span><span class=nt>config</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>server</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>git</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>            </span><span class=nt>uri</span><span class=p>:</span><span class=w> </span><span class=l>https://github.com/huzhicheng/config-only-a-demo</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>            </span><span class=nt>username</span><span class=p>:</span><span class=w> </span><span class=l>github 用户名</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>            </span><span class=nt>password</span><span class=p>:</span><span class=w> </span><span class=l>github 密码</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>            </span><span class=nt>default-label</span><span class=p>:</span><span class=w> </span><span class=l>master</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>            </span><span class=nt>search-paths</span><span class=p>:</span><span class=w> </span><span class=l>config</span><span class=w>
+</span></span></span></code></pre></div><p>相比于不加 Eureka 的版本，这里仅仅是增加了 Eureka 的配置，将配置中心注册到 Eureka ，作为服务提供者对外提供服务。</p><p>3、启动类，在 @EnableConfigServer 的基础上增加了 @EnableEurekaClient，另外也可以用 @EnableDiscoveryClient 代替 @EnableEurekaClient</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=nd>@SpringBootApplication</span>
+</span></span><span class=line><span class=cl><span class=nd>@EnableConfigServer</span>
+</span></span><span class=line><span class=cl><span class=nd>@EnableEurekaClient</span>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=kd>class</span> <span class=nc>Application</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kd>static</span> <span class=kt>void</span> <span class=nf>main</span><span class=o>(</span><span class=n>String</span><span class=o>[]</span> <span class=n>args</span><span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>SpringApplication</span><span class=o>.</span><span class=na>run</span><span class=o>(</span><span class=n>Application</span><span class=o>.</span><span class=na>class</span><span class=o>,</span> <span class=n>args</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span></code></pre></div><p>4、启动服务，之后访问 Eureka ，可以看到服务已注册成功</p><p><img src=https://hexo.moonkite.cn/blog/273364-20190725090702926-870149340.png alt></p><p><em>配置 Spring Cloud Config 客户端</em></p><p>客户端的配置相对来说变动大一点，加入了 Eureka 之后，就不用再直接和配置中心服务端打交道了，要通过 Eureka 来访问。另外，还是要注意客户端的 application 名称要和 github 中配置文件的名称一致。</p><p>1、pom 中引入相关的包</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=line><span class=cl><span class=nt>&lt;dependency&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;groupId&gt;</span>org.springframework.boot<span class=nt>&lt;/groupId&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;artifactId&gt;</span>spring-boot-starter-web<span class=nt>&lt;/artifactId&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/dependency&gt;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nt>&lt;dependency&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;groupId&gt;</span>org.springframework.cloud<span class=nt>&lt;/groupId&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;artifactId&gt;</span>spring-cloud-starter-config<span class=nt>&lt;/artifactId&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/dependency&gt;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nt>&lt;dependency&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;groupId&gt;</span>org.springframework.boot<span class=nt>&lt;/groupId&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;artifactId&gt;</span>spring-boot-starter-actuator<span class=nt>&lt;/artifactId&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/dependency&gt;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nt>&lt;dependency&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;groupId&gt;</span>org.springframework.cloud<span class=nt>&lt;/groupId&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;artifactId&gt;</span>spring-cloud-starter-netflix-eureka-client<span class=nt>&lt;/artifactId&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/dependency&gt;</span>
+</span></span></code></pre></div><p>2、配置文件</p><p>bootstrap.yml</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nt>eureka</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>client</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>serviceUrl</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>register-with-eureka</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>fetch-registry</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>defaultZone</span><span class=p>:</span><span class=w> </span><span class=l>http://test:123456@localhost:3000/eureka/</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>instance</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>preferIpAddress</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>spring</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>profiles</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>active</span><span class=p>:</span><span class=w> </span><span class=l>dev</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nn>---</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>spring</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>profiles</span><span class=p>:</span><span class=w> </span><span class=l>prod</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>application</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>config-eureka-client</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>cloud</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>     </span><span class=nt>config</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>       </span><span class=nt>label</span><span class=p>:</span><span class=w> </span><span class=l>master</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>       </span><span class=nt>profile</span><span class=p>:</span><span class=w> </span><span class=l>prod</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>       </span><span class=nt>discovery</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>         </span><span class=nt>enabled</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>         </span><span class=nt>service-id</span><span class=p>:</span><span class=w> </span><span class=l>config-eureka-server</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nn>---</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>spring</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>profiles</span><span class=p>:</span><span class=w> </span><span class=l>dev</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>application</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>config-eureka-client</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>cloud</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>     </span><span class=nt>config</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>       </span><span class=nt>label</span><span class=p>:</span><span class=w> </span><span class=l>master </span><span class=w> </span><span class=c>#指定仓库分支</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>       </span><span class=nt>profile</span><span class=p>:</span><span class=w> </span><span class=l>dev  </span><span class=w> </span><span class=c>#指定版本 本例中建立了dev 和 prod两个版本</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>       </span><span class=nt>discovery</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>enabled</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=w>  </span><span class=c># 开启</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>service-id</span><span class=p>:</span><span class=w> </span><span class=l>config-eureka-server</span><span class=w> </span><span class=c># 指定配置中心服务端的server-id </span><span class=w>
+</span></span></span></code></pre></div><p>除了注册到 Eureka 的配置外，就是配置和配置中心服务端建立关系。</p><p>其中 service-id 也就是服务端的application name。</p><p>application.yml</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nt>server</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>port</span><span class=p>:</span><span class=w> </span><span class=m>3011</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>management</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>endpoint</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>shutdown</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>enabled</span><span class=p>:</span><span class=w> </span><span class=kc>false</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>endpoints</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>web</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>exposure</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>include</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;*&#34;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>data</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>env</span><span class=p>:</span><span class=w> </span><span class=l>NaN</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>user</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>username</span><span class=p>:</span><span class=w> </span><span class=l>NaN</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>password</span><span class=p>:</span><span class=w> </span><span class=l>NaN</span><span class=w>
+</span></span></span></code></pre></div><p>3、启动类，增加了 @EnableEurekaClient 注解，可以用 @EnableDiscoveryClient 代替</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=nd>@SpringBootApplication</span>
+</span></span><span class=line><span class=cl><span class=nd>@EnableEurekaClient</span>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=kd>class</span> <span class=nc>Application</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kd>static</span> <span class=kt>void</span> <span class=nf>main</span><span class=o>(</span><span class=n>String</span><span class=o>[]</span> <span class=n>args</span><span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>SpringApplication</span><span class=o>.</span><span class=na>run</span><span class=o>(</span><span class=n>Application</span><span class=o>.</span><span class=na>class</span><span class=o>,</span> <span class=n>args</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span></code></pre></div><p>4、另外的配置实体类和 RESTController 和上面的一样，没有任何更改，直接参考即可。</p><p>5、启动 client 端，访问 http://localhost:3011/autoShow，即可看到配置文件内容。</p><p>这个例子只是介绍了和 Eureka 结合的最基础的情况，还可以注册到高可用的 Eureka 注册中心，另外，配置中心服务端还可以注册多个实例，同时保证注册中心的高可用。</p><h2 id=注意事项><em>注意事项</em></h2><p><em>1.</em> 在 git 上的配置文件的名字要和 config 的 client 端的 application name 对应；</p><p><em>2.</em> 在结合 eureka 的场景中，关于 eureka 和 git config 相关的配置要放在 bootstrap.yml 中，否则会请求默认的 config server 配置，这是因为当你加了配置中心，服务就要先去配置中心获取配置，而这个时候，application.yml 配置文件还没有开始加载，而 bootstrap.yml 是最先加载的。</p></article><div class=author-card><div class=underline></div><div class=author-box><div class=author-image><a href=https://www.moonkite.cn><img src=/images/photo.png alt=风筝></a></div><div class=author-content><p class=author-title>作者</p><p class=author-name>风筝</p><p class=author-desc>古时的风筝，一个平庸的程序员，主语言 Java，第二语言 Python，其实学 Python 的时间比 Java 还要早。喜欢写博客，写博客的过程能加深自己对一个知识点的理解，同时还可以分享给他人。喜欢做一些小东西，所以也会一些前端的东西，React、JavaScript、CSS 都会一些，做一些小工具还够用。</p></div></div></div><script src=https://utteranc.es/client.js repo=huzhicheng/blog-comment issue-term=pathname theme=github-light crossorigin=anonymous async></script></div></main><div class="footer gradient-2"><div class="container footer-container"><div class=row><div class="col-xs-4 col-sm-3 col-md-3 col-lg-3"><div class=footer-title>网站地图</div><ul class=list-unstyled><li><a href=https://moonkite.cn/tags/>标签</a></li><li><a href=https://moonkite.cn/categories/>分类</a></li><li><a rel=alternate type=application/rss+xml href=https://moonkite.cn/index.xml><i class="fas fa-rss-square"></i> RSS订阅</a></li></ul></div><div class="col-xs-4 col-sm-3 col-md-3 col-lg-3"><div class=footer-title>社群</div><ul class=list-unstyled><li><a href=https://github.com/huzhicheng rel=noopener target=_blank>GitHub</a></li></ul></div><div class="col-xs-4 col-sm-3 col-md-3 col-lg-3"><div class=footer-title>友链</div><ul class=list-unstyled><li><a href=https://github.com/huzhicheng rel=noopener target=_blank>关于我</a></li></ul></div><div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"><p class="pull-right text-right"><small><em>Proudly powered by <a href=https://gohugo.io/ rel=noopener target=_blank>Hugo</a></em></small><br><small><em>Theme - <a href=https://github.com/shaform/hugo-theme-den rel=noopener target=_blank>Den</a></em></small><br><small>&copy;
+风筝
+2023</small></p></div></div><div class=busuanzi-footer><span id=busuanzi_container_site_pv>本站总访问量<span id=busuanzi_value_site_pv></span>次</span>
+<span id=busuanzi_container_site_uv>本站访客数<span id=busuanzi_value_site_uv></span>人次</span></div></div></div><script src=https://code.jquery.com/jquery-3.3.1.slim.min.js integrity=sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js integrity=sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49 crossorigin=anonymous></script>
+<script src=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js integrity=sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy crossorigin=anonymous></script>
+<script>$(document).ready(function(){$("#load_disqus").length&&$(window).scroll(function(){if($("#load_disqus").length){var e=$("#load_disqus").offset().top,t=$(window).scrollTop(),n=t+$(window).height();t<e&&e<n&&load_disqus()}})})</script></body></html>
