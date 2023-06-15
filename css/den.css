@@ -693,6 +693,23 @@ blockquote{
   /* background-image: radial-gradient(#f9d71c 50%, transparent 50%); */
 }
 
+  .responsive-image-qr {
+    max-width: 100%;
+    height: auto;
+  }
+@media (min-width: 768px) {
+  .responsive-image-qr {
+    max-width: 500px; /* 调整为适合PC端显示的宽度 */
+    width: 500px;
+  }
+}
+@media (max-width: 600px) {
+  .responsive-image-qr {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
 .home-bg .star {
   position: absolute;
   top: 0;
