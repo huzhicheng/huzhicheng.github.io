@@ -2979,6 +2979,19 @@ expires_in：token 的过期时间(秒)</p>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
 </span></span></code></pre></div><p>上面的例子模拟一个用户登录的过程，使用 <code>ScopedValue.newInstance()</code>声明了一个 <code>ScopedValue</code>，用 <code>ScopedValue.where</code>给 <code>ScopedValue</code>设置值，并且使用 run 方法执行接下来要做的事儿，这样一来，<code>ScopedValue</code>就在 run() 的内部随时可获取了，在run方法中，模拟调用了一个service 的login方法，不用传递LoginUser这个参数，就可以直接通过<code>LoginUser.get</code>方法获取当前登录用户的值了。</p>
+]]></content:encoded></item><item><title>Text Box Instant Translation Chrome Extension</title><link>https://moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6-English/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6-English/</guid><description>After entering content into input fields on any webpage, it can be translated into a specified target language.</description><content:encoded><![CDATA[<p><a href="https://www.moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6/">中文说明</a>     <a href="https://www.moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6-English/">Engilish Introduction</a></p>
+<p>The Text Box Translation Extension utilizes the Google Translate functionality to instantly translate the contents of any text box in the Chrome browser into the desired target language. For example, it automatically translates the content in the text box into English and replaces the current text within the text box.</p>
+<p>Video Introduction：<a href="https://www.bilibili.com/video/BV17g4y1A7Fe/?vd_source=d72d86eea40f5750277144c5880966f5">中文介绍</a>，<a href="https://youtu.be/iRNeF2LBT7U">English Introduction</a></p>
+<h2 id="instructions-for-use">Instructions for Use</h2>
+<p>After installation, pin the &ldquo;Text Box Translation&rdquo; plugin to the toolbar.</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230627151514437.png" alt="image-20230627151514437"></p>
+<p>Click on the icon of this plugin in the browser toolbar to set the target language and trigger identifier.</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230627151633954.png" alt=""></p>
+<p>After entering the trigger identifier at the end of the input content (i.e., the custom trigger identifier mentioned above), the translation action will be automatically triggered, replacing the original content with the target language.</p>
+<p>Entering &ldquo;你好/lang&rdquo; in the input box will automatically translate the content to &ldquo;Hello&rdquo;.</p>
+<p><strong>It can be used in all input boxes on Google, Google Bard, Twitter, Weibo, Baidu, ChatGPT, and more.</strong></p>
+<p>If you encounter any issues during usage or have any suggestions, feel free to add me as a friend and let me know.</p>
+<p><img src="https://hexo.moonkite.cn/blog/877shots_so%20(1).png" alt=""></p>
 ]]></content:encoded></item><item><title>VsCode ChatGPT 插件，一个代码助手</title><link>https://moonkite.cn/category/product/1-VsCode-ChatGPT-%E6%8F%92%E4%BB%B6%E4%B8%80%E4%B8%AA%E4%BB%A3%E7%A0%81%E5%8A%A9%E6%89%8B/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/product/1-VsCode-ChatGPT-%E6%8F%92%E4%BB%B6%E4%B8%80%E4%B8%AA%E4%BB%A3%E7%A0%81%E5%8A%A9%E6%89%8B/</guid><description>一个 VsCode 插件版的代码助手，通过接入 ChatGPT，直接在 VsCode 中向 ChatGPT 提问</description><content:encoded><![CDATA[<p><strong>安装地址</strong>：<a href="https://marketplace.visualstudio.com/items?itemName=fengzheng.code-chatgpt-assistant"><strong>mini ChatGPT</strong></a></p>
 <p>其实很早之前就想学学 VSCode 插件开发了，但是又不知道做什么，加上我这半吊子前端水平，迟迟没有动手。</p>
 <p>最近 ChatGPT 火的一塌糊涂，我也一直在用，真的非常好用，有些问题之前需要 Google 搜索，现在用 ChatGPT 基本上都能直接解决，效率提升了不少。</p>
@@ -3051,7 +3064,7 @@ expires_in：token 的过期时间(秒)</p>
 <p>如果各位小伙伴使用过程中发现什么问题，或者有什么更好的建议，都可以加我好友直接跟我说。</p>
 <p>欢迎捧场，赶紧用一用吧，觉得好用的话，可以推荐给身边的小伙伴也用一下。</p>
 <p><img src="https://hexo.moonkite.cn/blog/877shots_so%20(1).png" alt=""></p>
-]]></content:encoded></item><item><title>文本框即时翻译Chrome插件</title><link>https://moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6/</guid><description>在任意网页的输入框输入内容后，都可以翻译成指定的目标语言</description><content:encoded><![CDATA[<p><a href="">中文说明</a>     <a href="">Engilish Introduction</a></p>
+]]></content:encoded></item><item><title>文本框即时翻译Chrome插件</title><link>https://moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6/</guid><description>在任意网页的输入框输入内容后，都可以翻译成指定的目标语言</description><content:encoded><![CDATA[<p><a href="https://www.moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6/">中文说明</a>     <a href="https://www.moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6-English/">Engilish Introduction</a></p>
 <p><strong>安装地址</strong>：</p>
 <p>文本框翻译插件，使用 Google 翻译功能，将 Chrome 浏览器中任意文本框中的内容即时翻译成对应的目标语言。例如将文本框中的内容自动翻译成英文，并替换当前文本框中的内容。</p>
 <p>视频介绍：<a href="https://www.bilibili.com/video/BV17g4y1A7Fe/?vd_source=d72d86eea40f5750277144c5880966f5">中文介绍</a>，<a href="https://youtu.be/iRNeF2LBT7U">English Introduction</a></p>
@@ -3551,179 +3564,4 @@ JVM 参数信息
 <p>3、每一个层都有对应的协议，每一种协议都经过严密的设计，都有其特定的协议头和独特的功能特性；</p>
 <p>4、除了这种软件结构上的设计外，数据包在网络世界中穿梭，还要经过各种各样的设备，比如路由器、交换机、集线器等等，一个数据包从发送端到接收端可能要经过多次的封装和解封装。</p>
 <p>快把模型装进你的脑袋吧。</p>
-]]></content:encoded></item><item><title>2. ARP协议：网络世界的临门一脚</title><link>https://moonkite.cn/category/network/ARP%E5%8D%8F%E8%AE%AE%E7%BD%91%E7%BB%9C%E4%B8%96%E7%95%8C%E7%9A%84%E4%B8%B4%E9%97%A8%E4%B8%80%E8%84%9A/</link><pubDate>Tue, 28 Feb 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/network/ARP%E5%8D%8F%E8%AE%AE%E7%BD%91%E7%BB%9C%E4%B8%96%E7%95%8C%E7%9A%84%E4%B8%B4%E9%97%A8%E4%B8%80%E8%84%9A/</guid><description>轻解计算机网络已有高清 PDF 版本可以离线阅读了，全册 65 页，如果有需要离线版的高清 PDF 可以直接下载。 各位同学肯定见过关于网络的面试题，什么TCP协议</description><content:encoded><![CDATA[<p>轻解计算机网络已有高清 PDF 版本可以离线阅读了，全册 65 页，如果有需要离线版的高清 PDF 可以<a href="https://pan.baidu.com/s/10LH_5afGftayMo8Q1Io_gA?pwd=f8hp">直接下载</a>。</p>
-<p>各位同学肯定见过关于网络的面试题，什么TCP协议和UDP的区别啦，IP协议工作在哪层啊等等，这都是网络中定义的各种协议。这些标准化的协议就是网络分层模型标准化的核心部分。要想搞懂网络，必须搞明白其中的几种主要的网络协议。</p>
-<p>今天我们就开始介绍网络世界的协议。介绍的顺序大致是从网络模型由底向上来，包括数据链路层的以太网协议，网络层的 ARP协议、RARP协议、IP协议、ICMP协议，传输层的 TCP协议、UDP 协议，以及应用层的 HTTP/HTTPS协议。</p>
-<p>我们假设数据包都是在以太网传输，所以以太网协议一直是贯穿始终的，因为最终所有的数据包都会被封装成以太网帧，所以其他几种协议的介绍过程中，会穿插这以太网协议，不用单独介绍，自然而然就理解了。</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5a583629e45e41f09ee76a71ee50d8dd~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
-<p>今天我们就彻底讲清楚 ARP 协议（地址解析协议）， 我把 ARP 协议比作数据包在网络世界的临门一脚，当数据包到达了一个局域网中，局域网中有那么多机器，踢开哪台机器的大门，就靠 ARP 协议了。为什么这么说，一会儿你就明白了。</p>
-<p><strong>其实 ARP 协议可以简单概括为几句话：</strong></p>
-<ol>
-<li>ARP 工作在局域网内；</li>
-<li>ARP 的作用是根据 IP 地址获取对应的 MAC 地址；</li>
-<li>在网络中最终传输的数据叫做数据帧，是数据链路层最后封装的，而数据帧要根据 MAC 地址找到目的主机，一般是目的主机的某个网卡；</li>
-<li>而一般我们只知道目的主机的 IP，不知道 MAC 地址，所以需要 ARP 协议。</li>
-</ol>
-<p>好的，讲完了。开个玩笑，当然没有，最好还是继续看下边的内容。</p>
-<p>在 OSI 模型中，通常认为 ARP和RARP属于数据链路层协议，因为它们不使用IP协议。而在TCP/IP 协议栈中，将 ARP归于网络层，和IP协议在同一层。</p>
-<p>只要知道对方的 IP 地址或域名，就能将数据发送过去，这是我们常识性的理解。而且在平常的使用过程中也确实是这样的。比如我们开发过程中，建立一个 socket 连接，只要知道目标 IP 和 端口就可以了。</p>
-<p>真实的网络世界中是这样的吗，确实 IP 地址是必不可少的，但是还有另外一种地址也是必不可少的，那就是 MAC 地址。</p>
-<p>最终，在数据到达以太网链路层，会被包装成以太网数据帧，而数据帧中决定最终去向的是就是目标 MAC 地址，注意喽，是 MAC 地址（硬件地址），而不是 IP 地址。</p>
-<p>可以把 IP 比作现实世界中一个房子的标记，比如北京市朝阳区XX路xx小区1号楼1单元801，而 MAC 地址则是这个房子的经纬度（116.354856,39.942009），虽然我们看前面的一串标示更容易理解，但是当我们要导航去那里的时候还是要靠经纬度。</p>
-<p>但是如何在一大群机器中确定目标 IP 对应的 MAC 地址呢，数据已经到了局域网，这么多大门该开哪一扇呢，这就是 ARP 该做的事儿了。</p>
-<p><strong>什么是 MAC 地址</strong></p>
-<p>MAC地址（Media Access Control Address），直译为媒体存取控制位址，也称为局域网地址（LAN Address），以太网地址（Ethernet Address）或物理地址（Physical Address），它是一个用来确认网路设备位置的位址。在OSI模型中，第三层网路层负责IP地址，第二层资料链结层则负责MAC位址。MAC地址用于在网络中唯一标示一个网卡，一台设备若有一或多个网卡，则每个网卡都需要并会有一个唯一的MAC地址。</p>
-<p>MAC 地址长度为6字节，48bit，用16进制的6个元组表示，例如 <code>3c:22:fb:64:4f:1d</code>，其中有一个特殊的地址就是所有比特位都是1的地址 <code>ff:ff:ff:ff:ff:ff</code>，表示是一个广播地址，意思就是指消息要发给局域网中的所有网卡。</p>
-<h2 id="为什么需要-arp-协议">为什么需要 ARP 协议</h2>
-<p>直接的原因就是数据链路层要将数据帧发送到目的端，必须要知道目的端的 MAC 地址，这是由网络模型的架构设计决定的。</p>
-<p>下面这张图是网络 4 层模型以及数据从发送端到接收端的首发过程。发送是从上向下经过层层包装，最后形成一个数据帧（最常用的以太网帧），之后这个数据在纷繁复杂的网络世界中勇往直前，到达接收端，接收端从下向上层层拆包，最后供应用层使用。</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c813b54c07b84c4d85b1736d82fb3af7~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
-<blockquote>
-<p>上面这张图很有用的，在学习网络知识（不管是基础概念还是各种协议）的时候可以为我们提供一个宏观的视角。</p>
-</blockquote>
-<p>网络中的设备数以亿计，一个发送终端怎么可能知道每一台接收终端的 MAC 地址呢，显然，这是不可能的。但是 IP 是知道的，比如我们访问 github，github 每一台服务器的 MAC 地址（准确的说是一个网卡的 MAC 地址，因为一台机器上可能有多个网卡）我们是不知道的，但是它的域名我们都知道，通过域名得到 IP 地址，这是 DNS 的功能，大多数同学都很清楚，所以间接的也就相当于我们知道了 github 的IP。</p>
-<p>但是，为什么我们在做应用层开发的时候不需要关注 MAC 地址。</p>
-<p>根本没有什么岁月静好，只是有人在替我们负重前行罢了。在这里帮我们负重前行的就是 ARP 协议。</p>
-<p>这里面有一个关键点，最终在网络上传输的包，必定是一个数据帧，最常用的就是以太网帧。</p>
-<p>如果我们完全将这一过程当做一个黑盒，可以对照理解为一个程序中封装好的方法，例如 <code>getMacAddressByIP(Long ip) </code>，当我们需要得到 MAC 地址时，直接调用这个方法就可以了。</p>
-<p>ARP 协议全称地址解析协议，用来将 IP 地址解析出 MAC 地址，还有一个与之相对的协议 RARP，全称叫做逆地址解析协议，用来将 MAC 地址解析出 IP 地址。</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/aba2b76b0ca84a9c8e91aa685af5cee9~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
-<h2 id="arp-的工作过程">ARP 的工作过程</h2>
-<p>ARP 就是工作在一个局域网中的，</p>
-<p>当一台路由器或者一个具有路由转发功能的主机想要通过一个 IP 地址得到对应的 MAC 地址时，就可以使用 ARP 协议了，这个设备向它所在的目标子网中发送一个广播的 ARP  请求，请求中带着这个 IP 地址，意思是说，在这个网络中的各位，谁的 IP 是这个，请回复我一下，并告诉我你的 MAC 地址。收到这个请求的主机对这个 ARP 包进行解析，如果发现携带的 IP 正好是自己的，就返回一个 ARP 回复，回复中带上自己的 MAC 地址。</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/30eac5cf80314eca89b537cbdc9fe504~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
-<p>使用 ARP 协议后，目的主机将自己的 IP 地址和 MAC 地址返回给源主机，源主机将 MAC 地址加到以太网帧中，构造成完整的帧格式，再将数据帧通过链路层发出。</p>
-<p>最终数据帧到达目的主机，链路层通过数据帧中的目的 MAC 地址判断数据帧是不是发给自己的，如果是的话，则接收数据帧，并经过层层解析，最终交给应用层对应的程序处理。</p>
-<h2 id="先说说以太网数据帧格式">先说说以太网数据帧格式</h2>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/982fd7a2e5184f159876bcc2be97d8cf~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
-<p><strong>以太网目的地址</strong>：目的端 MAC 地址，6字节。</p>
-<p><strong>以太网源地址</strong>：发送端的 MAC 地址，6字节。</p>
-<p><strong>帧类型</strong>：标记数据部分的类型，如果是 IP  数据报，值为 0x0800，如果是 ARP 数据报，值为 0x0806，2字节。</p>
-<p><strong>数据</strong>：以太帧搭载的数据。只要是在以太网上发送数据，最终都会被链路层封装成以太网数据帧，所以数据部分即可以是 IP 数据报、ARP 协议包、ICMP 数据包等，以太网数据帧数据部分最小长度是 46 字节，最大长度由 MTU 决定，是 1500 字节。</p>
-<p><strong>CRC</strong>：数据检验码，用来在接收端检验接收的数据是不是无差错的，4字节。</p>
-<p>既然大家都是程序员，我们将这个数据帧抽象成一个实体类表示，帮助我们理解。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EthernetFrame</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
-</span></span></span><span class="line"><span class="cl"><span class="cm">     * 目的 MAC 地址，6字节，48bit
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Byte</span><span class="o">[]</span> <span class="n">destinationMacAddress</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Byte</span><span class="o">[</span><span class="mi">6</span><span class="o">];</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
-</span></span></span><span class="line"><span class="cl"><span class="cm">     * 源 MAC 地址，6字节，48bit
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Byte</span><span class="o">[]</span> <span class="n">sourceMacAddress</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Byte</span><span class="o">[</span><span class="mi">6</span><span class="o">];</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
-</span></span></span><span class="line"><span class="cl"><span class="cm">     * 标记搭载的数据类型,
-</span></span></span><span class="line"><span class="cl"><span class="cm">     * 如果是 IP  数据报，值为 0x0800
-</span></span></span><span class="line"><span class="cl"><span class="cm">     * 如果是 ARP 数据报，值为 0x0806
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Byte</span><span class="o">[]</span> <span class="n">type</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Byte</span><span class="o">[</span><span class="mi">2</span><span class="o">];</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
-</span></span></span><span class="line"><span class="cl"><span class="cm">     * 数据
-</span></span></span><span class="line"><span class="cl"><span class="cm">     * 以太网的数据长度为 46~1500字节。
-</span></span></span><span class="line"><span class="cl"><span class="cm">     * 最短 46   字节，不够的要填充(pad)
-</span></span></span><span class="line"><span class="cl"><span class="cm">     * 最长 1500 字节，以太网的 MTU 决定的
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Byte</span><span class="o">[]</span> <span class="n">data</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Byte</span><span class="o">[</span><span class="mi">46</span><span class="o">];</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
-</span></span></span><span class="line"><span class="cl"><span class="cm">     * 检验码 4 字节，在帧尾部
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Byte</span><span class="o">[]</span> <span class="n">crc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Byte</span><span class="o">[</span><span class="mi">4</span><span class="o">];</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><h2 id="arp-协议格式">ARP 协议格式</h2>
-<p>以下是 ARP 协议的格式，以及一对完整的 ARP 请求数据帧和应答数据帧。</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f1b59aafe469487796a9f2301d07c4d6~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
-<p><strong>硬件类型</strong>：2字节，用来表示硬件地址的类型，为 1 表示以太网地址。</p>
-<p><strong>协议类型</strong>：2字节，用来表示要映射的协议地址类型。ARP 不仅可以表示要将 IP 转换为 MAC ，还允许其他的转换关系，例如将另外一种非 IP 地址转换为 MAC 地址。当它的值为<code>0x0800</code>表示 IP 地址，与包含IP数据报的以太网数据帧中的类型字段的值相同。</p>
-<p><strong>硬件地址长度</strong>：1字节，用来表示硬件地址的长度，单位是字节。在以太网中就是 MAC 地址的长度，值为6，也就表示 MAC 地址长度为 6 字节。</p>
-<p><strong>协议地址长度</strong>：1字节，用来表示协议地址的长度，单位是字节。在以太网中，如果协议类型是 IP，也就是要将 IP 转换为 MAC 时，它的值是 4 ，也就是4字节，表示 IP 地址的长度是 4 字节。</p>
-<p><strong>操作字段</strong>：2字节，用来表示当前操作的类型。值为1，表示 ARP 请求；值为2，表示 ARP 应答；值为3，表示 RARP 请求；值为4，表示 RARP 应答。此字段是用来区分请求和应答的必需字段。</p>
-<p><strong>发送端以太网地址</strong>：6字节，用来表示发送端的以太网 MAC 地址。</p>
-<p><strong>发送端 IP 地址</strong>：4字节，用来表示发送端的 IP 地址。</p>
-<p><strong>目的以太网地址</strong>：6字节，用来表示目的端的 MAC 地址。</p>
-<p><strong>目的 IP 地址</strong>：4字节，用来表示目的端的 IP 地址。</p>
-<p>整个 ARP 协议部分共 28字节，但是在以太网中，一个以太网数据帧数据最小长度为 46，所以，后面要有18字节的数据填充。</p>
-<p>操作字段为1表示这是一个 ARP 请求，ARP 请求是个广播消息，请求数据中没有目的 MAC 地址，因为还不知道嘛，我们要找的就是它。之后，ARP 应答消息（操作字段是2）将本机的 MAC 地址放到源MAC地址中，并且将 ARP 请求中的MAC地址替换为目的 MAC 地址，用来告知 ARP 发送端。</p>
-<p>还是用一个实现类来表示 ARP 协议中的各个字段。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Arp</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
-</span></span></span><span class="line"><span class="cl"><span class="cm">     * 硬件类型，2字节，值为1表示以太网
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Byte</span><span class="o">[]</span> <span class="n">hardwareType</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Byte</span><span class="o">[</span><span class="mi">2</span><span class="o">];</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
-</span></span></span><span class="line"><span class="cl"><span class="cm">     * 协议类型，2字节，要映射的协议地址类型
-</span></span></span><span class="line"><span class="cl"><span class="cm">     * 0x0800 表示要转换的源协议为 IP 协议
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Byte</span><span class="o">[]</span> <span class="n">protocolType</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Byte</span><span class="o">[</span><span class="mi">2</span><span class="o">];</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
-</span></span></span><span class="line"><span class="cl"><span class="cm">     * 硬件地址长度，1字节，表示硬件地址的长度，单位为字节
-</span></span></span><span class="line"><span class="cl"><span class="cm">     * 硬件地址长度在以太网表示 MAC 地址的长度，值为6，也就是 6 字节
-</span></span></span><span class="line"><span class="cl"><span class="cm">     *
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Byte</span><span class="o">[]</span> <span class="n">hardwareAddressLength</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Byte</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
-</span></span></span><span class="line"><span class="cl"><span class="cm">     * 协议地址长度，1字节，表示协议地址的长度，单位为字节
-</span></span></span><span class="line"><span class="cl"><span class="cm">     * 在以太网转换 IP 为 MAC 地址时，就表示为 IP 地址的长度，也就是4字节
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Byte</span><span class="o">[]</span> <span class="n">protocolAddressLength</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Byte</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
-</span></span></span><span class="line"><span class="cl"><span class="cm">     * 操作字段，2字节，表示操作类型
-</span></span></span><span class="line"><span class="cl"><span class="cm">     * 1：ARP 请求
-</span></span></span><span class="line"><span class="cl"><span class="cm">     * 2：ARP 应答
-</span></span></span><span class="line"><span class="cl"><span class="cm">     * 3：RARP 请求
-</span></span></span><span class="line"><span class="cl"><span class="cm">     * 4：RARP 应答
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Byte</span><span class="o">[]</span> <span class="n">op</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Byte</span><span class="o">[</span><span class="mi">2</span><span class="o">];</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
-</span></span></span><span class="line"><span class="cl"><span class="cm">     * 发送端 MAC 地址，6字节
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Byte</span><span class="o">[]</span> <span class="n">sourceMacAddress</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Byte</span><span class="o">[</span><span class="mi">6</span><span class="o">];</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
-</span></span></span><span class="line"><span class="cl"><span class="cm">     * 发送端 IP 地址，4字节
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Byte</span><span class="o">[]</span> <span class="n">sourceIpAddress</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Byte</span><span class="o">[</span><span class="mi">4</span><span class="o">];</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
-</span></span></span><span class="line"><span class="cl"><span class="cm">     * 目的端 MAC 地址，6字节
-</span></span></span><span class="line"><span class="cl"><span class="cm">     * 在 ARP 请求中，这个地址为空
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Byte</span><span class="o">[]</span> <span class="n">destinationMacAddress</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Byte</span><span class="o">[</span><span class="mi">6</span><span class="o">];</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
-</span></span></span><span class="line"><span class="cl"><span class="cm">     * 目的端 IP 地址，4字节
-</span></span></span><span class="line"><span class="cl"><span class="cm">     * 接收 ARP 广播的主机通过 IP 地址判断是否回复 ARP 应答(IP 地址的所有者)
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Byte</span><span class="o">[]</span> <span class="n">destinationIpAddress</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Byte</span><span class="o">[</span><span class="mi">4</span><span class="o">];</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><h2 id="用-wireshark-抓个包">用 Wireshark 抓个包</h2>
-<p>打开 Wireshark ，开始抓包，等待一会儿，然后停止抓包。你电脑中的各个程序会偷偷的发送和应答很多 ARP 包，</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6dfb0ec84b4c487dac7f6d9c44dbe079~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
-<p>在 Wireshark 中过滤 <code>arp.opcode == 1</code>的 ARP 请求，然后找到其中一个。用 Wireshark 分析包特别直观，我们用鼠标点击上方的某个字段时，下面会自动将这个字段的值标记出来，这样就可以清楚的看到这个字段在整个数据包中的位置了。例如下图选中了 ARP 包中的 Opcode字段（操作字段），下面的 <code> 00 01</code> 被标记了，这是用 16 进制表示的，<code>00</code>表示一个字节，<code>01</code>表示一个字节，表示这个操作字段是2个字节，值是1，也就是ARP 请求。</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8a4fcdcb96664a9ca5eb032eb48e65f5~tplv-k3u1fbpfcp-zoom-1.image" alt="image-20220916144713709"></p>
-<p><strong>简单分析一下这个包</strong></p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/55d8e765164644de8faef8165085d8bf~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
-<p>图中 1、2、3 三个部分分别是以太网帧概要信息、以太网数据帧首部、以太网数据帧数据内容。在第一部分概要信息可以看到这个帧的总大小是 60 bytes，以太网数据帧头部的14 字节，加上内容部分最少46字节，刚好是 60 字节，其实还有一个 CRC （数据检验码），只不过本地网卡会自动剥离掉，所以在 Wireshark 中是看不到的。</p>
-<p><strong>以太网数据帧首部</strong></p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/800f221f14944670886d88fbb2438811~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
-<p>上图是以太网数据帧首部信息。</p>
-<p>1、目的 MAC 地址，都是 <code>ff</code>，表示这是个广播请求，ARP 请求本身就是广播的。</p>
-<p>2、源 MAC 地址，本机的 MAC 地址。</p>
-<p>3、帧类型，ARP 类型。</p>
-<p>4、因为以太网帧数据部分最小是 46 字节，ARP 只有28字节，所以要填充18字节。</p>
-<p><strong>ARP 请求信息</strong></p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d25913760b4a42f484d320126d46457e~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
-<p>从上到下依次是硬件类型、协议类型、硬件地址长度、协议地址长度（一般就是IP地址）、操作字段、发送端 MAC 地址、发送端 IP 地址、目标 MAC 地址、目标 IP 地址。</p>
-<p>使用 wireshark 的 filter  <code>arp.opcode == 2</code> 可过滤出 APR 请求。</p>
-<p>是不是完全听明白了，回头发现，就是我开头总结的那几点内容。</p>
-<p>自己学容易，写出来真难啊，如果对各位有一点点帮助当然最好了。</p>
 ]]></content:encoded></item></channel></rss>
