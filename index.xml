@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>古时的风筝</title><link>https://moonkite.cn/</link><description>Recent content on 古时的风筝</description><webfeeds:icon>https://moonkite.cn/images/photo.png</webfeeds:icon><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 02 Jun 2023 08:56:23 +0800</lastBuildDate><atom:link href="https://moonkite.cn/index.xml" rel="self" type="application/rss+xml"/><item><title>0. Spring Cloud 是什么</title><link>https://moonkite.cn/category/SpringCloud/0-Srping-Cloud-%E5%BC%80%E7%AF%87/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/SpringCloud/0-Srping-Cloud-%E5%BC%80%E7%AF%87/</guid><description>本篇是我的 Spring Cloud 系列的开篇，那么多人都在写 Spring Cloud 的相关文章，为啥我还要写呢? 答：由于本人才疏学浅，学点东西就爱做个笔记，也不奢望多少人看到，主要</description><content:encoded><![CDATA[<p><em>本篇是我的 Spring Cloud 系列的开篇，那么多人都在写 Spring Cloud 的相关文章，为啥我还要写呢?</em></p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>古时的风筝</title><link>https://www.moonkite.cn/</link><description>Recent content on 古时的风筝</description><webfeeds:icon>https://www.moonkite.cn/images/photo.png</webfeeds:icon><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 02 Jun 2023 08:56:23 +0800</lastBuildDate><atom:link href="https://www.moonkite.cn/index.xml" rel="self" type="application/rss+xml"/><item><title>0. Spring Cloud 是什么</title><link>https://www.moonkite.cn/category/SpringCloud/0-Srping-Cloud-%E5%BC%80%E7%AF%87/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/SpringCloud/0-Srping-Cloud-%E5%BC%80%E7%AF%87/</guid><description>本篇是我的 Spring Cloud 系列的开篇，那么多人都在写 Spring Cloud 的相关文章，为啥我还要写呢? 答：由于本人才疏学浅，学点东西就爱做个笔记，也不奢望多少人看到，主要</description><content:encoded><![CDATA[<p><em>本篇是我的 Spring Cloud 系列的开篇，那么多人都在写 Spring Cloud 的相关文章，为啥我还要写呢?</em></p>
 <p>答：由于本人才疏学浅，学点东西就爱做个笔记，也不奢望多少人看到，主要是怕自己日后忘记，当然如果有人看到并且学到点东西，我也是非常高兴的。</p>
 <p>Spring Cloud 有众多模块，一旦项目搭起来，有些模块可能就不怎么动了，例如网关、服务注册中心等，知识点就是这样，一旦长时间不用，慢慢印象也就模糊了。</p>
 <p><em>那么多的 Spring Cloud 的文章，我写的有啥不同吗？</em></p>
@@ -43,7 +43,7 @@
 <h2 id="spring-cloud-security">Spring Cloud Security</h2>
 <p>可用做授权服务、单点登录等。如果服务需要做权限控制，那除非你自己实现。不然用到最多的就是 shiro  和 Spring Security 。Spring Boot 中用的比较多的就是 Security，众多授权机制中属于 OAuth2 最为流行。Spring Cloud Security 就是将 Security、OAuth2 做了集成，方便使用。</p>
 <p>除了以上的这些常用功能外，Spring Cloud 还提供了一些其他的模块，具体的可以到 Spring Cloud 官网一看。官网上介绍的更加详细。官网地址:https://spring.io/projects/spring-cloud</p>
-]]></content:encoded></item><item><title>1. Spring Cloud Eureka 实现服务注册与发现</title><link>https://moonkite.cn/category/SpringCloud/1-Spring-Cloud-Eureka-%E5%AE%9E%E7%8E%B0%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/SpringCloud/1-Spring-Cloud-Eureka-%E5%AE%9E%E7%8E%B0%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0/</guid><description>Eureka 是 Netflix 开源的服务注册发现组件，服务发现可以说是微服务架构的核心功能了，微服务部署之后，一定要有服务注册和发现的能力，Eureka 就是担任这个</description><content:encoded><![CDATA[<blockquote>
+]]></content:encoded></item><item><title>1. Spring Cloud Eureka 实现服务注册与发现</title><link>https://www.moonkite.cn/category/SpringCloud/1-Spring-Cloud-Eureka-%E5%AE%9E%E7%8E%B0%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/SpringCloud/1-Spring-Cloud-Eureka-%E5%AE%9E%E7%8E%B0%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0/</guid><description>Eureka 是 Netflix 开源的服务注册发现组件，服务发现可以说是微服务架构的核心功能了，微服务部署之后，一定要有服务注册和发现的能力，Eureka 就是担任这个</description><content:encoded><![CDATA[<blockquote>
 <p>Eureka 是 Netflix 开源的服务注册发现组件，服务发现可以说是微服务架构的核心功能了，微服务部署之后，一定要有服务注册和发现的能力，Eureka 就是担任这个角色的。如果你用过 dubbo 的话，那一定知道 dubbo 中服务注册和发现的功能是用 zookeeper 来实现的。</p>
 </blockquote>
 <p>Eureka 目前是 2.x 版本，并且官方已经宣布不再维护更新。不过其实 Eureka 已经很稳定了，当做注册中心完全没有问题。Spring Cloud 集成了 Eureka ，并做了完善的封装。方便我们使用 Spring boot 开发的时候简单配置就可以使用。</p>
@@ -292,7 +292,7 @@ Java : 1.8</p>
 </span></span></code></pre></div><p>其中 feignRequest 方法是使用了 Feign 的方式调用服务接口；</p>
 <p>commonRequest 方法是用 RestTemplate 提供的方法调用服务接口；</p>
 <p>6、最后，启动服务，访问地址：http://localhost:3002/commonRequest 和 http://localhost:3002/feignRequest</p>
-]]></content:encoded></item><item><title>2. Spring Cloud Eureka 实现安全控制</title><link>https://moonkite.cn/category/SpringCloud/2-Spring-Cloud-Eureka-%E5%AE%9E%E7%8E%B0%E5%AE%89%E5%85%A8%E6%8E%A7%E5%88%B6/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/SpringCloud/2-Spring-Cloud-Eureka-%E5%AE%9E%E7%8E%B0%E5%AE%89%E5%85%A8%E6%8E%A7%E5%88%B6/</guid><description>上一篇「Eureka 实现微服务注册发现」讲了用 Eureka 实现单体版的服务注册与发现。因为本篇是在上一篇的基础上的一点扩充，所以读此篇之前要保证看了上</description><content:encoded><![CDATA[<p>上一篇「Eureka 实现微服务注册发现」讲了用 Eureka 实现单体版的服务注册与发现。因为本篇是在上一篇的基础上的一点扩充，所以读此篇之前要保证看了上一篇。</p>
+]]></content:encoded></item><item><title>2. Spring Cloud Eureka 实现安全控制</title><link>https://www.moonkite.cn/category/SpringCloud/2-Spring-Cloud-Eureka-%E5%AE%9E%E7%8E%B0%E5%AE%89%E5%85%A8%E6%8E%A7%E5%88%B6/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/SpringCloud/2-Spring-Cloud-Eureka-%E5%AE%9E%E7%8E%B0%E5%AE%89%E5%85%A8%E6%8E%A7%E5%88%B6/</guid><description>上一篇「Eureka 实现微服务注册发现」讲了用 Eureka 实现单体版的服务注册与发现。因为本篇是在上一篇的基础上的一点扩充，所以读此篇之前要保证看了上</description><content:encoded><![CDATA[<p>上一篇「Eureka 实现微服务注册发现」讲了用 Eureka 实现单体版的服务注册与发现。因为本篇是在上一篇的基础上的一点扩充，所以读此篇之前要保证看了上一篇。</p>
 <p><strong>Eureka 如果不加安全控制，会存在下列问题</strong>：</p>
 <blockquote>
 <ol>
@@ -339,7 +339,7 @@ Java : 1.8</p>
 </code></pre><p><em>4.服务消费者</em></p>
 <p>服务消费者和服务提供者配置方式一致。</p>
 <p>具体的代码已经放到 github。<a href="https://github.com/huzhicheng/spring-cloud-study/tree/master/eureka">源码地址</a></p>
-]]></content:encoded></item><item><title>3. Spring Cloud Eureka 实现高可用服务发现注册中心</title><link>https://moonkite.cn/category/SpringCloud/3-Spring-Cloud-Eureka-%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/SpringCloud/3-Spring-Cloud-Eureka-%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/</guid><description>前两篇实现了单点注册中心的实现，并实现了一个服务提供者和一个消费者，之后在基础上有增加了安全控制。 本篇来实现一个高可用版的服务注册中心。在线</description><content:encoded><![CDATA[<p>前两篇实现了单点注册中心的实现，并实现了一个服务提供者和一个消费者，之后在基础上有增加了安全控制。</p>
+]]></content:encoded></item><item><title>3. Spring Cloud Eureka 实现高可用服务发现注册中心</title><link>https://www.moonkite.cn/category/SpringCloud/3-Spring-Cloud-Eureka-%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/SpringCloud/3-Spring-Cloud-Eureka-%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/</guid><description>前两篇实现了单点注册中心的实现，并实现了一个服务提供者和一个消费者，之后在基础上有增加了安全控制。 本篇来实现一个高可用版的服务注册中心。在线</description><content:encoded><![CDATA[<p>前两篇实现了单点注册中心的实现，并实现了一个服务提供者和一个消费者，之后在基础上有增加了安全控制。</p>
 <p>本篇来实现一个高可用版的服务注册中心。在线上环境中，使用高可用是最基本的要求，如果有单点故障的时候，不至于整个服务都无响应。</p>
 <p>这里的高可用包括注册中心的高可用，服务提供者注册到服务中心集群上，这样服务消费者发现服务的时候就通过集群来实现，不会出现注册中心不可用，造成整个系统崩溃。</p>
 <p>还包括服务提供者的高可用，一个服务提供者注册多个实例到注册中心，这样，即时有其中某个实例 down 掉，其他实例依然可以提供服务。</p>
@@ -459,7 +459,7 @@ Java : 1.8</p>
 <p>5、停掉一个注册中心实例。</p>
 <p><img src="https://hexo.moonkite.cn/blog/eureka-ha-center-down.png" alt="eureka-ha-center-down"></p>
 <p>访问 http 接口，仍然不受影响。</p>
-]]></content:encoded></item><item><title>4. Spring Cloud Config 实现配置中心，看这一篇就够了</title><link>https://moonkite.cn/category/SpringCloud/4.-Spring-Cloud-Config-%E5%AE%9E%E7%8E%B0%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/SpringCloud/4.-Spring-Cloud-Config-%E5%AE%9E%E7%8E%B0%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/</guid><description>Spring Cloud Config 是 Spring Cloud 家族中最早的配置中心，虽然后来又发布了 Consul 可以代替配置中心功能，但是 Config 依然适用于 Spring Cloud 项目，通过简单的配置即可实现功能。 配置文件是我</description><content:encoded><![CDATA[<blockquote>
+]]></content:encoded></item><item><title>4. Spring Cloud Config 实现配置中心，看这一篇就够了</title><link>https://www.moonkite.cn/category/SpringCloud/4.-Spring-Cloud-Config-%E5%AE%9E%E7%8E%B0%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/SpringCloud/4.-Spring-Cloud-Config-%E5%AE%9E%E7%8E%B0%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/</guid><description>Spring Cloud Config 是 Spring Cloud 家族中最早的配置中心，虽然后来又发布了 Consul 可以代替配置中心功能，但是 Config 依然适用于 Spring Cloud 项目，通过简单的配置即可实现功能。 配置文件是我</description><content:encoded><![CDATA[<blockquote>
 <p>Spring Cloud Config 是 Spring Cloud 家族中最早的配置中心，虽然后来又发布了 Consul 可以代替配置中心功能，但是 Config 依然适用于 Spring Cloud 项目，通过简单的配置即可实现功能。</p>
 </blockquote>
 <p>配置文件是我们再熟悉不过的了，尤其是 Spring Boot 项目，除了引入相应的 maven 包之外，剩下的工作就是完善配置文件了，例如 mysql、redis 、security 相关的配置。除了项目运行的基础配置之外，还有一些配置是与我们业务有关系的，比如说七牛存储、短信相关、邮件相关，或者一些业务上的开关。</p>
@@ -994,7 +994,7 @@ Java : 1.8</p>
 <h2 id="注意事项"><em>注意事项</em></h2>
 <p><em>1.</em> 在 git 上的配置文件的名字要和 config 的 client 端的 application name 对应；</p>
 <p><em>2.</em> 在结合 eureka 的场景中，关于 eureka 和 git config 相关的配置要放在 bootstrap.yml 中，否则会请求默认的 config server 配置，这是因为当你加了配置中心，服务就要先去配置中心获取配置，而这个时候，application.yml 配置文件还没有开始加载，而 bootstrap.yml 是最先加载的。</p>
-]]></content:encoded></item><item><title>5. 服务注册发现、配置中心集一体的 Spring Cloud Consul</title><link>https://moonkite.cn/category/SpringCloud/5-%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83%E9%9B%86%E4%B8%80%E4%BD%93%E7%9A%84-Spring-Cloud-Consul/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/SpringCloud/5-%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83%E9%9B%86%E4%B8%80%E4%BD%93%E7%9A%84-Spring-Cloud-Consul/</guid><description>前面讲了 Eureka 和 Spring Cloud Config，今天介绍一个全能选手 「Consul」。它是 HashiCorp 公司推出，用于提供服务发现和服务配置的工具。用 go 语言开发，具有很好</description><content:encoded><![CDATA[<blockquote>
+]]></content:encoded></item><item><title>5. 服务注册发现、配置中心集一体的 Spring Cloud Consul</title><link>https://www.moonkite.cn/category/SpringCloud/5-%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83%E9%9B%86%E4%B8%80%E4%BD%93%E7%9A%84-Spring-Cloud-Consul/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/SpringCloud/5-%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%8F%91%E7%8E%B0%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83%E9%9B%86%E4%B8%80%E4%BD%93%E7%9A%84-Spring-Cloud-Consul/</guid><description>前面讲了 Eureka 和 Spring Cloud Config，今天介绍一个全能选手 「Consul」。它是 HashiCorp 公司推出，用于提供服务发现和服务配置的工具。用 go 语言开发，具有很好</description><content:encoded><![CDATA[<blockquote>
 <p>前面讲了 Eureka 和 Spring Cloud Config，今天介绍一个全能选手 「Consul」。它是 HashiCorp 公司推出，用于提供服务发现和服务配置的工具。用 go 语言开发，具有很好的可移植性。被 Spring Cloud 纳入其中，Eureka 停止新版本开发，更多的想让开发者使用 Consul 来作为服务注册发现使用。</p>
 </blockquote>
 <p>Consul 提供的功能包括如下几个：</p>
@@ -1495,7 +1495,7 @@ Java : 1.8</p>
 </span></span></code></pre></div><p>6、最后，启动应用，访问 RestController 中的 RESTful 接口即可看到配置文件内容。</p>
 <p>与 Spring Cloud Config 相比，Consul 在控制台修改配置后，会立即更新，不用再结合 Spring Cloud Bus 之类的配合了。</p>
 <p><a href="https://github.com/huzhicheng/spring-cloud-study/tree/master/consul">源码地址</a></p>
-]]></content:encoded></item><item><title>6. Spring Cloud 系列之 Spring Cloud Stream</title><link>https://moonkite.cn/category/SpringCloud/6-Spring-Cloud-%E7%B3%BB%E5%88%97%E4%B9%8B-Spring-Cloud-Stream/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/SpringCloud/6-Spring-Cloud-%E7%B3%BB%E5%88%97%E4%B9%8B-Spring-Cloud-Stream/</guid><description>Spring Cloud Stream 是消息中间件组件，它集成了 kafka 和 rabbitmq 。本篇文章以 Rabbit MQ 为消息中间件系统为基础，介绍 Spring Cloud Stream 的使用。如果你没有用过消息中间件，可以到 RabbitMQ 的官网看一</description><content:encoded><![CDATA[<blockquote>
+]]></content:encoded></item><item><title>6. Spring Cloud 系列之 Spring Cloud Stream</title><link>https://www.moonkite.cn/category/SpringCloud/6-Spring-Cloud-%E7%B3%BB%E5%88%97%E4%B9%8B-Spring-Cloud-Stream/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/SpringCloud/6-Spring-Cloud-%E7%B3%BB%E5%88%97%E4%B9%8B-Spring-Cloud-Stream/</guid><description>Spring Cloud Stream 是消息中间件组件，它集成了 kafka 和 rabbitmq 。本篇文章以 Rabbit MQ 为消息中间件系统为基础，介绍 Spring Cloud Stream 的使用。如果你没有用过消息中间件，可以到 RabbitMQ 的官网看一</description><content:encoded><![CDATA[<blockquote>
 <p>Spring Cloud Stream 是消息中间件组件，它集成了 kafka 和 rabbitmq 。本篇文章以 Rabbit MQ 为消息中间件系统为基础，介绍 Spring Cloud Stream 的使用。如果你没有用过消息中间件，可以到 RabbitMQ 的官网看一下，或者参考这个 <a href="http://rabbitmq.mr-ping.com/">http://rabbitmq.mr-ping.com/</a>。理解了消息中间件的设计，才能更好的使用它。</p>
 </blockquote>
 <h2 id="消息中间的几大应用场景"><strong>消息中间的几大应用场景</strong></h2>
@@ -1789,7 +1789,7 @@ Java : 1.8</p>
 </span></span></code></pre></div><p>上面代码发送了一个 LogInfo 实体对象，在消费者端依然可以用字符串类型接收，因为 @StreamListener 注解会默认把实体转为 json 字符串。</p>
 <p>另外，可以试着启动两个消费者端，把 group 设置成相同的，这时，发送的消息只会被一个消费者接收。</p>
 <p>如果把 group 设置成不一样的，那么发送的消息会被两个消费者接收。</p>
-]]></content:encoded></item><item><title>7. 网关我选 Spring Cloud Gateway</title><link>https://moonkite.cn/category/SpringCloud/7-Spring-Cloud-Gateway-%E7%BD%91%E5%85%B3%E7%9A%84%E4%BD%BF%E7%94%A8/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/SpringCloud/7-Spring-Cloud-Gateway-%E7%BD%91%E5%85%B3%E7%9A%84%E4%BD%BF%E7%94%A8/</guid><description>网关可提供请求路由与组合、协议转换、安全认证、服务鉴权、流量控制与日志监控等服务。可选的网关有不少，比如 Nginx、高性能网关 OpenRes</description><content:encoded><![CDATA[<p>网关可提供<strong>请求路由与组合</strong>、<strong>协议转换</strong>、<strong>安全认证</strong>、<strong>服务鉴权</strong>、<strong>流量控制</strong>与<strong>日志监控</strong>等服务。可选的网关有不少，比如 Nginx、高性能网关 OpenResty、Linkerd 以及 Spring Cloud Gateway。</p>
+]]></content:encoded></item><item><title>7. 网关我选 Spring Cloud Gateway</title><link>https://www.moonkite.cn/category/SpringCloud/7-Spring-Cloud-Gateway-%E7%BD%91%E5%85%B3%E7%9A%84%E4%BD%BF%E7%94%A8/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/SpringCloud/7-Spring-Cloud-Gateway-%E7%BD%91%E5%85%B3%E7%9A%84%E4%BD%BF%E7%94%A8/</guid><description>网关可提供请求路由与组合、协议转换、安全认证、服务鉴权、流量控制与日志监控等服务。可选的网关有不少，比如 Nginx、高性能网关 OpenRes</description><content:encoded><![CDATA[<p>网关可提供<strong>请求路由与组合</strong>、<strong>协议转换</strong>、<strong>安全认证</strong>、<strong>服务鉴权</strong>、<strong>流量控制</strong>与<strong>日志监控</strong>等服务。可选的网关有不少，比如 Nginx、高性能网关 OpenResty、Linkerd 以及 Spring Cloud Gateway。</p>
 <p>如果是真的追求高性能，那肯定是选择 Nginx 或者 OpenResty 无疑了， 但是对性能要求不是很高的话，并且又在用 Spring Cloud 系列，那当然就要选择 Spring Cloud Gateway 了。</p>
 <p>网关的基础就是路由功能，通俗解释就是地址转发，将一个请求地址转发到实际的服务地址。比如请求的是 <a href="http://xxx.com/api">http://xxx.com/api</a> 的路由地址，实际上会被转发到 <a href="http://xxx.com:8888">http://xxx.com:8888</a> 上来，这就是个最简单的路由方式。</p>
 <p>我们可以理解为 Spring Cloud Gateway 就是针对进来的请求做各种判断和处理，比如说判断请求的合法性、权限验证，请求地址改写，请求参数、头信息、cookie 信息的分析和改写，请求速率控制，日志留存等。而这些都可以方便的通过 Predicate 和 GatewayFilter 来组合实现。</p>
@@ -1914,7 +1914,7 @@ Java : 1.8</p>
 <p>一种方式是在微服务的配置文件中配置上<code>server.servlet.context-path</code>。</p>
 <p>还有一种方式就是在路由规则的 path 中配置，然后加上 StripPrefix 配置，选择性的去掉请求 url 中的某些部分。比如我们请求 Gateway的地址为 order-service/order/get，则经过 StripPrefix(1) 之后，会把请求地址变为 order/get，然后根据路由规则定向到具体的微服务地址或者特定的 url。</p>
 <p>本篇就介绍 Spring Cloud Gateway 的基本用法，后续还会有关于集成安全认证、鉴权、限流、日志等相关内容，敬请关注。</p>
-]]></content:encoded></item><item><title>8. Spring Cloud OAuth2 实现用户认证及单点登录</title><link>https://moonkite.cn/category/SpringCloud/8-Spring-Cloud-OAuth2-%E5%AE%9E%E7%8E%B0%E7%94%A8%E6%88%B7%E8%AE%A4%E8%AF%81%E5%8F%8A%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/SpringCloud/8-Spring-Cloud-OAuth2-%E5%AE%9E%E7%8E%B0%E7%94%A8%E6%88%B7%E8%AE%A4%E8%AF%81%E5%8F%8A%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/</guid><description>OAuth 2 有四种授权模式，分别是授权码模式（authorization code）、简化模式（implicit）、密码模式（resource owner password cr</description><content:encoded><![CDATA[<p>OAuth 2 有四种授权模式，分别是授权码模式（authorization code）、简化模式（implicit）、密码模式（resource owner password credentials）、客户端模式（client credentials），具体 OAuth2 是什么，可以参考这篇文章。(<a href="http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html">http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html</a>)</p>
+]]></content:encoded></item><item><title>8. Spring Cloud OAuth2 实现用户认证及单点登录</title><link>https://www.moonkite.cn/category/SpringCloud/8-Spring-Cloud-OAuth2-%E5%AE%9E%E7%8E%B0%E7%94%A8%E6%88%B7%E8%AE%A4%E8%AF%81%E5%8F%8A%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/SpringCloud/8-Spring-Cloud-OAuth2-%E5%AE%9E%E7%8E%B0%E7%94%A8%E6%88%B7%E8%AE%A4%E8%AF%81%E5%8F%8A%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/</guid><description>OAuth 2 有四种授权模式，分别是授权码模式（authorization code）、简化模式（implicit）、密码模式（resource owner password cr</description><content:encoded><![CDATA[<p>OAuth 2 有四种授权模式，分别是授权码模式（authorization code）、简化模式（implicit）、密码模式（resource owner password credentials）、客户端模式（client credentials），具体 OAuth2 是什么，可以参考这篇文章。(<a href="http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html">http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html</a>)</p>
 <p><img src="https://hexo.moonkite.cn/blog/bg2014051203.png" alt=""></p>
 <p>本文我们将使用授权码模式和密码模式两种方式来实现用户认证和授权管理。</p>
 <p>OAuth2 其实是一个关于授权的网络标准，它制定了设计思路和运行流程，利用这个标准我们其实是可以自己实现 OAuth2 的认证过程的。今天要介绍的 spring-cloud-starter-oauth2 ，其实是 Spring Cloud 按照 OAuth2 的标准并结合 spring-security 封装好的一个具体实现。</p>
@@ -2547,7 +2547,7 @@ expires_in：token 的过期时间(秒)</p>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>以上就是 password 模式的完整过程，源码放到了 github 上，有需要的可以去看一下。</p>
 <p><a href="https://github.com/huzhicheng/spring-cloud-study/tree/master/oauth2">源码地址</a></p>
-]]></content:encoded></item><item><title>9. 微信授权就是这个原理，Spring Cloud OAuth2 授权码模式</title><link>https://moonkite.cn/category/SpringCloud/9-%E5%BE%AE%E4%BF%A1%E6%8E%88%E6%9D%83%E5%B0%B1%E6%98%AF%E8%BF%99%E4%B8%AA%E5%8E%9F%E7%90%86Spring-Cloud-OAuth2-%E6%8E%88%E6%9D%83%E7%A0%81%E6%A8%A1%E5%BC%8F/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/SpringCloud/9-%E5%BE%AE%E4%BF%A1%E6%8E%88%E6%9D%83%E5%B0%B1%E6%98%AF%E8%BF%99%E4%B8%AA%E5%8E%9F%E7%90%86Spring-Cloud-OAuth2-%E6%8E%88%E6%9D%83%E7%A0%81%E6%A8%A1%E5%BC%8F/</guid><description>上一篇文章Spring Cloud OAuth2 实现单点登录介绍了使用 password 模式进行身份认证和单点登录。本篇介绍 Spring Cloud OAuth2 的另外一种授权模式-授权码模式。 授权码模式的认证</description><content:encoded><![CDATA[<blockquote>
+]]></content:encoded></item><item><title>9. 微信授权就是这个原理，Spring Cloud OAuth2 授权码模式</title><link>https://www.moonkite.cn/category/SpringCloud/9-%E5%BE%AE%E4%BF%A1%E6%8E%88%E6%9D%83%E5%B0%B1%E6%98%AF%E8%BF%99%E4%B8%AA%E5%8E%9F%E7%90%86Spring-Cloud-OAuth2-%E6%8E%88%E6%9D%83%E7%A0%81%E6%A8%A1%E5%BC%8F/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/SpringCloud/9-%E5%BE%AE%E4%BF%A1%E6%8E%88%E6%9D%83%E5%B0%B1%E6%98%AF%E8%BF%99%E4%B8%AA%E5%8E%9F%E7%90%86Spring-Cloud-OAuth2-%E6%8E%88%E6%9D%83%E7%A0%81%E6%A8%A1%E5%BC%8F/</guid><description>上一篇文章Spring Cloud OAuth2 实现单点登录介绍了使用 password 模式进行身份认证和单点登录。本篇介绍 Spring Cloud OAuth2 的另外一种授权模式-授权码模式。 授权码模式的认证</description><content:encoded><![CDATA[<blockquote>
 <p>上一篇文章<a href="https://www.moonkite.cn/category/SpringCloud/8-Spring-Cloud-OAuth2-%E5%AE%9E%E7%8E%B0%E7%94%A8%E6%88%B7%E8%AE%A4%E8%AF%81%E5%8F%8A%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/">Spring Cloud OAuth2 实现单点登录</a>介绍了使用 password 模式进行身份认证和单点登录。本篇介绍 Spring Cloud OAuth2 的另外一种授权模式-授权码模式。</p>
 </blockquote>
 <p>授权码模式的认证过程是这样的：</p>
@@ -2802,7 +2802,7 @@ expires_in：token 的过期时间(秒)</p>
 <p>最后，拿到 token 后的客户端，就可以将 token 加入到请求头后，去访问需要授权的接口了。</p>
 <p>结合上一篇文章，我们就实现了 password 和 授权码两种模式的 oauth2 认证。</p>
 <p>本篇源码微服务客户端对应的源码地址为: <a href="https://github.com/huzhicheng/spring-cloud-study/tree/master/oauth2/oauth2-client-authorization-code-server">点击查看 github 源码</a></p>
-]]></content:encoded></item><item><title>Java 上进了，JDK21马上就要来了，感受一下它的魅力</title><link>https://moonkite.cn/category/java/JDK21%E9%A9%AC%E4%B8%8A%E5%B0%B1%E8%A6%81%E6%9D%A5%E4%BA%86%E6%84%9F%E5%8F%97%E4%B8%80%E4%B8%8B%E5%AE%83%E7%9A%84%E9%AD%85%E5%8A%9B/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/java/JDK21%E9%A9%AC%E4%B8%8A%E5%B0%B1%E8%A6%81%E6%9D%A5%E4%BA%86%E6%84%9F%E5%8F%97%E4%B8%80%E4%B8%8B%E5%AE%83%E7%9A%84%E9%AD%85%E5%8A%9B/</guid><description>目前 Java 的最新稳定版是 JDK 20，但这是个过渡版，JDK21就是 LTS 版的了，也快要发布了，在今年9月份（也就是2023年9月）就要正式发布了。 但是，</description><content:encoded><![CDATA[<p>目前 Java 的最新稳定版是 JDK 20，但这是个过渡版，JDK21就是 LTS 版的了，也快要发布了，在今年9月份（也就是2023年9月）就要正式发布了。</p>
+]]></content:encoded></item><item><title>Java 上进了，JDK21马上就要来了，感受一下它的魅力</title><link>https://www.moonkite.cn/category/java/JDK21%E9%A9%AC%E4%B8%8A%E5%B0%B1%E8%A6%81%E6%9D%A5%E4%BA%86%E6%84%9F%E5%8F%97%E4%B8%80%E4%B8%8B%E5%AE%83%E7%9A%84%E9%AD%85%E5%8A%9B/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/java/JDK21%E9%A9%AC%E4%B8%8A%E5%B0%B1%E8%A6%81%E6%9D%A5%E4%BA%86%E6%84%9F%E5%8F%97%E4%B8%80%E4%B8%8B%E5%AE%83%E7%9A%84%E9%AD%85%E5%8A%9B/</guid><description>目前 Java 的最新稳定版是 JDK 20，但这是个过渡版，JDK21就是 LTS 版的了，也快要发布了，在今年9月份（也就是2023年9月）就要正式发布了。 但是，</description><content:encoded><![CDATA[<p>目前 Java 的最新稳定版是 JDK 20，但这是个过渡版，JDK21就是 LTS 版的了，也快要发布了，在今年9月份（也就是2023年9月）就要正式发布了。</p>
 <p>但是，猜都不用猜，你肯定还在用 Java 8 吧！</p>
 <h2 id="更丝滑的并发编程模式">更丝滑的并发编程模式</h2>
 <p>如果说之前的 JDK17你还觉得没必要折腾，那 JDK21确实有必要关注一下了。因为 JDK21 引入了一种新型的并发编程模式。</p>
@@ -2979,7 +2979,7 @@ expires_in：token 的过期时间(秒)</p>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
 </span></span></code></pre></div><p>上面的例子模拟一个用户登录的过程，使用 <code>ScopedValue.newInstance()</code>声明了一个 <code>ScopedValue</code>，用 <code>ScopedValue.where</code>给 <code>ScopedValue</code>设置值，并且使用 run 方法执行接下来要做的事儿，这样一来，<code>ScopedValue</code>就在 run() 的内部随时可获取了，在run方法中，模拟调用了一个service 的login方法，不用传递LoginUser这个参数，就可以直接通过<code>LoginUser.get</code>方法获取当前登录用户的值了。</p>
-]]></content:encoded></item><item><title>Text Box Instant Translation Chrome Extension</title><link>https://moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6-English/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6-English/</guid><description>After entering content into input fields on any webpage, it can be translated into a specified target language.</description><content:encoded><![CDATA[<p><a href="https://www.moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6/">中文说明</a>     <a href="https://www.moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6-English/">Engilish Introduction</a></p>
+]]></content:encoded></item><item><title>Text Box Instant Translation Chrome Extension</title><link>https://www.moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6-English/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6-English/</guid><description>After entering content into input fields on any webpage, it can be translated into a specified target language.</description><content:encoded><![CDATA[<p><a href="https://www.moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6/">中文说明</a>     <a href="https://www.moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6-English/">Engilish Introduction</a></p>
 <p>The Text Box Translation Extension utilizes the Google Translate functionality to instantly translate the contents of any text box in the Chrome browser into the desired target language. For example, it automatically translates the content in the text box into English and replaces the current text within the text box.</p>
 <p>Video Introduction：<a href="https://www.bilibili.com/video/BV17g4y1A7Fe/?vd_source=d72d86eea40f5750277144c5880966f5">中文介绍</a>，<a href="https://youtu.be/iRNeF2LBT7U">English Introduction</a></p>
 <h2 id="instructions-for-use">Instructions for Use</h2>
@@ -2992,7 +2992,7 @@ expires_in：token 的过期时间(秒)</p>
 <p><strong>It can be used in all input boxes on Google, Google Bard, Twitter, Weibo, Baidu, ChatGPT, and more.</strong></p>
 <p>If you encounter any issues during usage or have any suggestions, feel free to add me as a friend and let me know.</p>
 <p><img src="https://hexo.moonkite.cn/blog/877shots_so%20(1).png" alt=""></p>
-]]></content:encoded></item><item><title>VsCode ChatGPT 插件，一个代码助手</title><link>https://moonkite.cn/category/product/1-VsCode-ChatGPT-%E6%8F%92%E4%BB%B6%E4%B8%80%E4%B8%AA%E4%BB%A3%E7%A0%81%E5%8A%A9%E6%89%8B/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/product/1-VsCode-ChatGPT-%E6%8F%92%E4%BB%B6%E4%B8%80%E4%B8%AA%E4%BB%A3%E7%A0%81%E5%8A%A9%E6%89%8B/</guid><description>一个 VsCode 插件版的代码助手，通过接入 ChatGPT，直接在 VsCode 中向 ChatGPT 提问</description><content:encoded><![CDATA[<p><strong>安装地址</strong>：<a href="https://marketplace.visualstudio.com/items?itemName=fengzheng.code-chatgpt-assistant"><strong>mini ChatGPT</strong></a></p>
+]]></content:encoded></item><item><title>VsCode ChatGPT 插件，一个代码助手</title><link>https://www.moonkite.cn/category/product/1-VsCode-ChatGPT-%E6%8F%92%E4%BB%B6%E4%B8%80%E4%B8%AA%E4%BB%A3%E7%A0%81%E5%8A%A9%E6%89%8B/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/product/1-VsCode-ChatGPT-%E6%8F%92%E4%BB%B6%E4%B8%80%E4%B8%AA%E4%BB%A3%E7%A0%81%E5%8A%A9%E6%89%8B/</guid><description>一个 VsCode 插件版的代码助手，通过接入 ChatGPT，直接在 VsCode 中向 ChatGPT 提问</description><content:encoded><![CDATA[<p><strong>安装地址</strong>：<a href="https://marketplace.visualstudio.com/items?itemName=fengzheng.code-chatgpt-assistant"><strong>mini ChatGPT</strong></a></p>
 <p>其实很早之前就想学学 VSCode 插件开发了，但是又不知道做什么，加上我这半吊子前端水平，迟迟没有动手。</p>
 <p>最近 ChatGPT 火的一塌糊涂，我也一直在用，真的非常好用，有些问题之前需要 Google 搜索，现在用 ChatGPT 基本上都能直接解决，效率提升了不少。</p>
 <p>但是吧，浏览器和 IDE 来回切换又很麻烦，所以我灵机一动，那就开发个 ChatGPT 插件吧，即可以学习学习 VSCode 插件开发，又可以做一个方便的效率工具，岂不是一举两得，美哉美哉。</p>
@@ -3064,7 +3064,557 @@ expires_in：token 的过期时间(秒)</p>
 <p>如果各位小伙伴使用过程中发现什么问题，或者有什么更好的建议，都可以加我好友直接跟我说。</p>
 <p>欢迎捧场，赶紧用一用吧，觉得好用的话，可以推荐给身边的小伙伴也用一下。</p>
 <p><img src="https://hexo.moonkite.cn/blog/877shots_so%20(1).png" alt=""></p>
-]]></content:encoded></item><item><title>文本框即时翻译Chrome插件</title><link>https://moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6/</guid><description>在任意网页的输入框输入内容后，都可以翻译成指定的目标语言</description><content:encoded><![CDATA[<p><a href="https://www.moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6/">中文说明</a>     <a href="https://www.moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6-English/">Engilish Introduction</a></p>
+]]></content:encoded></item><item><title>使用 Hugo + GitHub Pages 搭建个人博客</title><link>https://www.moonkite.cn/category/other/Hugo-+-Github-Pages-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/other/Hugo-+-Github-Pages-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid><description>我的博客地址，https://www.moonkite.cn 很多人都想创建自己的个人博客或网站，但是由于种种原因，都被劝退了。 比如没有流量没</description><content:encoded><![CDATA[<p>我的博客地址，https://www.moonkite.cn</p>
+<p>很多人都想创建自己的个人博客或网站，但是由于种种原因，都被劝退了。</p>
+<p>比如没有流量没人看、服务器域名要花钱等等，如果你是因为花钱被劝退了，那现在有很多免费的方案可选，今天就介绍一种，使用 Hugo + GitHub Pages 方式免费搭建个人博客，真的是免费的。</p>
+<p>前提是你要会操作 GitHub，不过这不是什么难事儿，由于对于技术人来说，简直是基本操作。</p>
+<h2 id="为什么选-hugo--github-pages">为什么选 Hugo + GitHub Pages</h2>
+<h3 id="什么是-hugo">什么是 Hugo</h3>
+<p>Hugo 是一个快速、现代且高度可配置的静态网站生成器。它是使用 Go 语言开发的，并以简单易用、高效构建和渲染静态网页而闻名。Hugo 的设计目标是提供一个简洁、高性能的工具，以便开发人员可以轻松创建和管理各种类型的静态网站。</p>
+<p>与之类似的还有 Hexo 。</p>
+<p>Hugo 的主要特点包括：</p>
+<ol>
+<li>快速构建：Hugo 使用并行处理和基于文件变化的增量构建技术，可以在几秒钟内生成大型网站，提供出色的构建速度和性能。</li>
+<li>灵活可配置：Hugo 提供丰富的配置选项和灵活的主题系统，允许开发人员根据自己的需求进行定制和扩展。</li>
+<li>Markdown 支持：Hugo 使用 Markdown 作为主要的内容格式，方便作者使用简洁的语法编写内容，并将其转换为美观的静态网页。</li>
+<li>多语言支持：Hugo 支持多语言网站，可以轻松创建多语言版本的网站，并提供多语言内容管理和翻译支持。</li>
+<li>主题和布局：Hugo 提供了丰富的主题和布局选项，使开发人员能够快速创建具有吸引力和响应式设计的网站。</li>
+<li>内置开发服务器：Hugo 提供了一个内置的开发服务器，可以在本地预览和调试生成的网站，方便开发和调试过程。</li>
+</ol>
+<p>我们不用会 Go 语言、不用会前端，只要会用 Markdown 写字就好了。</p>
+<p>Hugo 官网：https://gohugo.io/</p>
+<p>官网上可以找到几百种的主题，各种风格应有尽有。</p>
+<h3 id="什么是-github-pages">什么是 GitHub Pages</h3>
+<p>GitHub Pages 是 GitHub 提供的一项托管静态网站的服务。它允许用户将自己的代码仓库中的静态网页文件（如 HTML、CSS、JavaScript 等）直接部署为一个在线可访问的网站。</p>
+<p>以下是 GitHub Pages 的主要特点和用途：</p>
+<ol>
+<li>免费托管：GitHub Pages 是免费的，用户可以将自己的静态网站免费托管在 GitHub 平台上。</li>
+<li>简化部署流程：使用 GitHub Pages，用户只需将静态网页文件上传到 GitHub 上的特定仓库，并配置相应的设置，即可自动部署网站，无需自己搭建服务器或配置复杂的环境。</li>
+<li>版本控制：由于网站文件存储在 GitHub 仓库中，用户可以充分利用 Git 的版本控制功能，轻松管理和追踪网站文件的变化。</li>
+<li>自定义域名：GitHub Pages 支持自定义域名，用户可以将自己已经拥有的域名与 GitHub Pages 上的网站关联，实现个性化的访问地址。</li>
+<li>多种发布方式：GitHub Pages 支持多种方式发布网站，包括使用现有的 Git 仓库作为源码、使用 Jekyll 静态网站生成器等。</li>
+<li>兼容 Jekyll：GitHub Pages 默认支持 Jekyll，一个基于 Ruby 的静态网站生成器，可以帮助用户更方便地创建和维护静态网站。</li>
+</ol>
+<p>免费，而且可用 GitHub 仓库作为源码库生成对应的静态网站，正好可以结合 Hugo 使用。</p>
+<h2 id="本地安装-hugo">本地安装 Hugo</h2>
+<p>首先是安装 Go 环境，直接到 Go 官网下载安装包安装就好了。https://go.dev/learn/</p>
+<p>接下来安装 Hugo。</p>
+<p>MacOS 安装</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">brew install hugo
+</span></span></code></pre></div><p>Window 安装</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">choco install hugo-extended
+</span></span></code></pre></div><p>还可以从源码直接安装</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">go install -tags extended github.com/gohugoio/hugo@latest
+</span></span></code></pre></div><p>最后验证 Hugo 安装状态</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">hugo version
+</span></span></code></pre></div><p>有下面这种类似的输出说明安装成功了。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">hugo v0.111.3+extended darwin/amd64 <span class="nv">BuildDate</span><span class="o">=</span>unknown
+</span></span></code></pre></div><h2 id="选定一个主题">选定一个主题</h2>
+<p>Hugo 官网提供了几百种主题样式可供选择。https://themes.gohugo.io，到上面选一个你喜欢的风格。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230628152523507.png" alt=""></p>
+<p>大多数主题还可以预览 demo</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230628154659755.png" alt=""></p>
+<p>选定了就好了，一会儿会用到。</p>
+<h2 id="创建本地项目">创建本地项目</h2>
+<h3 id="创建项目主体">创建项目主体</h3>
+<p>Hugo 是一个工具，安装完之后，需要用它提供的命令创建出博客的主要目录和文件结构。</p>
+<p>进入你想要放置项目的目录中，然后在终端命令行中执行下面的命令，进行博客项目的创建：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">hugo new site 替换为你的博客名称
+</span></span><span class="line"><span class="cl"><span class="c1"># 例如</span>
+</span></span><span class="line"><span class="cl">hugo new site fengzheng-blog
+</span></span></code></pre></div><p>命令执行完成后，你会在当前目录下看到一个以你博客名称命名的文件夹，里面的目录结构大概是这样子的。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230628155232577.png" alt="image-20230628155232577"></p>
+<p>这样一个主体结构就出来了，但是还差一步，就是主题，主体结构好比是骨骼，主题就是一套皮肤。</p>
+<h3 id="集成主题">集成主题</h3>
+<p>刚才上面已经选定了你心仪的主题了，一般主题下面会有使用介绍。比如我的博客用了 hugo-theme-den 这个主题，点进主题详情后，可以看到介绍和使用方式。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230628160031838.png" alt=""></p>
+<p>接下来，下载主题文件到你创建的项目中，下载到 <code>themes</code>目录下。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git clone https://github.com/shaform/hugo-theme-den themes/hugo-theme-den
+</span></span></code></pre></div><p>下载后的目录结构：</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230628160822586.png" alt=""></p>
+<p>有的主题说使用<code>git submodule add</code>这种添加子模块的方式添加主题，这样做的好处是将主题仓库作为子模块加到项目中，当主题有更新后，可以及时更新。</p>
+<p>我不太喜欢用这种方式，在挑选主题的时候就是看的当下的主题样式，万一将来主题被大改后，那就不是我想要的了。而且，使用这种方式，在自动部署的时候可能会出现各种各样的问题。</p>
+<p>所以，我还是把主题下载到我本地的项目中，想做定制，就在本地项目的主题中定制，发布的时候就和项目主体一起发布了，很方便，也很灵活可控。</p>
+<p>主题地址：https://themes.gohugo.io/themes/hugo-theme-den/</p>
+<h2 id="配置网站本地调试">配置网站+本地调试</h2>
+<p>最终下载下来的主题目录是这样的</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230628161827409.png" alt="image-20230628161827409"></p>
+<h3 id="全局配置">全局配置</h3>
+<p>首先将主题目录下的 <code>config.toml</code>文件复制到项目根目录下，这个配置文件就用来配置网站的全局配置了，比如host、标题、菜单、默认语言等等。</p>
+<p>我用 hugo-theme-den 这个主题的配置做一个介绍。</p>
+<p>以下是 Hugo 配置文件中各项设置的名称、值和说明：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>baseURL</td>
+<td>&ldquo;<a href="https://moonkite.cn">https://moonkite.cn</a>&rdquo;</td>
+<td>网站的基础 URL，引用的本地图片、css等，将会以这个地址作为 host</td>
+</tr>
+<tr>
+<td>title</td>
+<td>&ldquo;古时的风筝&rdquo;</td>
+<td>网站的标题</td>
+</tr>
+<tr>
+<td>theme</td>
+<td>&ldquo;hugo-theme-den&rdquo;</td>
+<td>网站所使用的主题</td>
+</tr>
+<tr>
+<td>enableRobotsTXT</td>
+<td>true</td>
+<td>生成 robots.txt 文件，用于控制搜索引擎爬虫的访问</td>
+</tr>
+<tr>
+<td>enableEmoji</td>
+<td>true</td>
+<td>启用 Emoji 表情支持</td>
+</tr>
+<tr>
+<td>hasCJKLanguage</td>
+<td>true</td>
+<td>检测 CJK（中文、日文、韩文）语言用于字数统计等功能</td>
+</tr>
+<tr>
+<td>preserveTaxonomyNames</td>
+<td>true</td>
+<td>不将标签名转为小写</td>
+</tr>
+<tr>
+<td>rssLimit</td>
+<td>20</td>
+<td>限制 RSS 订阅中的条目数量</td>
+</tr>
+<tr>
+<td>disablePathToLower</td>
+<td>true</td>
+<td>禁止将路径转为小写</td>
+</tr>
+<tr>
+<td>paginate</td>
+<td>20</td>
+<td>每页显示的条目数量（用于归档、标签和分类）</td>
+</tr>
+<tr>
+<td>paginatePath</td>
+<td>&ldquo;page&rdquo;</td>
+<td>分页路径的前缀</td>
+</tr>
+<tr>
+<td>PygmentsCodeFences</td>
+<td>true</td>
+<td>启用代码块的语法高亮</td>
+</tr>
+<tr>
+<td>PygmentsUseClasses</td>
+<td>true</td>
+<td>需要用于 shhighlight shortcode</td>
+</tr>
+<tr>
+<td>disqusShortname</td>
+<td>&quot;&quot;</td>
+<td>Disqus 评论系统的 shortname</td>
+</tr>
+<tr>
+<td>googleAnalytics</td>
+<td>&quot;&quot;</td>
+<td>Google Analytics 的跟踪 ID</td>
+</tr>
+<tr>
+<td>defaultContentLanguage</td>
+<td>&ldquo;zh-cn&rdquo;</td>
+<td>默认使用的语言</td>
+</tr>
+<tr>
+<td>defaultContentLanguageInSubdir</td>
+<td>false</td>
+<td>默认语言是否在子目录中</td>
+</tr>
+<tr>
+<td>permalinks.posts</td>
+<td>&ldquo;/:year/:month/:day/:slug/&rdquo;</td>
+<td>文章的永久链接格式</td>
+</tr>
+<tr>
+<td>permalinks.categories</td>
+<td>&ldquo;/category/:slug/&rdquo;</td>
+<td>分类的永久链接格式</td>
+</tr>
+<tr>
+<td>permalinks.tags</td>
+<td>&ldquo;/tag/:slug/&rdquo;</td>
+<td>标签的永久链接格式</td>
+</tr>
+<tr>
+<td>permalinks.pages</td>
+<td>&ldquo;/:slug/&rdquo;</td>
+<td>页面的永久链接格式</td>
+</tr>
+<tr>
+<td>author.name</td>
+<td>&ldquo;风筝&rdquo;</td>
+<td>作者的名称</td>
+</tr>
+<tr>
+<td>sitemap.changefreq</td>
+<td>&ldquo;weekly&rdquo;</td>
+<td>sitemap.xml 文件的更新频率</td>
+</tr>
+<tr>
+<td>sitemap.priority</td>
+<td>0.5</td>
+<td>sitemap.xml 文件的优先级</td>
+</tr>
+<tr>
+<td>sitemap.filename</td>
+<td>&ldquo;sitemap.xml&rdquo;</td>
+<td>sitemap.xml 文件的文件名</td>
+</tr>
+<tr>
+<td>params.since</td>
+<td>&ldquo;2023&rdquo;</td>
+<td>网站创建时间</td>
+</tr>
+<tr>
+<td>params.rssFullContent</td>
+<td>true</td>
+<td>在 RSS 订阅中使用完整内容而不是摘要</td>
+</tr>
+<tr>
+<td>params.keywords</td>
+<td>[&ldquo;Hugo&rdquo;, &ldquo;theme&rdquo;,&ldquo;编程&rdquo;,&lsquo;java&rsquo;,&lsquo;ChatGPT&rsquo;,&ldquo;程序员&rdquo;,&lsquo;开发&rsquo;]</td>
+<td>网站的关键词</td>
+</tr>
+<tr>
+<td>params.description</td>
+<td>&ldquo;一个程序员的个人博客&rdquo;</td>
+<td>网站的描述</td>
+</tr>
+<tr>
+<td>params.logoTitle</td>
+<td>&quot; &quot;</td>
+<td>在左上角显示的 Logo 标题</td>
+</tr>
+<tr>
+<td>params.siteLogoImage</td>
+<td>&quot;&quot;</td>
+<td>在 Logo 标题旁边显示的 Logo 图片</td>
+</tr>
+<tr>
+<td>params.headerImage</td>
+<td>&ldquo;images/background.png&rdquo;</td>
+<td>头部背景图片</td>
+</tr>
+<tr>
+<td>params.showAuthorCard</td>
+<td>true</td>
+<td>是否在文章下方显示作者信息</td>
+</tr>
+<tr>
+<td>params.comments</td>
+<td>true</td>
+<td>是否启用评论功能</td>
+</tr>
+<tr>
+<td>params.showMenuLanguages</td>
+<td>true</td>
+<td>是否显示多</td>
+</tr>
+</tbody>
+</table>
+<h3 id="本地启动">本地启动</h3>
+<p>先做一些基本设置之后呢（其实可以先什么都不改，先看看效果），就可以启动项目了，使用下面的命令启动</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">hugo server
+</span></span></code></pre></div><p>之后，看到下面这样的输出，说明启动成功了。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">......
+</span></span><span class="line"><span class="cl">Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
+</span></span><span class="line"><span class="cl">Web Server is available at http://localhost:1313/ <span class="o">(</span><span class="nb">bind</span> address 127.0.0.1<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Press Ctrl+C to stop
+</span></span></code></pre></div><p>现在在浏览器打开 <code>http://localhost:1313</code>，就能看到效果了。当然了，刚开始肯定只有基础样式，没有内容。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230628163325001.png" alt="image-20230628163325001"></p>
+<p>启动之后，之后做的修改会自动热部署，不用重启应用，除非有些配置的修改。什么配置呢，就是那种你发现改了，刷新页面了，但是没起作用，很多时候就是需要重启了。</p>
+<p><code>Ctrl+C</code>停止应用，然后<code>hugo server</code>重新启动。</p>
+<h2 id="定制化可选">定制化（可选）</h2>
+<p>如果你使用的是我用的这个主题，可以配置作者卡片和相关文章。</p>
+<h3 id="配置作者卡片和相关文章">配置作者卡片和相关文章</h3>
+<p>大部分博客主题都有这个设置，注意看选用主题的使用说明或示例配置就好了。</p>
+<p>在每一篇文章的底部都可以出现相关文章和作者卡片，例如下面这样。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230628170150807.png" alt=""></p>
+<h4 id="相关文章">相关文章</h4>
+<p>在 <code>config.toml</code>配置中做如下配置，注意 toml 文件的格式。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">params</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">enableRelated</span> <span class="p">=</span> <span class="kc">true</span>
+</span></span></code></pre></div><h4 id="作者卡片">作者卡片</h4>
+<p>首先启用 <code>showAuthorCard</code>配置</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">params</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">showAuthorCard</span> <span class="p">=</span> <span class="kc">true</span> 
+</span></span></code></pre></div><p>然后，在根目录的 <code>data/authors</code>子目录下（如果没有 authors目录，则需要手动创建），添加一个作者的配置，可以有多个作者，一个作者对应一个配置文件。</p>
+<p>例如在 <code>data/authors</code>目录下创建 <code>fengzheng.toml</code>的文件，配置上内容</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="nx">url</span> <span class="p">=</span> <span class="s2">&#34;https://www.moonkite.cn&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">name</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">display</span> <span class="p">=</span> <span class="s2">&#34;风筝&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">image</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">url</span> <span class="p">=</span> <span class="s2">&#34;images/person.jpg&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">zh-cn</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">description</span> <span class="p">=</span> <span class="s2">&#34;作者描述&#34;</span>
+</span></span></code></pre></div><h3 id="评论功能">评论功能</h3>
+<p>很多主题都默认带评论功能，比如 Disqus，例如下面的配置。你需要到 Disqus 官方上申请账号，然后配置上下面的配置就好了。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="nx">disqusShortname</span> <span class="p">=</span> <span class="s2">&#34;&#34;</span>         <span class="c"># disqus_shortname</span>
+</span></span></code></pre></div><p>但是据说广告太多，国内用户又这么不喜欢广告，所以在国内这个评论系统基本上没人用。</p>
+<p>与它类似的叫做<code>Giscus</code>的评论系统，没有广告，完全免费。具体可以参考官网进行集成 <a href="https://giscus.app/zh-CN">https://giscus.app/zh-CN</a>。</p>
+<h4 id="utterance">Utterance</h4>
+<p>我用的就是这个评论系统，集成简单，有个 GitHub 仓库就行了，它是用的仓库的 issue 功能来改造的。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230628172807804.png" alt=""></p>
+<p>1、首先在 GitHub 中创建一个空白仓库就行</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230628173250746.png" alt=""></p>
+<p>2、然后，点击这个地址 <a href="https://github.com/apps/utterances">https://github.com/apps/utterances</a>，进入安装页，点击Configure。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230628173632124.png" alt=""></p>
+<p>3、选择刚才创建的仓库，然后保存</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230628173835678.png" alt=""></p>
+<p>4、最后找到主题目录下的<code>/layouts/partials/comments.html</code>，将里面的内容替为将下面的内容</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&#34;https://utteranc.es/client.js&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">repo</span><span class="o">=</span><span class="s2">&#34;github账号名称/仓库名称&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">issue</span><span class="o">-</span><span class="nx">term</span><span class="o">=</span><span class="s2">&#34;pathname&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">theme</span><span class="o">=</span><span class="s2">&#34;github-light&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">crossorigin</span><span class="o">=</span><span class="s2">&#34;anonymous&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="kr">async</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="err">/script&gt;</span>
+</span></span></code></pre></div><p>其中 <code>repo</code>要配置成你创建的仓库，前面是你账号名称，后面是仓库名称。</p>
+<h2 id="菜单和对应的目录">菜单和对应的目录</h2>
+<p>菜单也是在<code>config.toml</code>中配置，每个主题的配置可能略有不同，我用的这个主题的配置是下面这样子：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">languages</span><span class="p">.</span><span class="nx">zh-cn</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">languageCode</span> <span class="p">=</span> <span class="s2">&#34;zh-cn&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">languageName</span> <span class="p">=</span> <span class="s2">&#34;简体中文&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">contentDir</span> <span class="p">=</span> <span class="s2">&#34;content/cn&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">weight</span> <span class="p">=</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="nx">languages</span><span class="p">.</span><span class="nx">zh-cn</span><span class="p">.</span><span class="nx">params</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">description</span> <span class="p">=</span> <span class="s2">&#34;一个程序员的喃喃自语&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="p">[[</span><span class="nx">languages</span><span class="p">.</span><span class="nx">zh-cn</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">main</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">name</span> <span class="p">=</span> <span class="s1">&#39;&lt;i class=&#34;fas fad fa-h-square&#34;&gt;&lt;/i&gt;主页&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">weight</span> <span class="p">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">identifier</span> <span class="p">=</span> <span class="s2">&#34;home&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">url</span> <span class="p">=</span> <span class="s2">&#34;/&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="p">[[</span><span class="nx">languages</span><span class="p">.</span><span class="nx">zh-cn</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">main</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;&lt;i class=&#39;fas fa-yin-yang&#39;&gt;&lt;/i&gt;生活随笔&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">weight</span> <span class="p">=</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">identifier</span> <span class="p">=</span> <span class="s2">&#34;notes&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">url</span> <span class="p">=</span> <span class="s2">&#34;category/notes&#34;</span>
+</span></span></code></pre></div><p>一般主题都支持多语言的，<code>languages.zh-cn</code>表示中文，其对应的文章的存放目录就是<code>content/cn</code>。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230629143540406.png" alt=""></p>
+<p><code>languages.zh-cn.menu.main</code>是中文语言下的菜单，一个菜单包括如下几个配置：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>展示名称，可包含html</td>
+</tr>
+<tr>
+<td>weight</td>
+<td>菜单项权重，用于确定显示顺序</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td>菜单项标识符</td>
+</tr>
+<tr>
+<td>url</td>
+<td>菜单项链接地址</td>
+</tr>
+</tbody>
+</table>
+<p>以上是 Hugo 菜单设置中 &ldquo;主页&rdquo; 项的属性说明。其中，<code>name</code> 表示菜单项的显示名称，<code>weight</code> 用于指定菜单项的排序权重，<code>identifier</code> 是菜单项的唯一标识符，<code>url</code> 则指定了菜单项的链接地址，除了主页指向根目录外，其他的都指向 <code>content/cn</code>的子目录。</p>
+<p>例如，生活随笔的 url 是 <code>category/notes</code>，它的完整路径就是 <code>content/cn/category/notes</code>。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230629144659128.png" alt=""></p>
+<p>每创建一个目录后，要在其中添加一个名称为 <code>_index.md</code>的文件，里面内容就是为了显示这个菜单进去的列表页标题，例如下图中间的<code>生活随笔</code>四个字。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">title: 生活随笔
+</span></span><span class="line"><span class="cl">--- 
+</span></span></code></pre></div><p>最后出来的效果如下：</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230629144753588.png" alt=""></p>
+<h2 id="添加文章">添加文章</h2>
+<p>配置完菜单和对应的文章目录后，就可以添加文章了。</p>
+<p>Hugo 中的文章都是 Markdown 格式，之后 build 的时候会将 markdown 文件按照格式转换成 HTML 。</p>
+<p>加一篇文章，那就是创建一个 markdown 文件，文件的名称其实是不影响展示的，只为你自己辨认。真正影响展示的在 markdown 文件的内容的最上方定义。</p>
+<p>例如我在生活随笔这个栏目下添加了一个文件，名称无所谓，不影响展示。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230629150338020.png" alt=""></p>
+<p>内容部分，要在开头加入类似下面你的配置，生成HTML的时候需要。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">title: &#34;这次没躲过去，阳了&#34;
+</span></span><span class="line"><span class="cl">date: 2023-06-02T08:56:23+08:00
+</span></span><span class="line"><span class="cl">draft: false
+</span></span><span class="line"><span class="cl">description: 2023 年 5 月 25 日，阳了
+</span></span><span class="line"><span class="cl">authors:
+</span></span><span class="line"><span class="cl">    <span class="k">-</span> &#34;风筝&#34;
+</span></span><span class="line"><span class="cl">comment: true
+</span></span><span class="line"><span class="cl">---
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>文章标题，用来展示</td>
+</tr>
+<tr>
+<td>date</td>
+<td>文章发布日期，用来展示，日期越晚，展示越靠前</td>
+</tr>
+<tr>
+<td>draft</td>
+<td>是否为草稿</td>
+</tr>
+<tr>
+<td>description</td>
+<td>文章描述</td>
+</tr>
+<tr>
+<td>authors</td>
+<td>文章作者</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>最终的效果如下：</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230629151309979.png" alt=""></p>
+<h2 id="编译和发布">编译和发布</h2>
+<p>使用 <code>hugo build</code>命令，会在根目录下生成 <code>build</code>目录，这个目录就是 GitHub Pages 所需的格式了。</p>
+<p>GitHub Pages 就是读取一个特定仓库的内容，然后做展示。这个特定仓库有什么特点呢，就是仓库名称，仓库名称必须是<code>你的GitHub账号名称.github.io</code>，例如<code>alibaba.github.io</code>，<code>alibaba</code>就是账号名称，可以在 URL上看出来。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230628175803886.png" alt=""></p>
+<p>当然了，你不能用别人的仓库，必须是你自己的。</p>
+<p>1、在你的 GitHub 中创建仓库，注意名称一定要按照上面说的那个格式。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230628180125946.png" alt=""></p>
+<p>2、进入刚刚 build 完成后的 <code>public</code>目录，然后初始化仓库，关联远程仓库，提交代码。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git init
+</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;first commit&#34;</span>
+</span></span><span class="line"><span class="cl">git branch -M main
+</span></span><span class="line"><span class="cl">git remote add origin https://github.com/username/username.github.io
+</span></span><span class="line"><span class="cl">git push -u origin main
+</span></span></code></pre></div><p>3、如果没有意外的话，你就能看到远程仓库已经有了你提交的内容。如果有意外的话，大部分是 GitHub 提交的问题，自行解决就OK了，相信自己。</p>
+<p>4、在浏览器输入<code>username.github.io</code>，就能看到部署的博客了。例如我的博客的默认域名是<code>https://huzhicheng.github.io</code></p>
+<p>之后，如果有改动的话，执行 <code>hugo build</code>本地构建，然后提交代码到远程仓库。重复这个步骤就行了。</p>
+<p>好像也还算方便。但是，还有更方便的，那就是自动发布。</p>
+<h2 id="配置自动发布流程">配置自动发布流程</h2>
+<p>自动发布需要再创建一个仓库，用来存放项目源文件，不是build之后的，这个仓库可以是私有的，这样一来，项目也有版本管理了，岂不妙哉。</p>
+<p>整个发布流程大概是这样子的。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230628181907880.png" alt=""></p>
+<p>1、首先创建一个私有仓库，作为项目源文件仓库，用于管理未经编译的代码。</p>
+<p>创建好仓库后，按照仓库的提示，将本地的源代码目录和远程仓库关联上。</p>
+<p>2、然后在根目录的<code>.github</code>目录下创建<code>workflows</code>的子目录，并在其中添加一个<code>deploy.yml</code>的文件。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230628183201971.png" alt=""></p>
+<p>里面的内容如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">deploy</span><span class="w"> </span><span class="c"># 名字随意</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&#34;main&#34;</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">jobs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">build</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">submodules</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">  </span><span class="c"># Fetch Hugo themes (true OR recursive) 获取submodule主题</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">fetch-depth</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">    </span><span class="c"># Fetch all history for .GitInfo and .Lastmod</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Setup Hugo	# 步骤名自取</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">peaceiris/actions-hugo@v2	# hugo官方提供的action，用于在任务环境中获取hugo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">hugo-version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;latest&#39;</span><span class="w">	</span><span class="c"># 获取最新版本的hugo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="c"># extended: true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l">hugo --minify	# 使用hugo构建静态网页</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Deploy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">peaceiris/actions-gh-pages@v3	# 一个自动发布github pages的action</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">external_repository</span><span class="p">:</span><span class="w"> </span><span class="l">username/username.github.io	# 发布到哪个repo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">personal_token</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.ACTION_ACCESS_TOKEN }}	# 发布到其他repo需要提供生成的personal access token</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">publish_dir</span><span class="p">:</span><span class="w"> </span><span class="l">./public	# 因为hugo默认生成静态网页到public文件夹，所以这里发布public文件夹里的内容</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">publish_branch</span><span class="p">:</span><span class="w"> </span><span class="l">main	# 发布到GitHub Pages关联仓库的哪个branch</span><span class="w">
+</span></span></span></code></pre></div><p>注意，上面的文件只需要将  <code>external_repository</code>修改成你自己的 GitHub Pages 关联仓库就好，其他都不用动。</p>
+<p>3、创建 Personal Token</p>
+<p>进入 GitHub，点击你自己的头像，点击 <code>Settings</code></p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230628183602967.png" alt=""></p>
+<p>点击<code>Developer Settings</code></p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230628183715571.png" alt=""></p>
+<p>点击创建一个 Token</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230628183849384.png" alt=""></p>
+<p>然后设置名称、有效期和权限。名称随意，方便以后辨认。有效期可选，我为了以后不改，就设置了无限期，当然为了安全性考虑，这是不建议的。</p>
+<p>然后勾选 <code>repo</code>和<code>admin:repo_hook</code>这两项。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230628184119172.png" alt=""></p>
+<p>最后，会生成一个 token。一定要记录下来，后面会用到，就显示这一次，以后就看不到了。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230628184359457.png" alt=""></p>
+<p>4、在源码仓库设置token，也就是那个第1步创建的那个仓库。</p>
+<p>进入这个仓库的 <code>Settings</code>-&gt;<code>secrets and variables</code>-&gt;<code>Actions</code>，在这里点击<code>New repository secret</code>。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230628185008522.png" alt="image-20230628185008522"></p>
+<p>注意，Name 是有讲究的，是刚才第2步的 <code>deploy.yml</code>文件中设置的</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">personal_token: <span class="si">${</span><span class="p">{ secrets.ACTION_ACCESS_TOKEN </span><span class="si">}</span><span class="o">}</span>
+</span></span></code></pre></div><p>就是 secrets. 后面的部分。</p>
+<p>而 Secret 是第3步创建的 Person Token，就是说了一定要保存的那个Token。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230628185105668.png" alt=""></p>
+<p>5、提交代码，自动发布。</p>
+<p>之后，我们将代码提交，然后在源码仓库中的<code>Acitons</code>选项中，可以看到提交的自动部署流程。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230628185523724.png" alt=""></p>
+<p>并且有每一次提交的自动部署记录。</p>
+<p>这样一来，每次修改完成，或者添加完文章，只需要提交源码仓库就好了，自动发布流程会自动打包部署，然后推送到 GitHub Pages 关联仓库，稍等片刻，刷新页面，就可看到更新后的内容了。</p>
+<h2 id="自定义域名可选">自定义域名（可选）</h2>
+<p>如果你不想用默认的<code>username.github.io</code>域名，那可以设置自已的域名，域名就要花钱了，不过非 <code>.com</code>后缀的域名一般都很便宜，几十块钱、甚至几块钱一年的都有，只要不是字符数太少的，那种就不要想了。</p>
+<h3 id="购买域名">购买域名</h3>
+<p>买域名的话，平台有很多，国内就阿里云就好了。</p>
+<p>国外的<a href="https://www.cloudflare.com/">Cloudflare</a>、<a href="https://www.namesilo.com/">NameSilo</a>、<a href="https://www.godaddy.com/">GoDaddy</a> 都可以。</p>
+<p>国外的买了就可以用，国内的话，还需要备案，备案需要一点时间。</p>
+<p>我这个 <a href="www.moonkite.cn">moonkite.cn</a> 域名买了很多年了，之前一直用二级域名当图床啊、测试服务这些用，这次主域名终于派上用场了。</p>
+<h3 id="解析域名">解析域名</h3>
+<p>如果你是用的阿里云的话，进入域名列表页，点击域名后面的「解析」按钮。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230629152040552.png" alt=""></p>
+<p>添加两条记录，都是 CNAME 类型的，也就是别名类的，一个域名解析到另一个域名。</p>
+<p>主机记录选<code>www</code>和<code>@</code>，记录值就是你的 GitHub Pages 默认域名<code>username.github.io</code>，记住换成你自己的 GitHub 名字。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230629152422550.png" alt=""></p>
+<p>最后添加完成这两个 CNAME 解析如下。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230629152220506.png" alt=""></p>
+<p>说是等10分钟，基本上都不用那么久，片刻即可生效。</p>
+<h3 id="配置域名">配置域名</h3>
+<p>域名解析配置好后，要在仓库中进行设置。</p>
+<p>打开GitHub Pages 关联仓库，也就是 username.github.io 那个，点击仓库的 <code>Settings</code>，在左侧菜单中选择<code>Pages</code>。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230629152821784.png" alt=""></p>
+<p>然后在下方的<code>Custom domain</code>这里配置上你自己的域名，配置之后，会立即检测DNS，成功后，会有绿色的提示。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230629152938770.png" alt=""></p>
+<p>之后，在浏览器输入你的域名，就可以访问了。</p>
+<p>大功告成。</p>
+<h3 id="自动更改自定义域名">自动更改自定义域名</h3>
+<p>但是，如果你用的是自动部署方式，会发现每次提交代码后，自定义域名都被改回默认域名了。这不白干了吗，难道每次都要配置一下？</p>
+<p>当然不用了，你只需要在项目的根目录中找到 <code>static</code>目录，在其中创建一个名称为 <code>CNAME</code>的文件，注意，没有文件后缀。在其中写入你自己的域名即可，之后每次添加文章、修改样式，再重新提交代码，自动部署后，域名就不会改为默认的了。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230629153440506.png" alt=""></p>
+]]></content:encoded></item><item><title>文本框即时翻译Chrome插件</title><link>https://www.moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6/</guid><description>在任意网页的输入框输入内容后，都可以翻译成指定的目标语言</description><content:encoded><![CDATA[<p><a href="https://www.moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6/">中文说明</a>     <a href="https://www.moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6-English/">Engilish Introduction</a></p>
 <p><strong>安装地址</strong>：</p>
 <p>文本框翻译插件，使用 Google 翻译功能，将 Chrome 浏览器中任意文本框中的内容即时翻译成对应的目标语言。例如将文本框中的内容自动翻译成英文，并替换当前文本框中的内容。</p>
 <p>视频介绍：<a href="https://www.bilibili.com/video/BV17g4y1A7Fe/?vd_source=d72d86eea40f5750277144c5880966f5">中文介绍</a>，<a href="https://youtu.be/iRNeF2LBT7U">English Introduction</a></p>
@@ -3079,14 +3629,14 @@ expires_in：token 的过期时间(秒)</p>
 <p>如果各位在使用过程中发现什么问题，或者有什么更好的建议，都可以加我好友直接跟我说。</p>
 <p>欢迎捧场，赶紧用一用吧，觉得好用的话，可以推荐给身边的小伙伴也用一下。</p>
 <p><img src="https://hexo.moonkite.cn/blog/877shots_so%20(1).png" alt=""></p>
-]]></content:encoded></item><item><title>一个简单的 web 版 JVM 监控器</title><link>https://moonkite.cn/category/product/2-JVM-%E7%9B%91%E6%8E%A7/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/product/2-JVM-%E7%9B%91%E6%8E%A7/</guid><description>以 JMX 技术为基础，差不多实现了一个 web 版的 visualVM</description><content:encoded>&lt;p>以 JMX 技术为基础，差不多实现了一个 web 版的 visualVM，具备以下功能：&lt;/p>
+]]></content:encoded></item><item><title>一个简单的 web 版 JVM 监控器</title><link>https://www.moonkite.cn/category/product/2-JVM-%E7%9B%91%E6%8E%A7/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/product/2-JVM-%E7%9B%91%E6%8E%A7/</guid><description>以 JMX 技术为基础，差不多实现了一个 web 版的 visualVM</description><content:encoded>&lt;p>以 JMX 技术为基础，差不多实现了一个 web 版的 visualVM，具备以下功能：&lt;/p>
 &lt;p>支持连接本地 JVM 和 远程 JVM
 展示所有 MBeans，并可查看属性及调用操作
 仪表盘功能：
 实时系统信息，系统 CPU 使用率、内存占用等
 JVM 参数信息
 实时 CPU 使用率曲线图、实时 Heap 、MetaSpace 使用量曲线图、实时类加载量曲线图、实时线程数曲线图
-垃圾收集器及垃圾收集次数&lt;/p></content:encoded></item><item><title>这次没躲过去，阳了</title><link>https://moonkite.cn/category/notes/%E9%A6%96%E9%98%B3%E5%BF%AB%E5%A5%BD%E4%BA%86/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/notes/%E9%A6%96%E9%98%B3%E5%BF%AB%E5%A5%BD%E4%BA%86/</guid><description>2023 年 5 月 25 日，阳了</description><content:encoded><![CDATA[<p>上周四（2023 年 5 月 25 日）阳了，是首阳，去年幸运的躲过去了。今年就没这么幸运了，新冠只会迟到，但它不会不来。</p>
+垃圾收集器及垃圾收集次数&lt;/p></content:encoded></item><item><title>这次没躲过去，阳了</title><link>https://www.moonkite.cn/category/notes/%E9%A6%96%E9%98%B3%E5%BF%AB%E5%A5%BD%E4%BA%86/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/notes/%E9%A6%96%E9%98%B3%E5%BF%AB%E5%A5%BD%E4%BA%86/</guid><description>2023 年 5 月 25 日，阳了</description><content:encoded><![CDATA[<p>上周四（2023 年 5 月 25 日）阳了，是首阳，去年幸运的躲过去了。今年就没这么幸运了，新冠只会迟到，但它不会不来。</p>
 <p><img src="https://hexo.moonkite.cn/blog/image-20230603205055429.png" alt=""></p>
 <p>最近这次疫情主要是查漏补缺，把去年漏掉的那波补上，顺带着让一些人二阳，甚至三阳。</p>
 <p>之前公司里，算上我有3个去年没阳的，我是上周四阳的，另外一个是这周一阳的。</p>
@@ -3140,7 +3690,7 @@ JVM 参数信息
 <p>去年的时候还有政策，阳了可以居家办公，但是今年呢，新冠已经当做流感来对待了，好多公司要求能上班就上班，不能上班就请假。所以有很多人，即使阳了，哪怕发着烧，只能要坚持，还是会到公司上班的。</p>
 <p>这就是生活呀！</p>
 <p>你阳了吗，首阳还是二阳，坚持上班了吗？</p>
-]]></content:encoded></item><item><title>做了一个 VSCode ChatGPT 插件</title><link>https://moonkite.cn/2023/05/24/%E5%81%9A%E4%BA%86%E4%B8%80%E4%B8%AA-VSCode-ChatGPT-%E6%8F%92%E4%BB%B6/</link><pubDate>Wed, 24 May 2023 12:56:23 +0800</pubDate><guid>https://moonkite.cn/2023/05/24/%E5%81%9A%E4%BA%86%E4%B8%80%E4%B8%AA-VSCode-ChatGPT-%E6%8F%92%E4%BB%B6/</guid><description>其实很早之前就想学学 VSCode 插件开发了，但是又不知道做什么，加上我这半吊子前端水平，迟迟没有动手。 最近 ChatGPT 火的一塌糊涂，我也一直在用，真的非常好用，</description><content:encoded><![CDATA[<p>其实很早之前就想学学 VSCode 插件开发了，但是又不知道做什么，加上我这半吊子前端水平，迟迟没有动手。</p>
+]]></content:encoded></item><item><title>做了一个 VSCode ChatGPT 插件</title><link>https://www.moonkite.cn/2023/05/24/%E5%81%9A%E4%BA%86%E4%B8%80%E4%B8%AA-VSCode-ChatGPT-%E6%8F%92%E4%BB%B6/</link><pubDate>Wed, 24 May 2023 12:56:23 +0800</pubDate><guid>https://www.moonkite.cn/2023/05/24/%E5%81%9A%E4%BA%86%E4%B8%80%E4%B8%AA-VSCode-ChatGPT-%E6%8F%92%E4%BB%B6/</guid><description>其实很早之前就想学学 VSCode 插件开发了，但是又不知道做什么，加上我这半吊子前端水平，迟迟没有动手。 最近 ChatGPT 火的一塌糊涂，我也一直在用，真的非常好用，</description><content:encoded><![CDATA[<p>其实很早之前就想学学 VSCode 插件开发了，但是又不知道做什么，加上我这半吊子前端水平，迟迟没有动手。</p>
 <p>最近 ChatGPT 火的一塌糊涂，我也一直在用，真的非常好用，有些问题之前需要 Google 搜索，现在用 ChatGPT 基本上都能直接解决，效率提升了不少。</p>
 <p>但是吧，浏览器和 IDE 来回切换又很麻烦，所以我灵机一动，那就开发个 ChatGPT 插件吧，即可以学习学习 VSCode 插件开发，又可以做一个方便的效率工具，岂不是一举两得，美哉美哉。</p>
 <p>于是我就动手写了下面这个插件，叫做 <code>mini ChatGPT</code>，现在已经发布到 VSCode 插件市场了。</p>
@@ -3266,7 +3816,7 @@ JVM 参数信息
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">builder</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div>]]></content:encoded></item><item><title>用了这两款插件，同事再也不说我代码写的烂了</title><link>https://moonkite.cn/category/java/%E7%94%A8%E4%BA%86%E8%BF%99%E4%B8%A4%E6%AC%BE%E6%8F%92%E4%BB%B6%E5%90%8C%E4%BA%8B%E5%86%8D%E4%B9%9F%E4%B8%8D%E8%AF%B4%E6%88%91%E4%BB%A3%E7%A0%81%E5%86%99%E7%9A%84%E7%83%82%E4%BA%86/</link><pubDate>Fri, 17 Mar 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/java/%E7%94%A8%E4%BA%86%E8%BF%99%E4%B8%A4%E6%AC%BE%E6%8F%92%E4%BB%B6%E5%90%8C%E4%BA%8B%E5%86%8D%E4%B9%9F%E4%B8%8D%E8%AF%B4%E6%88%91%E4%BB%A3%E7%A0%81%E5%86%99%E7%9A%84%E7%83%82%E4%BA%86/</guid><description>同事：你的代码写的不行啊，不够规范啊。 我：我写的代码怎么可能不规范，不要胡说。 于是同事打开我的 IDEA ，安装了一个插件，然后执行了一下，规范不规范</description><content:encoded><![CDATA[<p>同事：你的代码写的不行啊，不够规范啊。</p>
+</span></span></code></pre></div>]]></content:encoded></item><item><title>用了这两款插件，同事再也不说我代码写的烂了</title><link>https://www.moonkite.cn/category/java/%E7%94%A8%E4%BA%86%E8%BF%99%E4%B8%A4%E6%AC%BE%E6%8F%92%E4%BB%B6%E5%90%8C%E4%BA%8B%E5%86%8D%E4%B9%9F%E4%B8%8D%E8%AF%B4%E6%88%91%E4%BB%A3%E7%A0%81%E5%86%99%E7%9A%84%E7%83%82%E4%BA%86/</link><pubDate>Fri, 17 Mar 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/java/%E7%94%A8%E4%BA%86%E8%BF%99%E4%B8%A4%E6%AC%BE%E6%8F%92%E4%BB%B6%E5%90%8C%E4%BA%8B%E5%86%8D%E4%B9%9F%E4%B8%8D%E8%AF%B4%E6%88%91%E4%BB%A3%E7%A0%81%E5%86%99%E7%9A%84%E7%83%82%E4%BA%86/</guid><description>同事：你的代码写的不行啊，不够规范啊。 我：我写的代码怎么可能不规范，不要胡说。 于是同事打开我的 IDEA ，安装了一个插件，然后执行了一下，规范不规范</description><content:encoded><![CDATA[<p>同事：你的代码写的不行啊，不够规范啊。</p>
 <p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8ec392c83a4f48209391d2a30483f96c~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
 <p>我：我写的代码怎么可能不规范，不要胡说。</p>
 <p>于是同事打开我的 IDEA ，安装了一个插件，然后执行了一下，规范不规范，看报告吧。</p>
@@ -3378,7 +3928,7 @@ JVM 参数信息
 <p>还有，比如对线程池的使用，有根据规范建议的内容，建议自己定义核心线程数和最大线程数等参数，不建议使用 <code>Excutors</code>工具类。</p>
 <p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6953c39ed30c40eab564d3d5d8040ae4~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
 <p>有了这俩插件，看谁还能说我代码写的不规范了。</p>
-]]></content:encoded></item><item><title>0. 重学了计算机网络，略有小成，经验全部分享出来</title><link>https://moonkite.cn/category/network/%E9%87%8D%E5%AD%A6%E4%BA%86%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%95%A5%E6%9C%89%E5%B0%8F%E6%88%90%E7%BB%8F%E9%AA%8C%E5%85%A8%E9%83%A8%E5%88%86%E4%BA%AB%E5%87%BA%E6%9D%A5/</link><pubDate>Tue, 28 Feb 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/network/%E9%87%8D%E5%AD%A6%E4%BA%86%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%95%A5%E6%9C%89%E5%B0%8F%E6%88%90%E7%BB%8F%E9%AA%8C%E5%85%A8%E9%83%A8%E5%88%86%E4%BA%AB%E5%87%BA%E6%9D%A5/</guid><description>大家好，我是风筝。 轻解计算机网络已有高清 PDF 版本可以离线阅读了，全册 65 页，如果有需要离线版的高清 PDF 可以直接下载。 重学计算机网络已经有一段时间了</description><content:encoded><![CDATA[<p><strong>大家好，我是风筝。</strong></p>
+]]></content:encoded></item><item><title>0. 重学了计算机网络，略有小成，经验全部分享出来</title><link>https://www.moonkite.cn/category/network/%E9%87%8D%E5%AD%A6%E4%BA%86%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%95%A5%E6%9C%89%E5%B0%8F%E6%88%90%E7%BB%8F%E9%AA%8C%E5%85%A8%E9%83%A8%E5%88%86%E4%BA%AB%E5%87%BA%E6%9D%A5/</link><pubDate>Tue, 28 Feb 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/network/%E9%87%8D%E5%AD%A6%E4%BA%86%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%95%A5%E6%9C%89%E5%B0%8F%E6%88%90%E7%BB%8F%E9%AA%8C%E5%85%A8%E9%83%A8%E5%88%86%E4%BA%AB%E5%87%BA%E6%9D%A5/</guid><description>大家好，我是风筝。 轻解计算机网络已有高清 PDF 版本可以离线阅读了，全册 65 页，如果有需要离线版的高清 PDF 可以直接下载。 重学计算机网络已经有一段时间了</description><content:encoded><![CDATA[<p><strong>大家好，我是风筝。</strong></p>
 <p>轻解计算机网络已有高清 PDF 版本可以离线阅读了，全册 65 页，如果有需要离线版的高清 PDF 可以<a href="https://pan.baidu.com/s/10LH_5afGftayMo8Q1Io_gA?pwd=f8hp">直接下载</a>。</p>
 <p>重学计算机网络已经有一段时间了，终于在离开大学多年后又重新拾起了一部分，时至今日已略有小成，并且写了一系列的文章了，会慢慢 发出来。</p>
 <p>我反正在学习的过程中是画了好多张图，这些图会放到后续的文章中，有兴趣一起学习的同学记得关注加星标呀，这样就能第一时间接到文章推送了。</p>
@@ -3445,123 +3995,4 @@ JVM 参数信息
 <p>2、然后就是理解各个层的主要协议了，主要就是协议的作用和协议格式，以及每种协议格子的功能特性。</p>
 <p>3、一个数据包从发送端到目的端要经过纷繁复杂的网络结构，经过各种中间设备。从路由表、转发表和 ARP 表这三张表，可以了解数据包传输的过程。</p>
 <p>4、最后是 <code>Ping</code>、<code>Route</code>命令的工作原理。遇到网络问题，我们首先想到的是 <code>ping 一下</code>，ping 的原理是什么呢？其实就是对特定的网络协议特性的巧妙利用，也很好玩。</p>
-]]></content:encoded></item><item><title>1. 宏观上理解网络模型-在直升飞机上看网络</title><link>https://moonkite.cn/category/network/%E5%AE%8F%E8%A7%82%E4%B8%8A%E7%90%86%E8%A7%A3%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B-%E5%9C%A8%E7%9B%B4%E5%8D%87%E9%A3%9E%E6%9C%BA%E4%B8%8A%E7%9C%8B%E7%BD%91%E7%BB%9C/</link><pubDate>Tue, 28 Feb 2023 08:56:23 +0800</pubDate><guid>https://moonkite.cn/category/network/%E5%AE%8F%E8%A7%82%E4%B8%8A%E7%90%86%E8%A7%A3%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B-%E5%9C%A8%E7%9B%B4%E5%8D%87%E9%A3%9E%E6%9C%BA%E4%B8%8A%E7%9C%8B%E7%BD%91%E7%BB%9C/</guid><description>轻解计算机网络已有高清 PDF 版本可以离线阅读了，全册 65 页，如果有需要离线版的高清 PDF 可以直接下载。 今天是轻解计算机网络系列第一解，从宏观上了解网络</description><content:encoded><![CDATA[<p>轻解计算机网络已有高清 PDF 版本可以离线阅读了，全册 65 页，如果有需要离线版的高清 PDF 可以<a href="https://pan.baidu.com/s/10LH_5afGftayMo8Q1Io_gA?pwd=f8hp">直接下载</a>。</p>
-<p>今天是轻解计算机网络系列第一解，从宏观上了解网络。主要介绍网络分成模型、基本传输过程。</p>
-<p>学习任何一种新技术都应该是这样的顺序，先从宏观上了解这门技术的基本原理和作用。这就好像生物学家研究一种生物，不能上来就解刨吧，一定是从整体上观察了这种生物的体貌和形态。这里的宏观就像是一具动物骨骼模型、神经模型、肌肉模型，一直摆在那里，到最后装进科学家的脑袋里。</p>
-<p>学技术切忌直接扣到一个细节里，扣细节，既可能是一丝不苟的工匠精神的提现，也可能直接被魔鬼代入深渊。我们是坐在天上的直升飞机找路比较容易，还是一头钻进一个胡同儿里比较容易呢。</p>
-<p>今天要讲的网络模型，就像是生物学上的整体动物模型。</p>
-<h2 id="分层网络模型">分层网络模型</h2>
-<p>为了让全世界的计算机有效的互联起来，就要制定标准，分层模型就是这种标准的定义，有了这种标准，全世界的软硬件开发者才能开发出通用的程序来，要不然就像现在的手机充电口，苹果就是要用它独特的雷电接口，我要是再有一部安卓手机，就要有两条充电线。</p>
-<p>有两种网络模型，一种是 OSI 7层模型，还有一种是 TCP/IP 模型，前者是一种概念话的模型，后者是事实上的标准。事实标准也就是当今网络世界里普遍使用的模型。</p>
-<h3 id="osi-7层模型">OSI 7层模型</h3>
-<p>国际标准化组织提出了一种概念化的网络模型，<strong>开放式系统互联模型</strong>（Open System Interconnection Model），简称 OSI 模型。</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3276fdf3ed624a99becf83370866df80~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
-<p>自上而下依次为应用层、表示层、会话层、传输层、网络层、数据链路层、物理层。</p>
-<p>每一层都有一种或多种协议，这些协议都有标准的 RFC 文档，可以到https://www.rfc-editor.org/retrieve/ 这里查看各个协议的最原始说明。</p>
-<h4 id="应用层">应用层</h4>
-<p>应用层提供为应用软件而设计的接口，以设置与另一应用软件之间的通信。例如：HTTP、HTTPS、FTP、Telnet、SSH、SMTP、POP3等。</p>
-<h4 id="表示层">表示层</h4>
-<p>表示层把数据转换为能与接收者的系统格式兼容并适合传输的格式。</p>
-<h4 id="会话层">会话层</h4>
-<p>会话层负责在数据传输中设置和维护计算机网络中两台计算机之间的通信连接。</p>
-<h4 id="传输层">传输层</h4>
-<p>传输层把传输表头（TH）加至数据以形成数据包。传输表头包含了所使用的协议等发送信息。例如:传输控制协议（TCP）等。</p>
-<h4 id="网络层">网络层</h4>
-<p>网络层决定数据的路径选择和转寄，将网络表头（NH）加至数据包，以形成分组。网络表头包含了网络资料。例如:互联网协议（IP）等。</p>
-<h4 id="数据链路层">数据链路层</h4>
-<p>数据链路层负责网络寻址、错误侦测和改错。当表头和表尾被加至数据包时，会形成信息框。数据链表头（DLH）是包含了物理地址和错误侦测及改错的方法。数据链表尾（DLT）是一串指示数据包末端的字符串。例如以太网、无线局域网（Wi-Fi）和通用分组无线服务（GPRS）等。</p>
-<p>分为两个子层：逻辑链路控制（logical link control，LLC）子层和介质访问控制（Media access control，MAC）子层。</p>
-<h4 id="物理层">物理层</h4>
-<p>物理层在局部局域网上传送数据帧，它负责管理电脑通信设备和网络媒体之间的互通。包括了针脚、电压、线缆规范、集线器、中继器、网卡、主机接口卡等。</p>
-<p>OSI 模型是国际标准模型，是指导互联网模型的概念标准。而在实际的设计实现过程中，最后形成了 TCP/IP 四层模型结构。我们在平时的一些书籍、文章中最常看到的也是 4 层模型，而非7 层模型。</p>
-<h3 id="tcpip-4层模型">TCP/IP 4层模型</h3>
-<p>TCP/IP 模型实际上并不单单指 TCP 和 IP，实际上这一个协议簇，还包含了其他的一些协议，比如 UDP、ICMP、IGMP 等。</p>
-<p>TCP/IP 模型是事实上的标准模型，在 7 层模型的基础上将最上面三层的应用层、表示层、会话层统一为应用层，将数据链路层和物理层统一为链路层或者叫网络接口层。</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b95d2e58374840a496565d6b056ca21f~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
-<p>实际应用中还是以 4 层模型为准，毕竟这才是事实上的标准。还有一种 5 层模型的说法，实际上就是把 7 层中的应用层、表示层、会话层合并为应用层，其他层保持不变。</p>
-<h4 id="应用层-1">应用层</h4>
-<p>将7层模型中最上层的应用层、表示层、会话层合并。</p>
-<p>应用层主要运行我们平时经常使用的一些应用，比如 FTP、SSH、SMTP、HTTP、Telnet，也是我们开发过程中经常会打交道的，比如 HTTP，HTTP 在传输层仍然使用的是 TCP 协议，但是将 TCP 的细节做了封装。</p>
-<h4 id="传输层-1">传输层</h4>
-<p>传输层主要就是 TCP 和 UDP 这两个协议，负责将应用层的用户数据传输到目的端。</p>
-<p>TCP 是有状态高可靠的的传输协议，有三次握手和重传机制最大程度上保证数据能够顺利的到达目的端。</p>
-<p>UDP 协议是无状态的高性能的协议，因为它不保证数据能够顺利的到达目的端，所以不用三次握手建立连接，传一次，数据到不到就不管了。</p>
-<p>其实从传输层开始，往下每一层都要负责将数据传输到目的端的一部分工作，只不过下面两层根据其特性和主要作用又分为了网络层和链路层。</p>
-<h4 id="网络层-1">网络层</h4>
-<p>网络层最主要的协议就是 IP 协议，负责将上一层「传输层」过来的 TCP 包或 UDP 包封装成 IP 数据报。通过 IP 协议，根据 IP 地址可以定位到一个网络主机。</p>
-<p>除了 IP 协议外，ICMP 协议、IGMP 协议也工作在网络层。</p>
-<p>ARP 和 RARP 协议也认为工作在网络层。</p>
-<h3 id="链路层">链路层</h3>
-<p>将 7 层模型中的最底两层数据链路层和物理层合并为链路层。</p>
-<p>链路层也叫做网络接口层，它由多种网络接口标准和对应的驱动程序组成。一般我们说的数据链路层都是以太网链路层。</p>
-<h2 id="数据发送和接收过程">数据发送和接收过程</h2>
-<h3 id="数据包放封装和解封装过程">数据包放封装和解封装过程</h3>
-<p>TCP/IP 模型每个层都有各自的功能和分工，当有用户数据想要发送给另一台设备的时候，数据自上而下，从应用层向链路层传递有一个复杂的过程。</p>
-<p>以 Telnet 为例，Telnet 在传输层是使用 TCP 协议的。</p>
-<p>数据从应用层进入，到达传输层，添加上 TCP首部，将数据加工成 TCP  段，称为 Segment。这是为了保证数据的可靠性。</p>
-<p>接着数据到达网络层，在网络层使用 IP 协议，被添加上 IP 首部，将数据加工成 IP数据报，称为 datagram 。经过网络层 IP 协议的加工，指定目标地址和 MAC 地址，保证数据准确的发送到目标机器。</p>
-<p>接着数据到达链路层，添加上以太网头部，将数据加工成以太网帧，称为 frame，包含了网卡等硬件相关的数据。</p>
-<p>这就好比是一个工厂的流水线作业，每一层就像是一个流水线上的一个工人，零件到了每个工人那里，就在上面加一些东西，直到最后一个环节才变成成品。</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/85b02a8d8b0843c394f4dbf237413041~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
-<p>无论是 Telnet 还是  HTTP，都至少涉及到两台设备才能称之为网络互连，那发送方有一个数据自应用层向底层链路层的加工过程，对应的，在数据接收方，有一个数据从链路层向应用层解析的过程。这中间可能经历了漫长的传输介质，比如光纤，还可能有若干了中间设备，比如路由器、交换机等等。要保证数据在这么复杂的网络环境中可靠、准确的发送到目标机器，就是靠的 TCP、IP、以太网协议精巧的设计。</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4dc38327b8d04ecd88d3f8ea48439866~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
-<p>通过上面的数据自上而下的加工流程图可以看出，无论网络层是不是用的 IP 协议，无论传输层用的是 TCP 还是 UDP ，最后的成品实际上就是一个以太网帧。</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7dcc7c909c2d4e1baff468b5c20412ed~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
-<h3 id="数据在网络上的传输过程">数据在网络上的传输过程</h3>
-<p>上面说了数据在发送端上经过层层加头封装，以及到达目的端经过层层去头解封装的过程。但数据包很少有机会是直接从发送端一步到达目的端的，大部分都要在纷繁复杂的网络世界中穿梭游走，最终一步步的到达目的端。</p>
-<p>这里先不说域名的事儿。</p>
-<p>在发送数据的时候，绝大多数的情况下发送端只知道目的端的 IP 和 接收端口，这也是传输层（TCP或 UDP）必须的，经过层层包装后，拿以太网来说，真正跑到网络上的数据最终必须是一个完整的以太网帧，而以太网帧中必须要用目的端的 MAC 地址。</p>
-<p>当发送端开始组装数据的时候，首先会检查目的IP 和自身的IP 是否处在同一个网络中。计算方式就是用 IP 地址和子网掩码进行「与运算」。</p>
-<p>如果得到的网络地址是一致的，说明在同一个网络中，这时发送端检查自己的 ARP 表中是否有目的 IP 对应的 MAC 地址。如果有的话，直接将 MAC 地址组装到以太网数据帧中，发送数据帧，数据就能被目的端顺利接收。如果ARP 表中不存在目的IP对应的 MAC 地址，则向本网络广播发送 ARP 请求，ARP 请求会带着目的IP地址，意思就是询问“谁的IP地址是这个，请回复你的MAC地址给我”，网络中的主机看到后，如果IP是自己的，就返回给发送端一个ARP回复，回复中带着自己的MAC地址，发送端拿到MAC地址后，先存入本地的ARP表，然后组装以太网帧，将数据发送。</p>
-<p>如果得到的网络地址不一致，说明目的端不在本网络中，那就要通过各种路由器、交换机等中间设备了。要发送到其他网络，就要经过路由器，路由器中维护着一张路由表，主要存放网络、主机与下一跳的对应关系。例如下表这样：</p>
-<table>
-<thead>
-<tr>
-<th>目标</th>
-<th>子网掩码</th>
-<th>下一跳</th>
-<th>网络接口</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>192.168.8.0</td>
-<td>255.255.255.0</td>
-<td>0.0.0.0</td>
-<td>en0</td>
-</tr>
-<tr>
-<td>0.0.0.0</td>
-<td>0.0.0.0</td>
-<td>192.168.8.1</td>
-<td>en1</td>
-</tr>
-</tbody>
-</table>
-<p>大致的意思就是如果收到一个数据报，在当前路由器的路由表中寻找，一般目标都是一个网络地址（标明一个子网），把具体数据包的IP地址和当前路由表的子网掩码进行与操作，如果得到的结果和路由表目标栏一直，就转发给这个表目的下一跳地址，从网络接口栏所记录的接口发出（也就是路由器上的网口）。</p>
-<p>如果下一跳地址是0.0.0.0 ，表示这个目的IP地址就在当前网络中。那就不用路由器转发了，拿到目的IP的MAC地址，就可以直接发送了（获取MAC地址的方法，前面说过了，先查ARP表，没有的话，再用ARP广播请求获取）。</p>
-<p>如果下一跳不是0.0.0.0，表示目的IP不是本网络的地址，就发给下一跳的地址。</p>
-<p>如果在路由表中都没有找到匹配的目标网络，那就看有没有配置默认条目了，默认条目也就是目标是0.0.0.0的条目，表示任意的IP都可以通过此条目的下一跳（也就是默认网关）地址转发出去。</p>
-<p>如果在路由表中没有找到任何匹配的目标网络，并且没有设置默认条目，那就直接将数据包丢弃，并返回一个 主机不可达的 ICMP 请求。</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ee31a519eca041179a1e74dbafdb4f6b~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
-<h2 id="常用的几种协议">常用的几种协议</h2>
-<p>有几种协议是我们应该掌握的，这里大概介绍一下，后面会慢慢解刨。</p>
-<h3 id="应用层协议">应用层协议</h3>
-<p><strong>必须掌握</strong>的是HTTP 协议以及与之对应的 HTTPS 协议。这是每一个开发人员必须掌握的协议，因为我们无时无刻不在用到它。</p>
-<p>其他的 FTP、SMTP、SSH等协议，了解一下就好了。</p>
-<h3 id="传输层协议">传输层协议</h3>
-<p><strong>必须掌握</strong>的是 TCP协议和 UDP 协议，HTTP使用的是 TCP 传输，以及各种RPC框架、中间件大部分都是包装了 TCP 协议的。</p>
-<p>TCP 协议是有连接的可靠的传输协议，除非网络出现问题，可保证数据正常到达，因为有重传机制。UDP 是无连接的不可靠的传输协议，不保证数据能顺利达到，只要发出去就行了，没有重传机制等。</p>
-<h3 id="网络层协议">网络层协议</h3>
-<p><strong>必须掌握</strong>的是 IP 协议，从上层传递下来的包，无论是 TCP 协议还是 UDP 协议，最终都会搭载到 IP 协议之上。</p>
-<p>ARP 和 RARP 协议也算是网络层协议，这两个协议负责地址转换。</p>
-<p>ARP 协议根据 IP 地址得到 MAC 地址，RARP 协议根据 MAC 地址得到 IP 地址。</p>
-<h3 id="链路层协议">链路层协议</h3>
-<p>拿以太网位列，链路层协议一般就是指以太网帧协议。</p>
-<h2 id="总结">总结</h2>
-<p>1、 我们平时说的网络模型一般指的是四层模型，分别是应用层、传输层、网络层、链路层；</p>
-<p>2、数据从应用层自顶而下，由应用层-&gt;传输层-&gt;网络层-&gt;链路层，经过每一层会搭载一个对应的协议，封装上对应的协议头信息，等到了目的端，再自底向上经过层层解封装，最终得到原始数据；</p>
-<p>3、每一个层都有对应的协议，每一种协议都经过严密的设计，都有其特定的协议头和独特的功能特性；</p>
-<p>4、除了这种软件结构上的设计外，数据包在网络世界中穿梭，还要经过各种各样的设备，比如路由器、交换机、集线器等等，一个数据包从发送端到接收端可能要经过多次的封装和解封装。</p>
-<p>快把模型装进你的脑袋吧。</p>
 ]]></content:encoded></item></channel></rss>

@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://moonkite.cn/sitemap.xml
+Sitemap: https://www.moonkite.cn/sitemap.xml
