@@ -18,7 +18,7 @@
   font-family: 'Ysabeau';
    /* src: url('../font/ysabeau/Ysabeau-VariableFont_wght.ttf') format('truetype');  */
    
-   src: url('https://hexo.moonkite.cn/Ysabeau-VariableFont_wght.ttf') format(truetype');
+   src: url('https://hexo.moonkite.cn/Ysabeau-VariableFont_wght.ttf') format('truetype');
 }
 
 
