@@ -1,4 +1,454 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>古时的风筝</title><link>https://www.moonkite.cn/</link><description>Recent content on 古时的风筝</description><webfeeds:icon>https://www.moonkite.cn/images/photo.png</webfeeds:icon><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 13 Jul 2023 08:56:23 +0800</lastBuildDate><atom:link href="https://www.moonkite.cn/index.xml" rel="self" type="application/rss+xml"/><item><title>剑走偏锋，无头浏览器是什么神奇的家伙</title><link>https://www.moonkite.cn/category/other/%E6%97%A0%E5%A4%B4%E6%B5%8F%E8%A7%88%E5%99%A8/</link><pubDate>Thu, 13 Jul 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/other/%E6%97%A0%E5%A4%B4%E6%B5%8F%E8%A7%88%E5%99%A8/</guid><description>浏览器是再熟悉不过的东西了，几乎每个人用过，比如 Chrome、FireFox、Safari，尤其是我们程序员，可谓开发最强辅助，摸鱼最好的伴</description><content:encoded><![CDATA[<p><img src="https://hexo.moonkite.cn/blog/%E6%97%A0%E5%A4%B4%E6%B5%8F%E8%A7%88%E5%99%A8.png" alt=""></p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>古时的风筝</title><link>https://www.moonkite.cn/</link><description>Recent content on 古时的风筝</description><webfeeds:icon>https://www.moonkite.cn/images/photo.png</webfeeds:icon><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 14 Aug 2023 08:56:23 +0800</lastBuildDate><atom:link href="https://www.moonkite.cn/index.xml" rel="self" type="application/rss+xml"/><item><title>终于知道公钥、私钥、对称、非对称加密是什么了</title><link>https://www.moonkite.cn/category/java/%E5%85%AC%E9%92%A5%E7%A7%81%E9%92%A5%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/</link><pubDate>Mon, 14 Aug 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/java/%E5%85%AC%E9%92%A5%E7%A7%81%E9%92%A5%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/</guid><description>终于知道公钥、私钥、对称、非对称加密是什么了</description><content:encoded><![CDATA[<p>有接入过第三方服务的同学应该都接触过公钥、私钥这类的说明，尤其是一些对参数要求验证的服务，比如支付类的。</p>
+<p>通常对于高保密要求的参数都会有加密要求，这时候，如果你之前不了解加密算法，就很容易被公钥、私钥的使用给绕迷糊了。有时候虽然接口都调通了，但是还是一头雾水，这就通了?</p>
+<p>那接下来我们就来解开这团迷雾。咱们只讲逻辑和一部分逻辑，不讲数学算法，因为数学这块儿我也不是很懂。</p>
+<p>加密算法在大类上分为对称机密和非对称加密，都用来加密，只不过使用场景、性能、安全性方面有些不同。</p>
+<h2 id="首先说什么是加密呢">首先说什么是加密呢?</h2>
+<p>加密就是通过一种方式将一个显而易见的东西变成难以理解的东西。</p>
+<p>比如这儿有个字符串“我真棒”，这三个字儿要摆在你面前不是一眼就知道我很棒了吗。</p>
+<p>但是我要给你看这样一串东西呢？你还能一下子知道是什么意思吗？</p>
+<pre tabindex="0"><code>232 10 5,33 50 12,109 45 1
+</code></pre><p>其实这还是那三个字，只不过是经过加密的密文，只有知道了加密的方法才能还原出来，也就是解密。</p>
+<p>加密的过程可能是这样的：</p>
+<ol>
+<li>首先买一本叫做《人间清醒》的书；</li>
+<li>然后按照逗号分隔，每一个逗号分隔开的表示一个字；</li>
+<li>然后每一组是三个数字，第一个数字表示所在页，第二个数字表示所在行，第三个数字表示所在列（第几个字），所以 <code>232 10 5</code>，表示第 232 页，第 10 行，第 5 个字。</li>
+</ol>
+<p>还有，比如我之前有个温州的同事，他打电话的时候对于我们来说就是语音加密了，能听见他的声音，但是说的是什么内容一个字也听不出来。这也可以理解为一种加密，把普通话的发音转换成温州方言的发音。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230814112751914.png" alt=""></p>
+<h2 id="对称加密">对称加密</h2>
+<p>对称加密中所说的对称是对加密和解密而言的，也就是加密和解密的过程使用相同的密钥。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230814114816786.png" alt=""></p>
+<p>我们经常用到的落库加密、文件加密都可以使用对称加密的方式。</p>
+<p>目前最常用也是最安全的对称加密算法是 AES，AES 还分为 AES-128、AES-192 和 AES256，后面的数字代表加密密钥的位数，位数越高呢，加密效果也就越好，更加不容易被破解。同时，位数越高，加密和解密过程中的计算量也会越大，内存占用也就更大，消耗的资源更多，需要的时间也就更长。</p>
+<p>有利有弊，看你的需求而定。基本上，一般场景下 128 位就足够安全了。AES 到目前为止，可以说没有漏洞，而且 128 位就可以保证不会被暴力破解。而更高位数的可能会用到国家级的保密数据上。</p>
+<p>AES 是分组加密算法，除此之外，大部分的加密算法都是分组加密算法。</p>
+<p>块加密算法就是将需要加密的数据分成一个个的固定长度的分组，比如 128 位一组，然后分别用算法对每一组进行加密，如果最后一组不足 128 位的话，还要用填充算法进行填充，保证达到 128 位。</p>
+<p>常用的分组算法有 CTR 和 GCM，CTR 和 GCM 有并行计算的能力，并且, GCM 还能额外提供对消息完整性、真实性的验证能力。</p>
+<p>所以我们在某些地方可能看到 AES-128-GCM、AES-256-CTR 这样的写法，前面表示加密算法，后面代表分组算法。</p>
+<h3 id="不足之处">不足之处</h3>
+<p>对称加密本身从算法层面来说已经足够安全了，但是在密钥分发方面有些不太容易管理。</p>
+<p>因为加解密的密钥相同。我加密的数据想要被别人使用，我就要把密钥告诉要使用的人。知道密钥的人、保存密钥的服务器越多，风险就越大。约束自己容易，约束别人难啊。但凡有一方不小心把密钥泄露就完。一个木桶能装多少水是由最低的一块木板决定的。</p>
+<h2 id="非对称加密">非对称加密</h2>
+<p>由于对称加密的密钥分发问题，非对称加密算法可以完美的解决。</p>
+<p>刚毕业不就的时候，和第三方服务做集成，有关于接口参数加密的指引文档，虽然按照人家提供的 demo 可以正常集成，但是文档上说的公钥、私钥还是搞的很迷糊。</p>
+<p>现在就来捋一捋啊，就以第三方服务角度来说。假设我是一个支付服务商，为大家提供支付接口的。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230814154311673.png" alt=""></p>
+<p><strong>公钥</strong></p>
+<p>公钥是开放的，谁都可以获取。我作为一个支付服务商，任何到我平台上注册的用户都可以获取到公钥，公钥可以是相同的。</p>
+<p><strong>私钥</strong></p>
+<p>私钥是绝密的，我作为一个支付服务商，必须将私钥妥善保存，无论是保存在数据库中还是保存在服务器，都必须保证私钥不对外，只有我自己可以使用。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230814133955745.png" alt=""></p>
+<ol>
+<li>使用我服务的用户获取公钥；</li>
+<li>调用方（客户）用公钥对接口参数进行加密，然后调用接口；</li>
+<li>我方（支付服务商）用私钥对参数进行解密，然后使用参数进行业务处理；</li>
+</ol>
+<p>以上是公钥、私钥的使用过程，这样一看就很明确了。</p>
+<p>之所以说是非对称加密，是因为私钥只是用来解密的，用公钥加密过的数据，只有用对应的私钥才能解密出来。所以说，即使有那么多人得到了相同的公钥，也无法获取别人加密过的数据。</p>
+<p>最常用的非对称加密算法是 RSA ，RSA 有 1024、2048、3072、4096、8129、16384 甚至更多位。目前 <strong>3072</strong> 位及以上的密钥长度被认为是安全的，曾经大量使用的 <strong>2048</strong> 位 RSA 现在被破解的风险在不断提升，已经不推荐使用了</p>
+<p>RSA 算法的性能要比对称加密 AES 算法差 1000 倍左右，虽然数学原理上不太明白，但是有数学常识就可以知道，使用不同的密钥进行加密和解密，必然要比使用相同密钥的算法复杂很多，由此肯定会带来性能上的开销。</p>
+<p>非对称加密适合用于那些对安全性要求更高的场景，例如支付场景、数字证书、数据加密传输等等。</p>
+]]></content:encoded></item><item><title>什么时候用 Runnable？什么时候用 Callable ？</title><link>https://www.moonkite.cn/category/java/Runable%E5%92%8CCallable/</link><pubDate>Mon, 07 Aug 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/java/Runable%E5%92%8CCallable/</guid><description>什么时候用 Runnable？什么时候用 Callable ？</description><content:encoded><![CDATA[<p><strong>大家好，我是风筝。</strong></p>
+<p>提到 Java 就不得不说多线程了，就算你不想说，面试官也得让你说呀，对不对。那说到多线程，就不得提线程了（这不废话吗）。那说到线程，就不得不说<code>Runnable</code>和<code>Callable</code>这两个家伙了。</p>
+<p>说熟悉也是真熟悉，在刚学习多线程的时候，第一个例子大概就是下面这样子的。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="k">new</span><span class="w"> </span><span class="n">Thread</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Runnable</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;执行线程&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Thread</span><span class="p">.</span><span class="na">currentThread</span><span class="p">().</span><span class="na">getName</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}).</span><span class="na">start</span><span class="p">();</span><span class="w">
+</span></span></span></code></pre></div><p>看到了 <code>Runnable</code>的身影，有时候还会看到<code>Callable</code>的。</p>
+<p>但是说很熟悉吧，印象也不是很大，好像就用了一下这两位的名号，然后剩下的部分就跟他俩没啥关系了。</p>
+<p>今天，我们就来看看这两位到底是什么，有什么区别，什时候应该用 <code>Runnable</code>，什么时候又应该用 <code>Callable</code>。</p>
+<h2 id="runnable">Runnable</h2>
+<p>自从 Java 诞生，<code>Runnable</code>就存在了，元老中的元老了，在 1.5 之前，如果你想使用线程，那必须要实现自 <code>Runnable</code>。因为到了 JDK1.5，JDK 才加入了<code>Callable</code>。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@FunctionalInterface</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">Runnable</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">abstract</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>是不是接口非常简单，就一个抽象方法。</p>
+<p>其实还可以再简化一下， <code>@FunctionalInterface</code>标明这个接口是一个函数式接口。函数式接口是在 JDK8 才加入的，为的就是实现函数式编程，就那种 Lambada 表达式。</p>
+<p>所以在 JDK1.7 中，是没有<code>@FunctionalInterface</code>修饰的，简简单单。我们找到 JDK1.7 的 <code>Ruunable</code>实现，是下面这样子</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">Runnable</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">abstract</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>想了解更多函数式编程的话，可以看这篇文章：<a href="https://mp.weixin.qq.com/s/WSqLJEvO42uJ-DbOC2D36w">Lambda、函数式接口、Stream 一次性全给你</a></p>
+<p>如果一个线程类要实现 <code>Runnable</code> 接口，则这个类必须定义一个名为 <code>run</code> 的无参数方法。</p>
+<p>实现了 <code>Runnable</code> 接口的类可以通过实例化一个 <code>Thread</code> 实例，并将自身作为目标传递来运行。</p>
+<h4 id="举个例子">举个例子</h4>
+<p>首先定义一个<code>RunnableThread</code>类，并实现自（implements）<code>Runnable</code>接口，然后重写 <code>run</code>方法。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RunnableThread</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Runnable</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;当前线程名称&#34;</span><span class="o">+</span><span class="w"> </span><span class="n">Thread</span><span class="p">.</span><span class="na">currentThread</span><span class="p">().</span><span class="na">getName</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>使用<code>RunnableThread</code>作为线程类（Thread）实例化的参数，然后调用<code>run</code>方法。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">RunnableThread</span><span class="w"> </span><span class="n">runnableThread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RunnableThread</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Thread</span><span class="w"> </span><span class="n">thread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Thread</span><span class="p">(</span><span class="n">runnableThread</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">thread</span><span class="p">.</span><span class="na">start</span><span class="p">();</span><span class="w">
+</span></span></span></code></pre></div><p>注意，是调用新 new 出来的 Thread 实例的<code>start()</code> 方法，不要调用<code>run</code>方法，虽然我们是重写<code>Runnable</code>的 <code>run</code>方法的。调用 <code>run</code>方法并没有创建线程的效果，而是直接在当前线程执行，就和执行一个普通类的普通方法一模一样。</p>
+<p>为什么要调用 <code>start()</code>方法呢，我们看看 <code>Thread</code>的 <code>start()</code>方法实现中，其实是调用了一个名称为 <code>start0()</code>的 native 方法，native 方法就不是用 Java 实现的了，而是在 JVM 层面的实现。</p>
+<p>这个<code>start0</code>方法的主要逻辑就是启动一个操作系统线程，并和 JVM 线程绑定，开辟一些空间来存储线程状态和上下文的数据，然后执行绑定的 JVM 线程（也就是我们实现了 Runnable 的类）的 <code>run</code>方法的代码块，从而执行我们自定义的逻辑。</p>
+<p>还可以用线程池的方式调用</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">ThreadFactory</span><span class="w"> </span><span class="n">namedThreadFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ThreadFactoryBuilder</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">.</span><span class="na">setNameFormat</span><span class="p">(</span><span class="s">&#34;thread-pool-%d&#34;</span><span class="p">).</span><span class="na">build</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ExecutorService</span><span class="w"> </span><span class="n">singleThreadPool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">1</span><span class="p">,</span><span class="w"> </span><span class="n">1</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">0L</span><span class="p">,</span><span class="w"> </span><span class="n">TimeUnit</span><span class="p">.</span><span class="na">MILLISECONDS</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="n">LinkedBlockingQueue</span><span class="o">&lt;</span><span class="n">Runnable</span><span class="o">&gt;</span><span class="p">(</span><span class="n">1024</span><span class="p">),</span><span class="w"> </span><span class="n">namedThreadFactory</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ThreadPoolExecutor</span><span class="p">.</span><span class="na">AbortPolicy</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">singleThreadPool</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="n">runnableThread</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">singleThreadPool</span><span class="p">.</span><span class="na">shutdown</span><span class="p">();</span><span class="w">
+</span></span></span></code></pre></div><p>如果 <code>Runnable</code>那么完美的话，就没必要在 JDK1.5 中加入和它超级相似的 <code>Callable</code>了。</p>
+<p><code>Runnable</code>有什么不完美的地方吗？就是它的 <code>run</code>方法是没有返回值的。</p>
+<p>如果你想在主线程中拿到新开启线程的返回值的话，<code>Runnable</code>就不太方便了。必须要借助共享变量来完成。</p>
+<p>所以，如果你的场景是要有返回值的话， 就要 <code>Callable</code>出手了。</p>
+<h2 id="callable">Callable</h2>
+<p><code>Callable</code>是在 JDK1.5 才加入的，为的就是弥补 <code>Runnable</code>没有返回值的缺陷，虽然绝大多数场景都可以用 <code>Runnable</code>来实现。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@FunctionalInterface</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">Callable</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">V</span><span class="w"> </span><span class="nf">call</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>和 <code>Runnable</code>类似的，<code>@FunctionalInterface</code>也是后来加入的，可以不考虑，只是为了函数式写法。</p>
+<p><code>Callable</code>接口只有一个 <code>call</code>方法，并且有一个泛型返回值，可以返回任何类型。</p>
+<h4 id="举个例子-1">举个例子</h4>
+<p>首先声明一个类，实现自 <code>Callable</code>接口，返回值为字符串类型</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CallableThread</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Callable</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">call</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&#34;线程名称：&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Thread</span><span class="p">.</span><span class="na">currentThread</span><span class="p">().</span><span class="na">getName</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>在代码中通过下面的方式调用</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">CallableThread</span><span class="w"> </span><span class="n">callableThread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CallableThread</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">FutureTask</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">futureTask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FutureTask</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">callableThread</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Thread</span><span class="w"> </span><span class="n">thread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Thread</span><span class="p">(</span><span class="n">futureTask</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">thread</span><span class="p">.</span><span class="na">start</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">futureTask</span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;执行结果= &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">result</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><p>看上去就比 <code>Runnable</code>要复杂一点，要借助<code>FutureTask</code>了，因为 <code>Thread</code>类没有接受<code>Callable</code>的构造函数。</p>
+<p>使用 <code>FutureTask.get()</code>方法获取执行结果。</p>
+<p>在日常的开发中，不建议直接这样用，除非你明确的知道这样做没有问题，否则的话，推荐使用线程池的方式来使用。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">CallableThread</span><span class="w"> </span><span class="n">callableThread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CallableThread</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ExecutorService</span><span class="w"> </span><span class="n">executor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Executors</span><span class="p">.</span><span class="na">newSingleThreadExecutor</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Future</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">future</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">executor</span><span class="p">.</span><span class="na">submit</span><span class="p">(</span><span class="n">callableThread</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">future</span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;任务执行结果: &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">result</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">executor</span><span class="p">.</span><span class="na">shutdown</span><span class="p">();</span><span class="w">
+</span></span></span></code></pre></div><h2 id="如何选择用哪一个">如何选择用哪一个</h2>
+<p>取舍的基本原则就是需不需要返回值，如果不需要返回值，那直接就选 <code>Runnable</code>，不用犹豫。如果有返回值的话，那更不用犹豫，不要想着借助共享变量的方式。</p>
+<p>另外还有一点就是是否需要抛出异常， <code>Runnable</code>是不接受抛出异常的，<code>Callable</code>可以抛出异常。</p>
+<p><code>Runnable</code>适合那种纯异步的处理逻辑。比如每天定时计算报表，将报表存储到数据库或者其他地方，只是要计算，不需要马上展示，展示内容是在其他的方法中单独获取的。</p>
+<p>比如那些非核心的功能，当核心流程执行完毕后，非核心功能就自己去执行吧，至于成不成功的，不是特别重要。例如一个购物下单流程，下单、减库存、加到用户的订单列表、扣款是核心功能，之后的发送 APP 通知、短信通知这些就启动新线程去干去吧。</p>
+<h2 id="最后">最后</h2>
+<p><code>Runnable</code> 在 <code>java.lang</code>这个包下，而当 JDK1.5 发布的时候，新加入的 <code>Callable</code>被安置在了 <code>java.util.concurrent</code>这个包下，这是 Java 里有名的并发编程相关包，各种锁啊、多线程工具类啊，都被放在这个包下。按道理，<code>Runnable</code> 也应该在这里才对。</p>
+<p>可见再厉害的项目也是随着项目的扩大而慢慢的规划，而前期的一些看似不太合理的地方，只能做兼容和妥协。</p>
+]]></content:encoded></item><item><title>如何用 Docker 快速搭建开发环境</title><link>https://www.moonkite.cn/category/java/docker%E6%90%AD%E5%BB%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</link><pubDate>Thu, 27 Jul 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/java/docker%E6%90%AD%E5%BB%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</guid><description>如何用 Docker 快速搭建开发环境</description><content:encoded><![CDATA[<p><strong>大家好，我是风筝</strong></p>
+<p>有些时候我们需要在本地搭开发环境，比如平时学习新技术的时候。或者有时候公司的项目需要在本地建一套类似的，方便调试修改。</p>
+<p>开发环境可能包括 MySQL、Redis、Nginx、MQ 、Elasticsearch 等等，今天用的是 MySQL，明天又用 PostgreSQL 了，如果用啥都在本机装一下的话，倒也不是不可以，但是就非常麻烦了，而且有时候安装会遇到各种各样的问题，很是不爽。</p>
+<p>有什么快速有优雅的方式没有？</p>
+<p>就是我们今天要说的 Docker 了，Docker 到现在为止，早就不是什么新技术了，甚至可以说是很普遍很大众的技术方案了。</p>
+<p>我记得我最早开始用 Docker 已经是 2015 年了，到现在已经快 8 年了。只能感叹，时间过得是真快呀！</p>
+<p><img src="https://hexo.moonkite.cn/blog/81shots_so.png" alt=""></p>
+<p>那段时间也把 Docker 安利给了不少同学、同事，我只是这样告诉他们：“这玩意儿在本地搭一套开发环境真的很方便”，至于它后来发展成现在的规模，我也是没想到的。</p>
+<p>如果你是个开发老手儿，相信你早就用起来了。而如果你是个新手，那也要尽快用起来了，不仅能节省搭建环境的时间，还能学习学习，毕竟现在容器化部署方式很普遍了，多了解了解还是非常有必要的。</p>
+<h2 id="docker-原理和基础命令">Docker 原理和基础命令</h2>
+<h3 id="基本原理">基本原理</h3>
+<p>用任何一种技术首先都要先了解它的技术原理，做到心中有数。</p>
+<p>Docker 使用 Google 公司推出的 Go 语言进行开发实现，基于 Linux 内核的 cgroup，namespace，以及 OverlayFS 类的 Union FS 等技术，对进程进行封装隔离，属于操作系统层面的虚拟化技术。由于隔离的进程独立于宿主和其它的隔离的进程，因此也称其为容器。</p>
+<p>Docker 经常拿来和虚拟机来比较，因为它们两个的用处和用法都很相似，就是在一台实体机上启动多个虚拟系统（暂且这么说）。如果基于使用的层面来讲，你完全可以把 Docker 当做虚拟机来用，然而实际的底层技术原理是完全不一样的。</p>
+<p>假设你现在变身了，站在了 Docker 和 虚拟机的内部，从里面向外看，发现虚拟机有自己的 CPU(虚拟 CPU)、内存、硬盘，再往外才是宿主机的 CPU、硬盘、内存等。而如果是在 Docker 内部向外看，发现你无论站在当前实体机的哪个容器里，看到的都是宿主机的 CPU、硬盘、内存等。说明 Dokcer 容器是直接拿宿主机的资源当自己的用，所以每个容器的硬件配置都是一样的，而虚拟机是完全虚拟出来一套。</p>
+<h3 id="基础命令">基础命令</h3>
+<p>Dokcer 的命令有一大堆，但是常用的就那几个。</p>
+<h4 id="镜像相关">镜像相关</h4>
+<p><strong>获取镜像</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull 镜像名称
+</span></span></code></pre></div><p><strong>查看镜像列表</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker image ls
+</span></span></code></pre></div><h4 id="容器相关">容器相关</h4>
+<p><strong>查看容器</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker ps -a
+</span></span></code></pre></div><p><strong>新建并启动容器</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo docker run -t -i ubuntu:12.04  /bin/bash
+</span></span></code></pre></div><p><strong>进入容器</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker <span class="nb">exec</span> -it 容器id bash
+</span></span></code></pre></div><p>因为本文不是 Docker 的教程，所以只是抛砖引玉，具体的教程和文档网上到处都是。</p>
+<h2 id="安装-docker-desktop">安装 Docker Desktop</h2>
+<p>接下来开始本地实践了，用 Docker 快速搭一套本地环境。</p>
+<p>有一些 Docker 的可视化客户端可以安装，帮我们更方便更直观的管理镜像、容器，当然如果你很厉害的话，完全用命令行也不是不行。</p>
+<p>我就没这么厉害了，那些参数根本记不住，所以必须要装客户端。我安装的是 Docker Desktop，官方客户端，支持 Mac、Linux、Windows，我大部分时候用 Mac，有时候也要用 Windows，所以 Docker Desktop 是不二选择。</p>
+<p>如果你只用 Mac 的话，也可以安装 <strong>OrbStack</strong>（https://orbstack.dev/），据说比 Docker Desktop 要流畅一些。</p>
+<h3 id="下载安装">下载安装</h3>
+<p>访问 Docker Desktop 官网 <a href="https://www.docker.com/products/docker-desktop/">https://www.docker.com/products/docker-desktop/</a>，根据你的系统下载对应的版本。</p>
+<p><img src="https://hexo.moonkite.cn/blog/763shots_so.png" alt="763shots_so"></p>
+<p>下载完一键安装就可以了，Docker 环境直接帮你装好了，省心省事儿。下面是它的控制台界面。左侧导航可以查看镜像列表、容器列表、映射的 Volumes。</p>
+<p><img src="https://hexo.moonkite.cn/blog/425shots_so.png" alt=""></p>
+<p>我们在命令行输入 <code>docker -v</code>，如果出现正确的版本号，说明 docker 服务已经安装正常了。</p>
+<blockquote>
+<p>Docker version 24.0.2, build cb74dfc</p>
+</blockquote>
+<p>接下来有一件事儿是必须要做的，那就是设置国内镜像源，道理大家都懂，你要是用国外的镜像源，一天都不一定能搞下来一个。</p>
+<p>点击「设置」按钮，在左侧选择「Docker Engine」</p>
+<p><img src="https://hexo.moonkite.cn/blog/21shots_so.png" alt=""></p>
+<p>,然后在右侧的配置框中添加如下配置，加到最下面即可：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="s2">&#34;registry-mirrors&#34;</span>: <span class="o">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;https://docker.mirrors.ustc.edu.cn&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;https://cr.console.aliyun.com/&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">]</span>
+</span></span></code></pre></div><p>加完后，点击「Apply &amp; restart」，这时候会重启 Docker 服务。</p>
+<h2 id="安装一个服务">安装一个服务</h2>
+<p>MySQL、Nginx、Redis、Zookeeper 这些都是服务，每一个都可以按照这种方式安装，不管你的项目需要多少个服务，一个个安装就好了，很快的呦。</p>
+<p>正好我最进要学一下 PostgreSQL，我就直接启动一个 docker 容器了，不在本地安装了。当然了，像数据库这种 I/O 型的应用是不建议容器化的，但是本地开发测试无所谓。</p>
+<p>在这个搜索框输入关键词，查找对应的镜像，我在这里输入关键词 <code>PostgreSQL</code>。如果安装 Nginx 那就是输入 Nginx，以此类推。</p>
+<p><img src="https://hexo.moonkite.cn/blog/search.png" alt="search"></p>
+<p>看，出来了一大堆，我一般都是找第一个，也就是下载量最大的这个。</p>
+<p><img src="https://hexo.moonkite.cn/blog/894-result.png" alt=""></p>
+<p>可以 <code>pull</code> 或者 <code>run</code>，pull 是拉取镜像，run 是拉取镜像+启动容器。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230725173926556.png" alt=""></p>
+<p>我一般都是直接 <code>run</code>，点一下 <code>run</code>，等一会儿，因为前面已经设置了国内镜像源，所以速度很快，十几秒钟。（根据网速快慢不同，因为要下载镜像文件，有的应用有上百 M）</p>
+<p>下载完之后，因为选的是 <code>run</code>，所以直接弹出了启动参数。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230725181057855.png" alt=""></p>
+<p><strong>设置镜像名称</strong></p>
+<p>容器名称（Container name）就是为了我们一看到它就知道是干什么的，用来方便管理的，我就直接命名为 <code>PostgreSQL</code>了。</p>
+<p><strong>设置端口映射（Ports）</strong></p>
+<p>服务本身有自己的端口，例如 MySQL 是 3306，这是服务本身在容器内的启动端口，但最终我们要通过宿主机去访问服务，所以要将这个容器内的端口绑定到一个宿主机端口，这叫做端口映射，这样一来，我们就可以通过宿主机的端口访问到容器内的端口了。比如我将 MySQL 容器的 <code>3306</code> 端口映射到宿主机的 <code>13306</code> 端口，之后我在设置数据库连接的时候，就用本机 IP:13306 就能访问 MySQL 容器了。</p>
+<p>在我这个 PostgreSQL 容器上，我将本机的 <code>15432</code>和容器的 <code>5432</code>端口绑定，之后就可以用 <code>15432</code>做连接端口了。</p>
+<p><strong>目录映射（Volumes）</strong></p>
+<p>很多服务都会用到存储目录，但是容器本身就在宿主机上，所以需要将服务在容器内的目录映射到宿主机的目录上，这叫目录映射。例如将 Nginx 容器的 <code>/etc/nginx</code>目录映射到宿主机的 <code>/apps/nginx/</code>目录上，那之后我在宿主机访问 <code>/apps/nginx</code>目录时，就能看到 Nginx 容器的配置文件了。</p>
+<p>在我这个 PostgreSQL 容器上，我将 <code>/etc/postgresql/postgresql.conf</code>配置文件映射到了我本地的一个目录上。</p>
+<p><strong>环境变量</strong></p>
+<p>一个服务启动可能会用到启动变量，这些变量可以通过环境变量的方式进行配置。例如，我们启动一个 Java jar 包，要配置 JVM 相关的参数，这些参数就可以放到环境变量中，供启动的时候使用。</p>
+<p>因为 PostgreSQL 需要密码，所以这里就设置一个密码的环境变量 <code>POSTGRES_PASSWORD</code>。</p>
+<p>都设置好之后，点击<code>run</code>按钮，启动容器。</p>
+<p>然后我们看到容器已经启动了，有相应的日志打印出来。</p>
+<p><img src="https://hexo.moonkite.cn/blog/805shots_so.png" alt=""></p>
+<p>然后点击左侧的<code>Containers</code>，可以看到已经启动的容器和一些基本配置。</p>
+<p><img src="https://hexo.moonkite.cn/blog/478shots_so.png" alt=""></p>
+<p>然后就可以通过客户端进行连接了。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230725183859472.png" alt=""></p>
+<p><img src="https://hexo.moonkite.cn/blog/283shots_so.png" alt=""></p>
+<p>另外，还可以在容器详情中查看容器的内部文件、状态、配置信息、日志等，以及进入命令行。</p>
+<p><img src="https://hexo.moonkite.cn/blog/746shots_so.png" alt=""></p>
+<h2 id="最后">最后</h2>
+<p>第一次可能比较慢，熟悉了之后就非常快了，比你在本地直接安装配置要快的多，而且一些软件安装配置起来非常繁琐，会浪费很多不必要的时间。</p>
+<p>还有很多开源的框架、应用提供 docker 版本，掌握了这个方法后，可以很快的安装这些框架、应用来验证和使用，用户体验直接上升一个数量级。</p>
+]]></content:encoded></item><item><title>什么是零拷贝|Java中的零拷贝</title><link>https://www.moonkite.cn/category/java/%E4%BB%80%E4%B9%88%E6%98%AF%E9%9B%B6%E6%8B%B7%E8%B4%9D/</link><pubDate>Sun, 23 Jul 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/java/%E4%BB%80%E4%B9%88%E6%98%AF%E9%9B%B6%E6%8B%B7%E8%B4%9D/</guid><description>零拷贝是什么</description><content:encoded><![CDATA[<p><strong>大家好，我是风筝</strong></p>
+<p>我们总会在各种地方看到零拷贝，那零拷贝到底是个什么东西。</p>
+<p>接下来，让我们来理一理啊。</p>
+<p>拷贝说的是计算机里的 I/O 操作，也就是数据的读写操作。计算机可是一个复杂的家伙，包括软件和硬件两大部分，软件主要指操作系统、驱动程序和应用程序。硬件那就多了，CPU、内存、硬盘等等一大堆东西。</p>
+<p>这么复杂的设备要进行读写操作，其中繁琐和复杂程度可想而知。</p>
+<h2 id="传统-io-的读写过程">传统 I/O 的读写过程</h2>
+<p>如果要了解零拷贝，那就必须要知道一般情况下，计算机是如何读写数据的，我把这种情况称为传统 I/O。</p>
+<p>数据读写的发起者是计算机中的应用程序，比如我们常用的浏览器、办公软件、音视频软件等。</p>
+<p>而数据的来源呢，一般是硬盘、外部存储设备或者是网络套接字（也就是网络上的数据通过网口+网卡的处理）。</p>
+<p>过程本来是很复杂的，所以大学课程里要通过《操作系统》、《计算机组成原理》来专门讲计算机的软硬件。</p>
+<h3 id="简化版读操作流程">简化版读操作流程</h3>
+<p>那么细的没办法讲来，所以，我们把这个读写过程简化一下，忽略大多数细节，只讲流程。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230719182852190.png" alt=""></p>
+<p>上图是应用程序进行一次读操作的过程。</p>
+<ol>
+<li>应用程序先发起读操作，准备读取数据了；</li>
+<li>内核将数据从硬盘或外部存储读取到内核缓冲区；</li>
+<li>内核将数据从内核缓冲区拷贝到用户缓冲区；</li>
+<li>应用程序读取用户缓冲区的数据进行处理加工；</li>
+</ol>
+<h3 id="详细的读写操作流程">详细的读写操作流程</h3>
+<p>下面是一个更详细的 I/O 读写过程。这个图可好用极了，我会借助这个图来厘清 I/O 操作的一些基础但非常重要的概念。</p>
+<p><img src="https://hexo.moonkite.cn/blog/%E4%BC%A0%E7%BB%9FIO%E8%AF%BB%E5%86%992.png" alt=""></p>
+<p>先看一下这个图，上面红粉色部分是读操作，下面蓝色部分是写操作。</p>
+<p>如果一下子看着有点儿迷糊的话，没关系，看看下面几个概念就清楚了。</p>
+<h4 id="应用程序">应用程序</h4>
+<p>就是安装在操作系统上的各种应用。</p>
+<h4 id="系统内核">系统内核</h4>
+<p>系统内核是一些列计算机的核心资源的集合，不仅包括 CPU、总线这些硬件设备，也包括进程管理、文件管理、内存管理、设备驱动、系统调用等一些列功能。</p>
+<h4 id="外部存储">外部存储</h4>
+<p>外部存储就是指硬盘、U 盘等外部存储介质。</p>
+<h4 id="内核态">内核态</h4>
+<ul>
+<li>内核态是操作系统内核运行的模式，当操作系统内核执行特权指令时，处于内核态。</li>
+<li>在内核态下，操作系统内核拥有最高权限，可以访问计算机的所有硬件资源和敏感数据，执行特权指令，控制系统的整体运行。</li>
+<li>内核态提供了操作系统管理和控制计算机硬件的能力，它负责处理系统调用、中断、硬件异常等核心任务。</li>
+</ul>
+<h4 id="用户态">用户态</h4>
+<p>这里的用户可以理解为应用程序，这个用户是对于计算机的内核而言的，对于内核来说，系统上的各种应用程序会发出指令来调用内核的资源，这时候，应用程序就是内核的用户。</p>
+<ul>
+<li>用户态是应用程序运行的模式，当应用程序执行普通的指令时，处于用户态。</li>
+<li>在用户态下，应用程序只能访问自己的内存空间和受限的硬件资源，无法直接访问操作系统的敏感数据或控制计算机的硬件设备。</li>
+<li>用户态提供了一种安全的运行环境，确保应用程序之间相互隔离，防止恶意程序对系统造成影响。</li>
+</ul>
+<h4 id="模式切换">模式切换</h4>
+<p>计算机为了安全性考虑，区分了内核态和用户态，应用程序不能直接调用内核资源，必须要切换到内核态之后，让内核来调用，内核调用完资源，再返回给应用程序，这个时候，系统在切换会用户态，应用程序在用户态下才能处理数据。</p>
+<p>上述过程其实一次读和一次写都分别发生了两次模式切换。</p>
+<p><img src="https://hexo.moonkite.cn/blog/%E6%A8%A1%E6%80%81%E5%88%87%E6%8D%A2.png" alt=""></p>
+<h4 id="内核缓冲区">内核缓冲区</h4>
+<p>内核缓冲区指内存中专门用来给内核直接使用的内存空间。可以把它理解为应用程序和外部存储进行数据交互的一个中间介质。</p>
+<p>应用程序想要读外部数据，要从这里读。应用程序想要写入外部存储，要通过内核缓冲区。</p>
+<h4 id="用户缓冲区">用户缓冲区</h4>
+<p>用户缓冲区可以理解为应用程序可以直接读写的内存空间。因为应用程序没法直接到内核读写数据， 所以应用程序想要处理数据，必须先通过用户缓冲区。</p>
+<h4 id="磁盘缓冲区">磁盘缓冲区</h4>
+<p>磁盘缓冲区是计算机内存中用于暂存从磁盘读取的数据或将数据写入磁盘之前的临时存储区域。它是一种优化磁盘 I/O 操作的机制，通过利用内存的快速访问速度，减少对慢速磁盘的频繁访问，提高数据读取和写入的性能和效率。</p>
+<h4 id="pagecache">PageCache</h4>
+<ul>
+<li>PageCache 是 Linux 内核对文件系统进行缓存的一种机制。它使用空闲内存来缓存从文件系统读取的数据块，加速文件的读取和写入操作。</li>
+<li>当应用程序或进程读取文件时，数据会首先从文件系统读取到 PageCache 中。如果之后再次读取相同的数据，就可以直接从 PageCache 中获取，避免了再次访问文件系统。</li>
+<li>同样，当应用程序或进程将数据写入文件时，数据会先暂存到 PageCache 中，然后由 Linux 内核异步地将数据写入磁盘，从而提高写入操作的效率。</li>
+</ul>
+<h4 id="再说数据读写操作流程">再说数据读写操作流程</h4>
+<p>上面弄明白了这几个概念后，再回过头看一下那个流程图，是不是就清楚多了。</p>
+<h5 id="读操作">读操作</h5>
+<ol>
+<li>首先应用程序向内核发起读请求，这时候进行一次模式切换了，从用户态切换到内核态；</li>
+<li>内核向外部存储或网络套接字发起读操作；</li>
+<li>将数据写入磁盘缓冲区；</li>
+<li>系统内核将数据从磁盘缓冲区拷贝到内核缓冲区，顺便再将一份（或者一部分）拷贝到 PageCache；</li>
+<li>内核将数据拷贝到用户缓冲区，供应用程序处理。此时又进行一次模态切换，从内核态切换回用户态；</li>
+</ol>
+<h5 id="写操作">写操作</h5>
+<ol>
+<li>应用程序向内核发起写请求，这时候进行一次模式切换了，从用户态切换到内核态；</li>
+<li>内核将要写入的数据从用户缓冲区拷贝到 PageCache，同时将数据拷贝到内核缓冲区；</li>
+<li>然后内核将数据写入到磁盘缓冲区，从而写入磁盘，或者直接写入网络套接字。</li>
+</ol>
+<h2 id="瓶颈在哪里">瓶颈在哪里</h2>
+<p>但是传统 I/O 有它的瓶颈，这才是零拷贝技术出现的缘由。瓶颈是啥呢，当然是性能问题，太慢了。尤其是在高并发场景下，I/O 性能经常会卡脖子。</p>
+<p>那是什么地方耗时了呢？</p>
+<h3 id="数据拷贝">数据拷贝</h3>
+<p>在传统 I/O 中，数据的传输通常涉及多次数据拷贝。数据需要从应用程序的用户缓冲区复制到内核缓冲区，然后再从内核缓冲区复制到设备或网络缓冲区。这些数据拷贝过程导致了多次内存访问和数据复制，消耗了大量的 CPU 时间和内存带宽。</p>
+<h3 id="用户态和内核态的切换">用户态和内核态的切换</h3>
+<p>由于数据要经过内核缓冲区，导致数据在用户态和内核态之间来回切换，切换过程中会有上下文的切换，如此一来，大大增加了处理数据的复杂性和时间开销。</p>
+<p>每一次操作耗费的时间虽然很小，但是当并发量高了以后，积少成多，也是不小的开销。所以要提高性能、减少开销就要从以上两个问题下手了。</p>
+<p>这时候，零拷贝技术就出来解决问题了。</p>
+<h2 id="什么是零拷贝">什么是零拷贝</h2>
+<p>问题出来数据拷贝和模态切换上。</p>
+<p>但既然是 I/O 操作，不可能没有数据拷贝的，只能减少拷贝的次数，还有就是尽量将数据存储在离应用程序（用户缓冲区）更近的地方。</p>
+<p>而区分用户态和内核态有其他更重要的原因，不可能单纯为了 I/O 效率就改变这种设计吧。那也只能尽量减少切换的次数。</p>
+<p>零拷贝的理想状态就是操作数据不用拷贝，但是显示情况下并不一定真的就是一次复制操作都没有，而是尽量减少拷贝操作的次数。</p>
+<p>要实现零拷贝，应该从下面这三个方面入手：</p>
+<ol>
+<li>尽量减少数据在各个存储区域的复制操作，例如从磁盘缓冲区到内核缓冲区等；</li>
+<li>尽量减少用户态和内核态的切换次数及上下文切换；</li>
+<li>使用一些优化手段，例如对需要操作的数据先缓存起来，内核中的 PageCache 就是这个作用；</li>
+</ol>
+<h2 id="实现零拷贝方案">实现零拷贝方案</h2>
+<h3 id="直接内存访问dma">直接内存访问（DMA）</h3>
+<p>DMA 是一种硬件特性，允许外设（如网络适配器、磁盘控制器等）直接访问系统内存，而无需通过 CPU 的介入。在数据传输时，DMA 可以直接将数据从内存传输到外设，或者从外设传输数据到内存，避免了数据在用户态和内核态之间的多次拷贝。</p>
+<p><img src="https://hexo.moonkite.cn/blog/DMA1.png" alt="DMA1"></p>
+<p>如上图所示，内核将数据读取的大部分数据读取操作都交个了 DMA 控制器，而空出来的资源就可以去处理其他的任务了。</p>
+<h3 id="sendfile">sendfile</h3>
+<p>一些操作系统（例如 Linux）提供了特殊的系统调用，如 sendfile，在网络传输文件时实现零拷贝。通过 sendfile，应用程序可以直接将文件数据从文件系统传输到网络套接字或者目标文件，而无需经过用户缓冲区和内核缓冲区。</p>
+<p>如果不用 sendfile，如果将 A 文件写入 B 文件。</p>
+<ol>
+<li>需要先将 A 文件的数据拷贝到内核缓冲区，再从内核缓冲区拷贝到用户缓冲区；</li>
+<li>然后内核再将用户缓冲区的数据拷贝到内核缓冲区，之后才能写入到 B 文件；</li>
+</ol>
+<p>而用了 sendfile，用户缓冲区和内核缓冲区的拷贝都不用了，节省了一大部分的开销。</p>
+<h3 id="共享内存">共享内存</h3>
+<p>使用共享内存技术，应用程序和内核可以共享同一块内存区域，避免在用户态和内核态之间进行数据拷贝。应用程序可以直接将数据写入共享内存，然后内核可以直接从共享内存中读取数据进行传输，或者反之。</p>
+<p><img src="https://hexo.moonkite.cn/blog/image-20230721145324364.png" alt=""></p>
+<p>通过共享一块儿内存区域，实现数据的共享。就像程序中的引用对象一样，实际上就是一个指针、一个地址。</p>
+<h3 id="内存映射文件memory-mapped-files">内存映射文件（Memory-mapped Files）</h3>
+<p>内存映射文件直接将磁盘文件映射到应用程序的地址空间，使得应用程序可以直接在内存中读取和写入文件数据，这样一来，对映射内容的修改就是直接的反应到实际的文件中。</p>
+<p>当文件数据需要传输时，内核可以直接从内存映射区域读取数据进行传输，避免了数据在用户态和内核态之间的额外拷贝。</p>
+<p>虽然看上去感觉和共享内存没什么差别，但是两者的实现方式完全不同，一个是共享地址，一个是映射文件内容。</p>
+<h2 id="java-实现零拷贝的方式">Java 实现零拷贝的方式</h2>
+<p>Java 标准的 IO 库是没有零拷贝方式的实现的，标准 IO 就相当于上面所说的传统模式。只是在 Java 推出的 NIO 中，才包含了一套新的 I/O 类，如 <code>ByteBuffer</code> 和 <code>Channel</code>，它们可以在一定程度上实现零拷贝。</p>
+<p><code>ByteBuffer</code>：可以直接操作字节数据，避免了数据在用户态和内核态之间的复制。</p>
+<p><code>Channel</code>：支持直接将数据从文件通道或网络通道传输到另一个通道，实现文件和网络的零拷贝传输。</p>
+<p>借助这两种对象，结合 NIO 中的 API，我们就能在 Java 中实现零拷贝了。</p>
+<p>首先我们先用传统 IO 写一个方法，用来和后面的 NIO 作对比，这个程序的目的很简单，就是将一个 100M 左右的 PDF 文件从一个目录拷贝到另一个目录。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">ioCopy</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">File</span><span class="w"> </span><span class="n">sourceFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="n">SOURCE_FILE_PATH</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">File</span><span class="w"> </span><span class="n">targetFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="n">TARGET_FILE_PATH</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">FileInputStream</span><span class="w"> </span><span class="n">fis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileInputStream</span><span class="p">(</span><span class="n">sourceFile</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="n">FileOutputStream</span><span class="w"> </span><span class="n">fos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileOutputStream</span><span class="p">(</span><span class="n">targetFile</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="o">[</span><span class="n">1024</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">bytesRead</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="n">bytesRead</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fis</span><span class="p">.</span><span class="na">read</span><span class="p">(</span><span class="n">buffer</span><span class="p">))</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="o">-</span><span class="n">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">fos</span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">0</span><span class="p">,</span><span class="w"> </span><span class="n">bytesRead</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;传输 &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">formatFileSize</span><span class="p">(</span><span class="n">sourceFile</span><span class="p">.</span><span class="na">length</span><span class="p">())</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34; 字节到目标文件&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">IOException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>下面是这个拷贝程序的执行结果，109.92M，耗时 1.29 秒。</p>
+<blockquote>
+<p>传输 109.92 M 字节到目标文件
+耗时: 1.290 秒</p>
+</blockquote>
+<h3 id="filechanneltransferto-和-transferfrom">FileChannel.transferTo() 和 transferFrom()</h3>
+<p>FileChannel 是一个用于文件读写、映射和操作的通道，同时它在并发环境下是线程安全的，基于 FileInputStream、FileOutputStream 或者 RandomAccessFile 的 getChannel() 方法可以创建并打开一个文件通道。FileChannel 定义了 transferFrom() 和 transferTo() 两个抽象方法，它通过在通道和通道之间建立连接实现数据传输的。</p>
+<p>这两个方法首选用 sendfile 方式，只要当前操作系统支持，就用 sendfile，例如 Linux 或 MacOS。如果系统不支持，例如 windows，则采用内存映射文件的方式实现。</p>
+<h4 id="transferto">transferTo()</h4>
+<p>下面是一个 transferTo 的例子，仍然是拷贝那个 100M 左右的 PDF，我的系统是 MacOS。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">nioTransferTo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">File</span><span class="w"> </span><span class="n">sourceFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="n">SOURCE_FILE_PATH</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">File</span><span class="w"> </span><span class="n">targetFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="n">TARGET_FILE_PATH</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">FileChannel</span><span class="w"> </span><span class="n">sourceChannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RandomAccessFile</span><span class="p">(</span><span class="n">sourceFile</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;r&#34;</span><span class="p">).</span><span class="na">getChannel</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="n">FileChannel</span><span class="w"> </span><span class="n">targetChannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RandomAccessFile</span><span class="p">(</span><span class="n">targetFile</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;rw&#34;</span><span class="p">).</span><span class="na">getChannel</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="kt">long</span><span class="w"> </span><span class="n">transferredBytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sourceChannel</span><span class="p">.</span><span class="na">transferTo</span><span class="p">(</span><span class="n">0</span><span class="p">,</span><span class="w"> </span><span class="n">sourceChannel</span><span class="p">.</span><span class="na">size</span><span class="p">(),</span><span class="w"> </span><span class="n">targetChannel</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;传输 &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">formatFileSize</span><span class="p">(</span><span class="n">transferredBytes</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34; 字节到目标文件&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">IOException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>只耗时 0.536 秒，快了一倍。</p>
+<blockquote>
+<p>传输 109.92 M 字节到目标文件
+耗时: 0.536 秒</p>
+</blockquote>
+<h4 id="transferfrom">transferFrom()</h4>
+<p>下面是一个 transferFrom 的例子，仍然是拷贝那个 100M 左右的 PDF，我的系统是 MacOS。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">nioTransferFrom</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">File</span><span class="w"> </span><span class="n">sourceFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="n">SOURCE_FILE_PATH</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">File</span><span class="w"> </span><span class="n">targetFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="n">TARGET_FILE_PATH</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">FileChannel</span><span class="w"> </span><span class="n">sourceChannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RandomAccessFile</span><span class="p">(</span><span class="n">sourceFile</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;r&#34;</span><span class="p">).</span><span class="na">getChannel</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="n">FileChannel</span><span class="w"> </span><span class="n">targetChannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RandomAccessFile</span><span class="p">(</span><span class="n">targetFile</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;rw&#34;</span><span class="p">).</span><span class="na">getChannel</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="kt">long</span><span class="w"> </span><span class="n">transferredBytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">targetChannel</span><span class="p">.</span><span class="na">transferFrom</span><span class="p">(</span><span class="n">sourceChannel</span><span class="p">,</span><span class="w"> </span><span class="n">0</span><span class="p">,</span><span class="w"> </span><span class="n">sourceChannel</span><span class="p">.</span><span class="na">size</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;传输 &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">formatFileSize</span><span class="p">(</span><span class="n">transferredBytes</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34; 字节到目标文件&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">IOException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>执行时间：</p>
+<blockquote>
+<p>传输 109.92 M 字节到目标文件
+耗时: 0.603 秒</p>
+</blockquote>
+<h3 id="memory-mapped-files"><strong>Memory-Mapped Files</strong></h3>
+<p>Java 的 NIO 也支持内存映射文件（Memory-mapped Files），通过 <code>FileChannel.map()</code> 实现。</p>
+<p>下面是一个 <code>FileChannel.map()</code>的例子，仍然是拷贝那个 100M 左右的 PDF，我的系统是 MacOS。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">nioMap</span><span class="p">(){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">File</span><span class="w"> </span><span class="n">sourceFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="n">SOURCE_FILE_PATH</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">File</span><span class="w"> </span><span class="n">targetFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="n">TARGET_FILE_PATH</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">FileChannel</span><span class="w"> </span><span class="n">sourceChannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RandomAccessFile</span><span class="p">(</span><span class="n">sourceFile</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;r&#34;</span><span class="p">).</span><span class="na">getChannel</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                 </span><span class="n">FileChannel</span><span class="w"> </span><span class="n">targetChannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RandomAccessFile</span><span class="p">(</span><span class="n">targetFile</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;rw&#34;</span><span class="p">).</span><span class="na">getChannel</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="kt">long</span><span class="w"> </span><span class="n">fileSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sourceChannel</span><span class="p">.</span><span class="na">size</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">MappedByteBuffer</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sourceChannel</span><span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">FileChannel</span><span class="p">.</span><span class="na">MapMode</span><span class="p">.</span><span class="na">READ_ONLY</span><span class="p">,</span><span class="w"> </span><span class="n">0</span><span class="p">,</span><span class="w"> </span><span class="n">fileSize</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">targetChannel</span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;传输 &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">formatFileSize</span><span class="p">(</span><span class="n">fileSize</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34; 字节到目标文件&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">IOException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>执行时间：</p>
+<blockquote>
+<p>传输 109.92 M 字节到目标文件
+耗时: 0.663 秒</p>
+</blockquote>
+]]></content:encoded></item><item><title>剑走偏锋，无头浏览器是什么神奇的家伙</title><link>https://www.moonkite.cn/category/other/%E6%97%A0%E5%A4%B4%E6%B5%8F%E8%A7%88%E5%99%A8/</link><pubDate>Thu, 13 Jul 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/other/%E6%97%A0%E5%A4%B4%E6%B5%8F%E8%A7%88%E5%99%A8/</guid><description>浏览器是再熟悉不过的东西了，几乎每个人用过，比如 Chrome、FireFox、Safari，尤其是我们程序员，可谓开发最强辅助，摸鱼最好的伴</description><content:encoded><![CDATA[<p><img src="https://hexo.moonkite.cn/blog/%E6%97%A0%E5%A4%B4%E6%B5%8F%E8%A7%88%E5%99%A8.png" alt=""></p>
 <p>浏览器是再熟悉不过的东西了，几乎每个人用过，比如 Chrome、FireFox、Safari，尤其是我们程序员，可谓开发最强辅助，摸鱼最好的伴侣。</p>
 <p>浏览器能干的事儿，无头浏览器都能干，而且很多时候比标准浏览器还要更好用，而且能实现一些很好玩儿的功能，我们能借助无头浏览器比肩标准浏览器强大的功能，而且又能灵活的用程序控制的特性，做出一些很有意思的产品功能来，稍后我们细说。</p>
 <h2 id="什么是浏览器">什么是浏览器</h2>
@@ -3497,634 +3947,4 @@ code: n89a</p>
 <p>如果各位小伙伴使用过程中发现什么问题，或者有什么更好的建议，都可以加我好友直接跟我说。</p>
 <p>欢迎捧场，赶紧用一用吧，觉得好用的话，可以推荐给身边的小伙伴也用一下。</p>
 <p><img src="https://hexo.moonkite.cn/blog/877shots_so%20(1).png" alt=""></p>
-]]></content:encoded></item><item><title>使用 Hugo + GitHub Pages 搭建个人博客</title><link>https://www.moonkite.cn/category/other/Hugo-+-Github-Pages-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/other/Hugo-+-Github-Pages-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid><description>我的博客地址，https://www.moonkite.cn 很多人都想创建自己的个人博客或网站，但是由于种种原因，都被劝退了。 比如没有流量没</description><content:encoded><![CDATA[<p>我的博客地址，https://www.moonkite.cn</p>
-<p>很多人都想创建自己的个人博客或网站，但是由于种种原因，都被劝退了。</p>
-<p>比如没有流量没人看、服务器域名要花钱等等，如果你是因为花钱被劝退了，那现在有很多免费的方案可选，今天就介绍一种，使用 Hugo + GitHub Pages 方式免费搭建个人博客，真的是免费的。</p>
-<p>前提是你要会操作 GitHub，不过这不是什么难事儿，由于对于技术人来说，简直是基本操作。</p>
-<h2 id="为什么选-hugo--github-pages">为什么选 Hugo + GitHub Pages</h2>
-<h3 id="什么是-hugo">什么是 Hugo</h3>
-<p>Hugo 是一个快速、现代且高度可配置的静态网站生成器。它是使用 Go 语言开发的，并以简单易用、高效构建和渲染静态网页而闻名。Hugo 的设计目标是提供一个简洁、高性能的工具，以便开发人员可以轻松创建和管理各种类型的静态网站。</p>
-<p>与之类似的还有 Hexo 。</p>
-<p>Hugo 的主要特点包括：</p>
-<ol>
-<li>快速构建：Hugo 使用并行处理和基于文件变化的增量构建技术，可以在几秒钟内生成大型网站，提供出色的构建速度和性能。</li>
-<li>灵活可配置：Hugo 提供丰富的配置选项和灵活的主题系统，允许开发人员根据自己的需求进行定制和扩展。</li>
-<li>Markdown 支持：Hugo 使用 Markdown 作为主要的内容格式，方便作者使用简洁的语法编写内容，并将其转换为美观的静态网页。</li>
-<li>多语言支持：Hugo 支持多语言网站，可以轻松创建多语言版本的网站，并提供多语言内容管理和翻译支持。</li>
-<li>主题和布局：Hugo 提供了丰富的主题和布局选项，使开发人员能够快速创建具有吸引力和响应式设计的网站。</li>
-<li>内置开发服务器：Hugo 提供了一个内置的开发服务器，可以在本地预览和调试生成的网站，方便开发和调试过程。</li>
-</ol>
-<p>我们不用会 Go 语言、不用会前端，只要会用 Markdown 写字就好了。</p>
-<p>Hugo 官网：https://gohugo.io/</p>
-<p>官网上可以找到几百种的主题，各种风格应有尽有。</p>
-<h3 id="什么是-github-pages">什么是 GitHub Pages</h3>
-<p>GitHub Pages 是 GitHub 提供的一项托管静态网站的服务。它允许用户将自己的代码仓库中的静态网页文件（如 HTML、CSS、JavaScript 等）直接部署为一个在线可访问的网站。</p>
-<p>以下是 GitHub Pages 的主要特点和用途：</p>
-<ol>
-<li>免费托管：GitHub Pages 是免费的，用户可以将自己的静态网站免费托管在 GitHub 平台上。</li>
-<li>简化部署流程：使用 GitHub Pages，用户只需将静态网页文件上传到 GitHub 上的特定仓库，并配置相应的设置，即可自动部署网站，无需自己搭建服务器或配置复杂的环境。</li>
-<li>版本控制：由于网站文件存储在 GitHub 仓库中，用户可以充分利用 Git 的版本控制功能，轻松管理和追踪网站文件的变化。</li>
-<li>自定义域名：GitHub Pages 支持自定义域名，用户可以将自己已经拥有的域名与 GitHub Pages 上的网站关联，实现个性化的访问地址。</li>
-<li>多种发布方式：GitHub Pages 支持多种方式发布网站，包括使用现有的 Git 仓库作为源码、使用 Jekyll 静态网站生成器等。</li>
-<li>兼容 Jekyll：GitHub Pages 默认支持 Jekyll，一个基于 Ruby 的静态网站生成器，可以帮助用户更方便地创建和维护静态网站。</li>
-</ol>
-<p>免费，而且可用 GitHub 仓库作为源码库生成对应的静态网站，正好可以结合 Hugo 使用。</p>
-<h2 id="本地安装-hugo">本地安装 Hugo</h2>
-<p>首先是安装 Go 环境，直接到 Go 官网下载安装包安装就好了。https://go.dev/learn/</p>
-<p>接下来安装 Hugo。</p>
-<p>MacOS 安装</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">brew install hugo
-</span></span></code></pre></div><p>Window 安装</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">choco install hugo-extended
-</span></span></code></pre></div><p>还可以从源码直接安装</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">go install -tags extended github.com/gohugoio/hugo@latest
-</span></span></code></pre></div><p>最后验证 Hugo 安装状态</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">hugo version
-</span></span></code></pre></div><p>有下面这种类似的输出说明安装成功了。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">hugo v0.111.3+extended darwin/amd64 <span class="nv">BuildDate</span><span class="o">=</span>unknown
-</span></span></code></pre></div><h2 id="选定一个主题">选定一个主题</h2>
-<p>Hugo 官网提供了几百种主题样式可供选择。https://themes.gohugo.io，到上面选一个你喜欢的风格。</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230628152523507.png" alt=""></p>
-<p>大多数主题还可以预览 demo</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230628154659755.png" alt=""></p>
-<p>选定了就好了，一会儿会用到。</p>
-<h2 id="创建本地项目">创建本地项目</h2>
-<h3 id="创建项目主体">创建项目主体</h3>
-<p>Hugo 是一个工具，安装完之后，需要用它提供的命令创建出博客的主要目录和文件结构。</p>
-<p>进入你想要放置项目的目录中，然后在终端命令行中执行下面的命令，进行博客项目的创建：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">hugo new site 替换为你的博客名称
-</span></span><span class="line"><span class="cl"><span class="c1"># 例如</span>
-</span></span><span class="line"><span class="cl">hugo new site fengzheng-blog
-</span></span></code></pre></div><p>命令执行完成后，你会在当前目录下看到一个以你博客名称命名的文件夹，里面的目录结构大概是这样子的。</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230628155232577.png" alt="image-20230628155232577"></p>
-<p>这样一个主体结构就出来了，但是还差一步，就是主题，主体结构好比是骨骼，主题就是一套皮肤。</p>
-<h3 id="集成主题">集成主题</h3>
-<p>刚才上面已经选定了你心仪的主题了，一般主题下面会有使用介绍。比如我的博客用了 hugo-theme-den 这个主题，点进主题详情后，可以看到介绍和使用方式。</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230628160031838.png" alt=""></p>
-<p>接下来，下载主题文件到你创建的项目中，下载到 <code>themes</code>目录下。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git clone https://github.com/shaform/hugo-theme-den themes/hugo-theme-den
-</span></span></code></pre></div><p>下载后的目录结构：</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230628160822586.png" alt=""></p>
-<p>有的主题说使用<code>git submodule add</code>这种添加子模块的方式添加主题，这样做的好处是将主题仓库作为子模块加到项目中，当主题有更新后，可以及时更新。</p>
-<p>我不太喜欢用这种方式，在挑选主题的时候就是看的当下的主题样式，万一将来主题被大改后，那就不是我想要的了。而且，使用这种方式，在自动部署的时候可能会出现各种各样的问题。</p>
-<p>所以，我还是把主题下载到我本地的项目中，想做定制，就在本地项目的主题中定制，发布的时候就和项目主体一起发布了，很方便，也很灵活可控。</p>
-<p>主题地址：https://themes.gohugo.io/themes/hugo-theme-den/</p>
-<h2 id="配置网站本地调试">配置网站+本地调试</h2>
-<p>最终下载下来的主题目录是这样的</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230628161827409.png" alt="image-20230628161827409"></p>
-<h3 id="全局配置">全局配置</h3>
-<p>首先将主题目录下的 <code>config.toml</code>文件复制到项目根目录下，这个配置文件就用来配置网站的全局配置了，比如host、标题、菜单、默认语言等等。</p>
-<p>我用 hugo-theme-den 这个主题的配置做一个介绍。</p>
-<p>以下是 Hugo 配置文件中各项设置的名称、值和说明：</p>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>值</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>baseURL</td>
-<td>&ldquo;<a href="https://moonkite.cn">https://moonkite.cn</a>&rdquo;</td>
-<td>网站的基础 URL，引用的本地图片、css等，将会以这个地址作为 host</td>
-</tr>
-<tr>
-<td>title</td>
-<td>&ldquo;古时的风筝&rdquo;</td>
-<td>网站的标题</td>
-</tr>
-<tr>
-<td>theme</td>
-<td>&ldquo;hugo-theme-den&rdquo;</td>
-<td>网站所使用的主题</td>
-</tr>
-<tr>
-<td>enableRobotsTXT</td>
-<td>true</td>
-<td>生成 robots.txt 文件，用于控制搜索引擎爬虫的访问</td>
-</tr>
-<tr>
-<td>enableEmoji</td>
-<td>true</td>
-<td>启用 Emoji 表情支持</td>
-</tr>
-<tr>
-<td>hasCJKLanguage</td>
-<td>true</td>
-<td>检测 CJK（中文、日文、韩文）语言用于字数统计等功能</td>
-</tr>
-<tr>
-<td>preserveTaxonomyNames</td>
-<td>true</td>
-<td>不将标签名转为小写</td>
-</tr>
-<tr>
-<td>rssLimit</td>
-<td>20</td>
-<td>限制 RSS 订阅中的条目数量</td>
-</tr>
-<tr>
-<td>disablePathToLower</td>
-<td>true</td>
-<td>禁止将路径转为小写</td>
-</tr>
-<tr>
-<td>paginate</td>
-<td>20</td>
-<td>每页显示的条目数量（用于归档、标签和分类）</td>
-</tr>
-<tr>
-<td>paginatePath</td>
-<td>&ldquo;page&rdquo;</td>
-<td>分页路径的前缀</td>
-</tr>
-<tr>
-<td>PygmentsCodeFences</td>
-<td>true</td>
-<td>启用代码块的语法高亮</td>
-</tr>
-<tr>
-<td>PygmentsUseClasses</td>
-<td>true</td>
-<td>需要用于 shhighlight shortcode</td>
-</tr>
-<tr>
-<td>disqusShortname</td>
-<td>&quot;&quot;</td>
-<td>Disqus 评论系统的 shortname</td>
-</tr>
-<tr>
-<td>googleAnalytics</td>
-<td>&quot;&quot;</td>
-<td>Google Analytics 的跟踪 ID</td>
-</tr>
-<tr>
-<td>defaultContentLanguage</td>
-<td>&ldquo;zh-cn&rdquo;</td>
-<td>默认使用的语言</td>
-</tr>
-<tr>
-<td>defaultContentLanguageInSubdir</td>
-<td>false</td>
-<td>默认语言是否在子目录中</td>
-</tr>
-<tr>
-<td>permalinks.posts</td>
-<td>&ldquo;/:year/:month/:day/:slug/&rdquo;</td>
-<td>文章的永久链接格式</td>
-</tr>
-<tr>
-<td>permalinks.categories</td>
-<td>&ldquo;/category/:slug/&rdquo;</td>
-<td>分类的永久链接格式</td>
-</tr>
-<tr>
-<td>permalinks.tags</td>
-<td>&ldquo;/tag/:slug/&rdquo;</td>
-<td>标签的永久链接格式</td>
-</tr>
-<tr>
-<td>permalinks.pages</td>
-<td>&ldquo;/:slug/&rdquo;</td>
-<td>页面的永久链接格式</td>
-</tr>
-<tr>
-<td>author.name</td>
-<td>&ldquo;风筝&rdquo;</td>
-<td>作者的名称</td>
-</tr>
-<tr>
-<td>sitemap.changefreq</td>
-<td>&ldquo;weekly&rdquo;</td>
-<td>sitemap.xml 文件的更新频率</td>
-</tr>
-<tr>
-<td>sitemap.priority</td>
-<td>0.5</td>
-<td>sitemap.xml 文件的优先级</td>
-</tr>
-<tr>
-<td>sitemap.filename</td>
-<td>&ldquo;sitemap.xml&rdquo;</td>
-<td>sitemap.xml 文件的文件名</td>
-</tr>
-<tr>
-<td>params.since</td>
-<td>&ldquo;2023&rdquo;</td>
-<td>网站创建时间</td>
-</tr>
-<tr>
-<td>params.rssFullContent</td>
-<td>true</td>
-<td>在 RSS 订阅中使用完整内容而不是摘要</td>
-</tr>
-<tr>
-<td>params.keywords</td>
-<td>[&ldquo;Hugo&rdquo;, &ldquo;theme&rdquo;,&ldquo;编程&rdquo;,&lsquo;java&rsquo;,&lsquo;ChatGPT&rsquo;,&ldquo;程序员&rdquo;,&lsquo;开发&rsquo;]</td>
-<td>网站的关键词</td>
-</tr>
-<tr>
-<td>params.description</td>
-<td>&ldquo;一个程序员的个人博客&rdquo;</td>
-<td>网站的描述</td>
-</tr>
-<tr>
-<td>params.logoTitle</td>
-<td>&quot; &quot;</td>
-<td>在左上角显示的 Logo 标题</td>
-</tr>
-<tr>
-<td>params.siteLogoImage</td>
-<td>&quot;&quot;</td>
-<td>在 Logo 标题旁边显示的 Logo 图片</td>
-</tr>
-<tr>
-<td>params.headerImage</td>
-<td>&ldquo;images/background.png&rdquo;</td>
-<td>头部背景图片</td>
-</tr>
-<tr>
-<td>params.showAuthorCard</td>
-<td>true</td>
-<td>是否在文章下方显示作者信息</td>
-</tr>
-<tr>
-<td>params.comments</td>
-<td>true</td>
-<td>是否启用评论功能</td>
-</tr>
-<tr>
-<td>params.showMenuLanguages</td>
-<td>true</td>
-<td>是否显示多</td>
-</tr>
-</tbody>
-</table>
-<h3 id="本地启动">本地启动</h3>
-<p>先做一些基本设置之后呢（其实可以先什么都不改，先看看效果），就可以启动项目了，使用下面的命令启动</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">hugo server
-</span></span></code></pre></div><p>之后，看到下面这样的输出，说明启动成功了。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">......
-</span></span><span class="line"><span class="cl">Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
-</span></span><span class="line"><span class="cl">Web Server is available at http://localhost:1313/ <span class="o">(</span><span class="nb">bind</span> address 127.0.0.1<span class="o">)</span>
-</span></span><span class="line"><span class="cl">Press Ctrl+C to stop
-</span></span></code></pre></div><p>现在在浏览器打开 <code>http://localhost:1313</code>，就能看到效果了。当然了，刚开始肯定只有基础样式，没有内容。</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230628163325001.png" alt="image-20230628163325001"></p>
-<p>启动之后，之后做的修改会自动热部署，不用重启应用，除非有些配置的修改。什么配置呢，就是那种你发现改了，刷新页面了，但是没起作用，很多时候就是需要重启了。</p>
-<p><code>Ctrl+C</code>停止应用，然后<code>hugo server</code>重新启动。</p>
-<h2 id="定制化可选">定制化（可选）</h2>
-<p>如果你使用的是我用的这个主题，可以配置作者卡片和相关文章。</p>
-<h3 id="配置作者卡片和相关文章">配置作者卡片和相关文章</h3>
-<p>大部分博客主题都有这个设置，注意看选用主题的使用说明或示例配置就好了。</p>
-<p>在每一篇文章的底部都可以出现相关文章和作者卡片，例如下面这样。</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230628170150807.png" alt=""></p>
-<h4 id="相关文章">相关文章</h4>
-<p>在 <code>config.toml</code>配置中做如下配置，注意 toml 文件的格式。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">params</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">enableRelated</span> <span class="p">=</span> <span class="kc">true</span>
-</span></span></code></pre></div><h4 id="作者卡片">作者卡片</h4>
-<p>首先启用 <code>showAuthorCard</code>配置</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">params</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">showAuthorCard</span> <span class="p">=</span> <span class="kc">true</span> 
-</span></span></code></pre></div><p>然后，在根目录的 <code>data/authors</code>子目录下（如果没有 authors目录，则需要手动创建），添加一个作者的配置，可以有多个作者，一个作者对应一个配置文件。</p>
-<p>例如在 <code>data/authors</code>目录下创建 <code>fengzheng.toml</code>的文件，配置上内容</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="nx">url</span> <span class="p">=</span> <span class="s2">&#34;https://www.moonkite.cn&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">name</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="nx">display</span> <span class="p">=</span> <span class="s2">&#34;风筝&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">image</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="nx">url</span> <span class="p">=</span> <span class="s2">&#34;images/person.jpg&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">zh-cn</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="nx">description</span> <span class="p">=</span> <span class="s2">&#34;作者描述&#34;</span>
-</span></span></code></pre></div><h3 id="评论功能">评论功能</h3>
-<p>很多主题都默认带评论功能，比如 Disqus，例如下面的配置。你需要到 Disqus 官方上申请账号，然后配置上下面的配置就好了。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="nx">disqusShortname</span> <span class="p">=</span> <span class="s2">&#34;&#34;</span>         <span class="c"># disqus_shortname</span>
-</span></span></code></pre></div><p>但是据说广告太多，国内用户又这么不喜欢广告，所以在国内这个评论系统基本上没人用。</p>
-<p>与它类似的叫做<code>Giscus</code>的评论系统，没有广告，完全免费。具体可以参考官网进行集成 <a href="https://giscus.app/zh-CN">https://giscus.app/zh-CN</a>。</p>
-<h4 id="utterance">Utterance</h4>
-<p>我用的就是这个评论系统，集成简单，有个 GitHub 仓库就行了，它是用的仓库的 issue 功能来改造的。</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230628172807804.png" alt=""></p>
-<p>1、首先在 GitHub 中创建一个空白仓库就行</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230628173250746.png" alt=""></p>
-<p>2、然后，点击这个地址 <a href="https://github.com/apps/utterances">https://github.com/apps/utterances</a>，进入安装页，点击Configure。</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230628173632124.png" alt=""></p>
-<p>3、选择刚才创建的仓库，然后保存</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230628173835678.png" alt=""></p>
-<p>4、最后找到主题目录下的<code>/layouts/partials/comments.html</code>，将里面的内容替为将下面的内容</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&#34;https://utteranc.es/client.js&#34;</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">repo</span><span class="o">=</span><span class="s2">&#34;github账号名称/仓库名称&#34;</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">issue</span><span class="o">-</span><span class="nx">term</span><span class="o">=</span><span class="s2">&#34;pathname&#34;</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">theme</span><span class="o">=</span><span class="s2">&#34;github-light&#34;</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">crossorigin</span><span class="o">=</span><span class="s2">&#34;anonymous&#34;</span>
-</span></span><span class="line"><span class="cl">        <span class="kr">async</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="err">/script&gt;</span>
-</span></span></code></pre></div><p>其中 <code>repo</code>要配置成你创建的仓库，前面是你账号名称，后面是仓库名称。</p>
-<h2 id="菜单和对应的目录">菜单和对应的目录</h2>
-<p>菜单也是在<code>config.toml</code>中配置，每个主题的配置可能略有不同，我用的这个主题的配置是下面这样子：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">languages</span><span class="p">.</span><span class="nx">zh-cn</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">languageCode</span> <span class="p">=</span> <span class="s2">&#34;zh-cn&#34;</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">languageName</span> <span class="p">=</span> <span class="s2">&#34;简体中文&#34;</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">contentDir</span> <span class="p">=</span> <span class="s2">&#34;content/cn&#34;</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">weight</span> <span class="p">=</span> <span class="mi">2</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="nx">languages</span><span class="p">.</span><span class="nx">zh-cn</span><span class="p">.</span><span class="nx">params</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">description</span> <span class="p">=</span> <span class="s2">&#34;一个程序员的喃喃自语&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="p">[[</span><span class="nx">languages</span><span class="p">.</span><span class="nx">zh-cn</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">main</span><span class="p">]]</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">name</span> <span class="p">=</span> <span class="s1">&#39;&lt;i class=&#34;fas fad fa-h-square&#34;&gt;&lt;/i&gt;主页&#39;</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">weight</span> <span class="p">=</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">identifier</span> <span class="p">=</span> <span class="s2">&#34;home&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">url</span> <span class="p">=</span> <span class="s2">&#34;/&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="p">[[</span><span class="nx">languages</span><span class="p">.</span><span class="nx">zh-cn</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">main</span><span class="p">]]</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;&lt;i class=&#39;fas fa-yin-yang&#39;&gt;&lt;/i&gt;生活随笔&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">weight</span> <span class="p">=</span> <span class="mi">10</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">identifier</span> <span class="p">=</span> <span class="s2">&#34;notes&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">url</span> <span class="p">=</span> <span class="s2">&#34;category/notes&#34;</span>
-</span></span></code></pre></div><p>一般主题都支持多语言的，<code>languages.zh-cn</code>表示中文，其对应的文章的存放目录就是<code>content/cn</code>。</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230629143540406.png" alt=""></p>
-<p><code>languages.zh-cn.menu.main</code>是中文语言下的菜单，一个菜单包括如下几个配置：</p>
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>name</td>
-<td>展示名称，可包含html</td>
-</tr>
-<tr>
-<td>weight</td>
-<td>菜单项权重，用于确定显示顺序</td>
-</tr>
-<tr>
-<td>identifier</td>
-<td>菜单项标识符</td>
-</tr>
-<tr>
-<td>url</td>
-<td>菜单项链接地址</td>
-</tr>
-</tbody>
-</table>
-<p>以上是 Hugo 菜单设置中 &ldquo;主页&rdquo; 项的属性说明。其中，<code>name</code> 表示菜单项的显示名称，<code>weight</code> 用于指定菜单项的排序权重，<code>identifier</code> 是菜单项的唯一标识符，<code>url</code> 则指定了菜单项的链接地址，除了主页指向根目录外，其他的都指向 <code>content/cn</code>的子目录。</p>
-<p>例如，生活随笔的 url 是 <code>category/notes</code>，它的完整路径就是 <code>content/cn/category/notes</code>。</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230629144659128.png" alt=""></p>
-<p>每创建一个目录后，要在其中添加一个名称为 <code>_index.md</code>的文件，里面内容就是为了显示这个菜单进去的列表页标题，例如下图中间的<code>生活随笔</code>四个字。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">---
-</span></span><span class="line"><span class="cl">title: 生活随笔
-</span></span><span class="line"><span class="cl">--- 
-</span></span></code></pre></div><p>最后出来的效果如下：</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230629144753588.png" alt=""></p>
-<h2 id="添加文章">添加文章</h2>
-<p>配置完菜单和对应的文章目录后，就可以添加文章了。</p>
-<p>Hugo 中的文章都是 Markdown 格式，之后 build 的时候会将 markdown 文件按照格式转换成 HTML 。</p>
-<p>加一篇文章，那就是创建一个 markdown 文件，文件的名称其实是不影响展示的，只为你自己辨认。真正影响展示的在 markdown 文件的内容的最上方定义。</p>
-<p>例如我在生活随笔这个栏目下添加了一个文件，名称无所谓，不影响展示。</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230629150338020.png" alt=""></p>
-<p>内容部分，要在开头加入类似下面你的配置，生成HTML的时候需要。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">---
-</span></span><span class="line"><span class="cl">title: &#34;这次没躲过去，阳了&#34;
-</span></span><span class="line"><span class="cl">date: 2023-06-02T08:56:23+08:00
-</span></span><span class="line"><span class="cl">draft: false
-</span></span><span class="line"><span class="cl">description: 2023 年 5 月 25 日，阳了
-</span></span><span class="line"><span class="cl">authors:
-</span></span><span class="line"><span class="cl">    <span class="k">-</span> &#34;风筝&#34;
-</span></span><span class="line"><span class="cl">comment: true
-</span></span><span class="line"><span class="cl">---
-</span></span></code></pre></div><table>
-<thead>
-<tr>
-<th>属性</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>title</td>
-<td>文章标题，用来展示</td>
-</tr>
-<tr>
-<td>date</td>
-<td>文章发布日期，用来展示，日期越晚，展示越靠前</td>
-</tr>
-<tr>
-<td>draft</td>
-<td>是否为草稿</td>
-</tr>
-<tr>
-<td>description</td>
-<td>文章描述</td>
-</tr>
-<tr>
-<td>authors</td>
-<td>文章作者</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>最终的效果如下：</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230629151309979.png" alt=""></p>
-<h2 id="编译和发布">编译和发布</h2>
-<p>使用 <code>hugo build</code>命令，会在根目录下生成 <code>build</code>目录，这个目录就是 GitHub Pages 所需的格式了。</p>
-<p>GitHub Pages 就是读取一个特定仓库的内容，然后做展示。这个特定仓库有什么特点呢，就是仓库名称，仓库名称必须是<code>你的GitHub账号名称.github.io</code>，例如<code>alibaba.github.io</code>，<code>alibaba</code>就是账号名称，可以在 URL上看出来。</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230628175803886.png" alt=""></p>
-<p>当然了，你不能用别人的仓库，必须是你自己的。</p>
-<p>1、在你的 GitHub 中创建仓库，注意名称一定要按照上面说的那个格式。</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230628180125946.png" alt=""></p>
-<p>2、进入刚刚 build 完成后的 <code>public</code>目录，然后初始化仓库，关联远程仓库，提交代码。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git init
-</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;first commit&#34;</span>
-</span></span><span class="line"><span class="cl">git branch -M main
-</span></span><span class="line"><span class="cl">git remote add origin https://github.com/username/username.github.io
-</span></span><span class="line"><span class="cl">git push -u origin main
-</span></span></code></pre></div><p>3、如果没有意外的话，你就能看到远程仓库已经有了你提交的内容。如果有意外的话，大部分是 GitHub 提交的问题，自行解决就OK了，相信自己。</p>
-<p>4、在浏览器输入<code>username.github.io</code>，就能看到部署的博客了。例如我的博客的默认域名是<code>https://huzhicheng.github.io</code></p>
-<p>之后，如果有改动的话，执行 <code>hugo build</code>本地构建，然后提交代码到远程仓库。重复这个步骤就行了。</p>
-<p>好像也还算方便。但是，还有更方便的，那就是自动发布。</p>
-<h2 id="配置自动发布流程">配置自动发布流程</h2>
-<p>自动发布需要再创建一个仓库，用来存放项目源文件，不是build之后的，这个仓库可以是私有的，这样一来，项目也有版本管理了，岂不妙哉。</p>
-<p>整个发布流程大概是这样子的。</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230628181907880.png" alt=""></p>
-<p>1、首先创建一个私有仓库，作为项目源文件仓库，用于管理未经编译的代码。</p>
-<p>创建好仓库后，按照仓库的提示，将本地的源代码目录和远程仓库关联上。</p>
-<p>2、然后在根目录的<code>.github</code>目录下创建<code>workflows</code>的子目录，并在其中添加一个<code>deploy.yml</code>的文件。</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230628183201971.png" alt=""></p>
-<p>里面的内容如下：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">deploy</span><span class="w"> </span><span class="c"># 名字随意</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">on</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&#34;main&#34;</span><span class="w"> </span><span class="p">]</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">jobs</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">build</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v2</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">submodules</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">  </span><span class="c"># Fetch Hugo themes (true OR recursive) 获取submodule主题</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">fetch-depth</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">    </span><span class="c"># Fetch all history for .GitInfo and .Lastmod</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Setup Hugo	# 步骤名自取</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">peaceiris/actions-hugo@v2	# hugo官方提供的action，用于在任务环境中获取hugo</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">hugo-version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;latest&#39;</span><span class="w">	</span><span class="c"># 获取最新版本的hugo</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="c"># extended: true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l">hugo --minify	# 使用hugo构建静态网页</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Deploy</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">peaceiris/actions-gh-pages@v3	# 一个自动发布github pages的action</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">external_repository</span><span class="p">:</span><span class="w"> </span><span class="l">username/username.github.io	# 发布到哪个repo</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">personal_token</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.ACTION_ACCESS_TOKEN }}	# 发布到其他repo需要提供生成的personal access token</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">publish_dir</span><span class="p">:</span><span class="w"> </span><span class="l">./public	# 因为hugo默认生成静态网页到public文件夹，所以这里发布public文件夹里的内容</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">publish_branch</span><span class="p">:</span><span class="w"> </span><span class="l">main	# 发布到GitHub Pages关联仓库的哪个branch</span><span class="w">
-</span></span></span></code></pre></div><p>注意，上面的文件只需要将  <code>external_repository</code>修改成你自己的 GitHub Pages 关联仓库就好，其他都不用动。</p>
-<p>3、创建 Personal Token</p>
-<p>进入 GitHub，点击你自己的头像，点击 <code>Settings</code></p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230628183602967.png" alt=""></p>
-<p>点击<code>Developer Settings</code></p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230628183715571.png" alt=""></p>
-<p>点击创建一个 Token</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230628183849384.png" alt=""></p>
-<p>然后设置名称、有效期和权限。名称随意，方便以后辨认。有效期可选，我为了以后不改，就设置了无限期，当然为了安全性考虑，这是不建议的。</p>
-<p>然后勾选 <code>repo</code>和<code>admin:repo_hook</code>这两项。</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230628184119172.png" alt=""></p>
-<p>最后，会生成一个 token。一定要记录下来，后面会用到，就显示这一次，以后就看不到了。</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230628184359457.png" alt=""></p>
-<p>4、在源码仓库设置token，也就是那个第1步创建的那个仓库。</p>
-<p>进入这个仓库的 <code>Settings</code>-&gt;<code>secrets and variables</code>-&gt;<code>Actions</code>，在这里点击<code>New repository secret</code>。</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230628185008522.png" alt="image-20230628185008522"></p>
-<p>注意，Name 是有讲究的，是刚才第2步的 <code>deploy.yml</code>文件中设置的</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">personal_token: <span class="si">${</span><span class="p">{ secrets.ACTION_ACCESS_TOKEN </span><span class="si">}</span><span class="o">}</span>
-</span></span></code></pre></div><p>就是 secrets. 后面的部分。</p>
-<p>而 Secret 是第3步创建的 Person Token，就是说了一定要保存的那个Token。</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230628185105668.png" alt=""></p>
-<p>5、提交代码，自动发布。</p>
-<p>之后，我们将代码提交，然后在源码仓库中的<code>Acitons</code>选项中，可以看到提交的自动部署流程。</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230628185523724.png" alt=""></p>
-<p>并且有每一次提交的自动部署记录。</p>
-<p>这样一来，每次修改完成，或者添加完文章，只需要提交源码仓库就好了，自动发布流程会自动打包部署，然后推送到 GitHub Pages 关联仓库，稍等片刻，刷新页面，就可看到更新后的内容了。</p>
-<h2 id="自定义域名可选">自定义域名（可选）</h2>
-<p>如果你不想用默认的<code>username.github.io</code>域名，那可以设置自已的域名，域名就要花钱了，不过非 <code>.com</code>后缀的域名一般都很便宜，几十块钱、甚至几块钱一年的都有，只要不是字符数太少的，那种就不要想了。</p>
-<h3 id="购买域名">购买域名</h3>
-<p>买域名的话，平台有很多，国内就阿里云就好了。</p>
-<p>国外的<a href="https://www.cloudflare.com/">Cloudflare</a>、<a href="https://www.namesilo.com/">NameSilo</a>、<a href="https://www.godaddy.com/">GoDaddy</a> 都可以。</p>
-<p>国外的买了就可以用，国内的话，还需要备案，备案需要一点时间。</p>
-<p>我这个 <a href="www.moonkite.cn">moonkite.cn</a> 域名买了很多年了，之前一直用二级域名当图床啊、测试服务这些用，这次主域名终于派上用场了。</p>
-<h3 id="解析域名">解析域名</h3>
-<p>如果你是用的阿里云的话，进入域名列表页，点击域名后面的「解析」按钮。</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230629152040552.png" alt=""></p>
-<p>添加两条记录，都是 CNAME 类型的，也就是别名类的，一个域名解析到另一个域名。</p>
-<p>主机记录选<code>www</code>和<code>@</code>，记录值就是你的 GitHub Pages 默认域名<code>username.github.io</code>，记住换成你自己的 GitHub 名字。</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230629152422550.png" alt=""></p>
-<p>最后添加完成这两个 CNAME 解析如下。</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230629152220506.png" alt=""></p>
-<p>说是等10分钟，基本上都不用那么久，片刻即可生效。</p>
-<h3 id="配置域名">配置域名</h3>
-<p>域名解析配置好后，要在仓库中进行设置。</p>
-<p>打开GitHub Pages 关联仓库，也就是 username.github.io 那个，点击仓库的 <code>Settings</code>，在左侧菜单中选择<code>Pages</code>。</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230629152821784.png" alt=""></p>
-<p>然后在下方的<code>Custom domain</code>这里配置上你自己的域名，配置之后，会立即检测DNS，成功后，会有绿色的提示。</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230629152938770.png" alt=""></p>
-<p>之后，在浏览器输入你的域名，就可以访问了。</p>
-<p>大功告成。</p>
-<h3 id="自动更改自定义域名">自动更改自定义域名</h3>
-<p>但是，如果你用的是自动部署方式，会发现每次提交代码后，自定义域名都被改回默认域名了。这不白干了吗，难道每次都要配置一下？</p>
-<p>当然不用了，你只需要在项目的根目录中找到 <code>static</code>目录，在其中创建一个名称为 <code>CNAME</code>的文件，注意，没有文件后缀。在其中写入你自己的域名即可，之后每次添加文章、修改样式，再重新提交代码，自动部署后，域名就不会改为默认的了。</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230629153440506.png" alt=""></p>
-]]></content:encoded></item><item><title>文本框即时翻译Chrome插件</title><link>https://www.moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6/</guid><description>在任意网页的输入框输入内容后，都可以翻译成指定的目标语言</description><content:encoded><![CDATA[<p><a href="https://www.moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6/">中文说明</a>         |       <a href="https://www.moonkite.cn/category/product/2-%E6%96%87%E6%9C%AC%E6%A1%86%E5%8D%B3%E6%97%B6%E7%BF%BB%E8%AF%91Chrome%E6%8F%92%E4%BB%B6-English/">Engilish Introduction</a></p>
-<p><strong>安装地址</strong>：</p>
-<p><a href="https://chrome.google.com/webstore/detail/%E6%96%87%E6%9C%AC%E6%A1%86%E7%BF%BB%E8%AF%91/bnfhhmjlkopegjkmhpmegfdpdmfpmbmn/related?hl=zh-CN">在线地址</a></p>
-<p>离线版本：
-<a href="https://pan.baidu.com/s/1Ob0-mWganRnsqGvoGQVdRg?pwd=n89a">百度网盘</a>
-提取码: n89a</p>
-<p>文本框翻译插件，使用 Google 翻译功能，将 Chrome 浏览器中任意文本框中的内容即时翻译成对应的目标语言。例如将文本框中的内容自动翻译成英文，并替换当前文本框中的内容。</p>
-<p>视频介绍：<a href="https://www.bilibili.com/video/BV17g4y1A7Fe/?vd_source=d72d86eea40f5750277144c5880966f5">中文介绍</a>，<a href="https://youtu.be/iRNeF2LBT7U">English Introduction</a></p>
-<h2 id="插件使用">插件使用</h2>
-<p>安装完成后，将“文本框翻译”插件钉在工具栏。</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230627151514437.png" alt="image-20230627151514437"></p>
-<p>点击浏览器工具栏中此插件的图标，设置目标语言和触发标识。</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230627151633954.png" alt=""></p>
-<p>在输入内容的尾部输入触发标示后（即上述的自定义的触发标示），会自动触发翻译动作，将原本的内容替换为目标语言。</p>
-<p>在输入框输入 「你好/lang」 ,自动将内容翻译为 &ldquo;Hello&rdquo;。</p>
-<p><strong>可以在Google、Google Bard、Twitter、微博、百度、ChatGPT等所有输入框中使用。</strong></p>
-<p>如果各位在使用过程中发现什么问题，或者有什么更好的建议，都可以加我好友直接跟我说。</p>
-<p>欢迎捧场，赶紧用一用吧，觉得好用的话，可以推荐给身边的小伙伴也用一下。</p>
-<p><img src="https://hexo.moonkite.cn/blog/877shots_so%20(1).png" alt=""></p>
-]]></content:encoded></item><item><title>一个简单的 web 版 JVM 监控器</title><link>https://www.moonkite.cn/category/product/2-JVM-%E7%9B%91%E6%8E%A7/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/product/2-JVM-%E7%9B%91%E6%8E%A7/</guid><description>以 JMX 技术为基础，差不多实现了一个 web 版的 visualVM</description><content:encoded>&lt;p>以 JMX 技术为基础，差不多实现了一个 web 版的 visualVM，具备以下功能：&lt;/p>
-&lt;p>支持连接本地 JVM 和 远程 JVM
-展示所有 MBeans，并可查看属性及调用操作
-仪表盘功能：
-实时系统信息，系统 CPU 使用率、内存占用等
-JVM 参数信息
-实时 CPU 使用率曲线图、实时 Heap 、MetaSpace 使用量曲线图、实时类加载量曲线图、实时线程数曲线图
-垃圾收集器及垃圾收集次数&lt;/p></content:encoded></item><item><title>这次没躲过去，阳了</title><link>https://www.moonkite.cn/category/notes/%E9%A6%96%E9%98%B3%E5%BF%AB%E5%A5%BD%E4%BA%86/</link><pubDate>Fri, 02 Jun 2023 08:56:23 +0800</pubDate><guid>https://www.moonkite.cn/category/notes/%E9%A6%96%E9%98%B3%E5%BF%AB%E5%A5%BD%E4%BA%86/</guid><description>2023 年 5 月 25 日，阳了</description><content:encoded><![CDATA[<p>上周四（2023 年 5 月 25 日）阳了，是首阳，去年幸运的躲过去了。今年就没这么幸运了，新冠只会迟到，但它不会不来。</p>
-<p><img src="https://hexo.moonkite.cn/blog/image-20230603205055429.png" alt=""></p>
-<p>最近这次疫情主要是查漏补缺，把去年漏掉的那波补上，顺带着让一些人二阳，甚至三阳。</p>
-<p>之前公司里，算上我有3个去年没阳的，我是上周四阳的，另外一个是这周一阳的。</p>
-<p>还剩最后一个一直没阳，这多少有点儿厉害了，据我们分析可能的原因有这么几个：</p>
-<ol>
-<li>和我们打的疫苗不一样，只有他打的是北京生物，我们打的都是科兴，而且他打的比较晚，可能是疫苗确实起作用了。</li>
-<li>真正的无症状感染者，感染了但是没有感觉。</li>
-<li>超级免疫体质，上天眷顾。（基本排除了）</li>
-</ol>
-<p>除了这个我愿称之为奇迹的存在，其他我听说的去年没阳过的，目前基本已经全军覆没了。终南山说预测 5月底4000万/周，6月底6500万/周，不是盖的。</p>
-<p><img src="https://hexo.moonkite.cn/blog/12222.png" alt=""></p>
-<h2 id="首阳历程">首阳历程</h2>
-<p>有人说这病毒距离去年的又过去半年了，按照病毒传播的理论，这一次是不是比去年的毒株杀伤里要小一点了。</p>
-<p>我感觉，并没有，至少在我这儿的痛苦程度，和去年听别人说的感受是一样的。</p>
-<p><strong>上周四，第一天</strong></p>
-<p>（周三）半夜感觉嗓子有点异物感，以为是白天喝水少了，早晨起来有点冷，以为发烧了，一量体温并没有，36度。路上肩膀有点疼，之前拉伤过，以为晚上压到了。其实病毒已经开始攻击我了，这病毒就像个放大器，你身体哪里有问题，它就给你把问题放大。</p>
-<p>中午就开始没食欲了，吃了几口，然后开始腿有点酸疼，肩膀更疼了，还有屁股疼，这你受的了。</p>
-<p>能感觉到有点烧了，立马回家了。</p>
-<p>到家之后提问马上上来了，头开始疼，随着提问的升高，头疼的越来越厉害，就是那种头痛欲裂的感觉，毫不夸张，就是疼到没心疼刷手机。头疼的感觉盖过了身上的酸疼，其实身上也很疼。</p>
-<p>一量体温，38.3，来了一颗布洛芬。接下来就是睡觉，睡眠质量很好。</p>
-<p>不得不说，布洛芬真是神药，又止疼又退烧。</p>
-<p><strong>上周五，第二天</strong></p>
-<p>早晨精神状态良好，甚至还写了不少代码。轻微咳嗽，有点儿流鼻涕。</p>
-<p>到了下午，体温又上来了，头不疼了，但是全身酸疼，尤其是后背和腿，疼的厉害。只能躺着。</p>
-<p>一直忍到下午5点，一量体温，又是38.3，你说巧不巧。</p>
-<p>冷的不行，直起鸡皮疙瘩。又来了一粒布洛芬，但是今天好像效果不明显，感觉体温一直没降下来，至少到夜里一两点都没降下来，一会儿热的出汗，一会儿冷的要命。</p>
-<p>这是最难受的一天，睡不好觉，早晨起来一看，手上脚上都是小红点，就是毛细血管爆了的那种小红点。这就是妥妥的烧爆了。</p>
-<p><strong>上周六，第三天</strong></p>
-<p>第三天开始就不发烧了，咳嗽严重了一点，嗓子难受，后背还是有点疼。</p>
-<p>就是那种连续加班好几天的感觉。</p>
-<p><strong>上周日，第四天</strong></p>
-<p>咳嗽严重，有鼻涕，嗓子疼，重感冒的那种状态。</p>
-<p>还有就是胃有点难受，哪里薄弱它就攻击你哪里，我之前有过慢性胃炎，不过已经好长时间没发作了。这不，被这病毒精准的逮到了。</p>
-<p><strong>周一，第五天</strong></p>
-<p>仍然没去公司，主要是怕传染给同事。</p>
-<p>还是重感冒的症状，不过身上几乎没有疼痛的感觉了。感觉马上就好了。</p>
-<p><strong>周二到周五</strong></p>
-<p>第6- 9天，现在嗓子虽然不疼了，但是总是干，半个小时不喝水就感觉干、痒，然后就咳嗽。</p>
-<p>6、7天的时候，爬楼梯还有点累，头时不时懵懵的，不会影响智商吧。</p>
-<p>这两天基本上体力恢复了，头也不懵了，就剩下咳嗽了。</p>
-<p>我以为5、6天就能好呢，结果现在还是有点咳嗽，尤其到了下午。</p>
-<p><strong>昨天</strong></p>
-<p>昨天基本痊愈了，几乎不咳嗽了，嗓子也不疼了。</p>
-<p>这周，公司里还有2个同事二阳了，认识的朋友也有几个二阳了。</p>
-<p>但是大部分的二阳症状都比较轻，基本上都是轻微咳嗽+流鼻涕，还有一部分有低烧的症状。</p>
-<p>这病毒绝对不是大号的感冒，这可比感冒难受多了。而且不是有传言说，世界纪录是8阳吗，因为8阳之后人就没了。</p>
-<p>对健康的年轻人还好，但是对老年人，尤其是有基础疾病的老年人，每次疫情都是挑战，家里有老年人一定要做好防护措施，能不感染就不感染，至少在6月底前做好防护，少出门，少聚集，勤消毒。</p>
-<p>到了6月底，感染的人数多了，也就能形成一定的免疫屏障了，那时候再出来活动，感染的几率会小一些。</p>
-<p>我去年就是在感染高峰期的时候在家里没怎么出门，能网购的都网购，快递放在门口，拿快递先用酒精一通喷。当然，也可能只是幸运而已。</p>
-<p>我跟朋友这么说的时候，有的朋友说我站着说话不腰疼。不是想在家里呆着就能在家里呆着的，要上班、要工作呀。</p>
-<p>去年的时候还有政策，阳了可以居家办公，但是今年呢，新冠已经当做流感来对待了，好多公司要求能上班就上班，不能上班就请假。所以有很多人，即使阳了，哪怕发着烧，只能要坚持，还是会到公司上班的。</p>
-<p>这就是生活呀！</p>
-<p>你阳了吗，首阳还是二阳，坚持上班了吗？</p>
 ]]></content:encoded></item></channel></rss>
